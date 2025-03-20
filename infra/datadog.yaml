@@ -1,0 +1,22 @@
+datadog:
+  apiKeyExistingSecret: datadog-secret
+  site: us5.datadoghq.com
+  logs:
+    enabled: true
+    containerCollectAll: true
+  ignoreAutoConfig:
+    - docker_daemon
+  containerInclude: "kube_namespace:default kube_namespace:ypp"
+  containerExclude: "name:.*"
+
+clusterAgent:
+  tolerations:
+    - key: "node-role.kubernetes.io/control-plane"
+      operator: "Exists"
+      effect: "NoSchedule"
+
+agents:
+  tolerations:
+    - key: "node-role.kubernetes.io/control-plane"
+      operator: "Exists"
+      effect: "NoSchedule"

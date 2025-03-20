@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sdwebui
+  namespace: ypp
+  labels:
+    app: sdwebui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sdwebui
+  template:
+    metadata:
+      labels:
+        app: sdwebui
+    spec:
+      containers:
+      - name: sdwebui-container
+        image: ghcr.io/ai-dock/stable-diffusion-webui:latest
+        ports:
+        - containerPort: 7860
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+          requests:
+            nvidia.com/gpu: 1
+        env:
+        - name: WEB_ENABLE_AUTH
+          value: "false"
+        - name: PORT
+          value: "7860"
+        - name: WEBUI_ARGS
+          value: "--api --listen --xformers"
+        volumeMounts:
+        - name: models-volume
+          mountPath: /opt/stable-diffusion-webui/models
+      volumes:
+      - name: models-volume
+        persistentVolumeClaim:
+          claimName: nfs-pvc
+      nodeSelector:
+        instance-type: gpu
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sdwebui-service
+  namespace: ypp
+spec:
+  selector:
+    app: sdwebui
+  ports:
+    - protocol: TCP
+      port: 7860
+      targetPort: 7860
+      nodePort: 50010  
+

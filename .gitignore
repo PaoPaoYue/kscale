@@ -2,3 +2,4 @@ metadata.parquet
 output
 output.*
 .idea
+tmp

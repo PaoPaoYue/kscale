@@ -8,6 +8,7 @@ NVIDIA_DEVICE_PLUGIN_VERSION := 0.17.1
 datadog:
 	helm upgrade --wait --timeout=$(TIMEOUT) --version ${DATADOG_VERSION} --create-namespace --namespace datadog --install --values datadog.yaml datadog-agent datadog/datadog
 
+# kubectl create namepsace ypp
 nfs:
 	kubectl apply -f nfs.yaml --timeout=$(TIMEOUT)
 
@@ -22,8 +23,17 @@ nvidia-device-plugin:
 	--version $(NVIDIA_DEVICE_PLUGIN_VERSION) \
 	--timeout=$(TIMEOUT)
 
+# helm repo add gpu-helm-charts https://nvidia.github.io/dcgm-exporter/helm-charts
+# helm repo update
+dcgm:
+	kubectl apply -f dcgm-config.yaml --timeout=$(TIMEOUT)
+	helm install dcgm-datadog gpu-helm-charts/dcgm-exporter -n datadog -f dcgm-values.yaml --timeout=$(TIMEOUT)
+
 sd-webui:
 	kubectl apply -f sdwebui-plain.yaml --timeout=$(TIMEOUT)
 
+job-generator:
+	kubectl apply -f job-generator.yaml --timeout=$(TIMEOUT)
 
-.PHONY: datadog nfs rabbitmq nvidia-device-plugin sd-webui
+
+.PHONY: datadog nfs nvidia-device-plugin dcgm sd-webui job-generator

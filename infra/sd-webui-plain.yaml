@@ -15,6 +15,7 @@ spec:
       labels:
         app: sd-webui
     spec:
+      terminationGracePeriodSeconds: 30  # 给容器30秒的时间来优雅关闭
       containers:
       - name: sd-webui-container
         image: py846260131/sd-webui:01
@@ -27,11 +28,23 @@ spec:
             nvidia.com/gpu.shared: 1
         env:
         - name: CLI_ARGS
-          value: "--api --listen --xformers --skip-torch-cuda-test --skip-python-version-check --skip-install --no-download-sd-model --do-not-download-clip" #--nowebui
+          value: "--api --listen --nowebui --xformers --skip-torch-cuda-test --skip-python-version-check --skip-install --no-download-sd-model --do-not-download-clip"
         volumeMounts:
         - name: models-volume
           mountPath: /data
           subPath: data
+        readinessProbe:
+          tcpSocket:
+            port: 7860
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          tcpSocket:
+            port: 7860 
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
       volumes:
       - name: models-volume
         persistentVolumeClaim:
@@ -40,7 +53,6 @@ spec:
         instance-type: gpu
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -54,5 +66,4 @@ spec:
     - protocol: TCP
       port: 7860
       targetPort: 7860
-      nodePort: 30010  
-
+      nodePort: 30010

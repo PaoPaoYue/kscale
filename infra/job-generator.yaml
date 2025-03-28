@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job- generator
+  namespace: ypp
+  labels:
+    app: job-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: job-generator
+  template:
+    metadata:
+      labels:
+        app: job-generator
+    spec:
+      serviceAccountName: job-generator-service-account
+      containers:
+      - name: job-generator
+        image: py846260131/kscale-job-generator:02
+        env: []
+        volumeMounts:
+        - name: tmp-volume
+          mountPath: /tmp
+          subPath: tmp
+      volumes:
+      - name: tmp-volume
+        persistentVolumeClaim:
+          claimName: nfs-pvc
+      nodeSelector:
+        kubernetes.io/hostname: kube-master
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          operator: "Exists"
+          effect: "NoSchedule"
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: job-generator-service-account
+  labels:
+    app: job-generator
+    release: job-generator-release
+  annotations:
+    example.com/annotation: "value"
+automountServiceAccountToken: true
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: job-generator-service-account-role
+  labels:
+    app: job-generator
+    release: job-generator-release
+  annotations:
+    example.com/annotation: "value"
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "namespaces", "services"]
+    verbs: ["get", "list", "watch"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: job-generator-service-account-role-binding
+  labels:
+    app: job-generator
+    release: job-generator-release
+  annotations:
+    example.com/annotation: "value"
+subjects:
+  - kind: ServiceAccount
+    name: job-generator-service-account
+    namespace: job-generator-namespace
+roleRef:
+  kind: ClusterRole
+  name: job-generator-service-account-role
+  apiGroup: rbac.authorization.k8s.io
+

@@ -27,8 +27,9 @@ func ReadCSV(file multipart.File) (*CSVIterator, error) {
 	_ = file.Close()
 
 	return &CSVIterator{
-		reader: reader,
-		lines:  lines,
+		reader:       reader,
+		lines:        lines,
+		currentIndex: 1, // Skip header
 	}, nil
 }
 
@@ -51,6 +52,10 @@ func (it *CSVIterator) Next() (Job, bool) {
 		},
 		RequestTime: int64(parseInt(record[8], 0)),
 	}, true
+}
+
+func (it *CSVIterator) Size() int {
+	return len(it.lines) - 1
 }
 
 func OpenCSVAndWriteHeader(csvFilePath string) *os.File {

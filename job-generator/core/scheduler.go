@@ -21,9 +21,10 @@ import (
 type JobScheduler struct {
 	client *kubernetes.Clientset
 
-	Active       bool
-	JobStartTIme time.Time
-	JobBatchName string
+	Active            bool
+	JobBatchStartTIme time.Time
+	JobBatchName      string
+	JobBatchSize      int
 
 	JobChan    chan Job
 	RetryChan  chan Job
@@ -42,6 +43,7 @@ func NewJobScheduler(client *kubernetes.Clientset) *JobScheduler {
 		client:       client,
 		Active:       false,
 		JobBatchName: "",
+		JobBatchSize: 0,
 		JobChan:      make(chan Job, config.C.MaxQueueSize),
 		RetryChan:    make(chan Job, config.C.MaxRetryQueueSize),
 		OutputChan:   make(chan Job),
@@ -66,6 +68,9 @@ func (js *JobScheduler) Start() {
 			js.addWorker(&pod)
 		}
 	}
+
+	go js.watchEndpoints()
+	go js.watchMetrics()
 }
 
 func (js *JobScheduler) Stop() {
@@ -96,16 +101,17 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 		return err
 	}
 	go func() {
-		js.JobBatchName = jobBatchName
 		js.Active = true
-		js.JobStartTIme = time.Now()
+		js.JobBatchName = jobBatchName
+		js.JobBatchSize = iter.Size()
+		js.JobBatchStartTIme = time.Now()
 
 		js.jobTicker = time.NewTicker(time.Second)
 
 		if job, ok := iter.Next(); ok {
 			for range js.jobTicker.C {
 				current := time.Now()
-				for current.Sub(js.JobStartTIme) > time.Duration(job.RequestTime)*time.Second {
+				for current.Sub(js.JobBatchStartTIme) > time.Duration(job.RequestTime)*time.Second {
 					job.RequestTime = current.UnixMilli()
 					metrics.Client.Count(metrics.JobRequest)
 					metrics.DatadogClient.Count(metrics.JobRequest)
@@ -116,11 +122,10 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 				}
 			}
 		}
-
-		js.Active = false
-		js.JobBatchName = ""
-		js.JobStartTIme = time.Time{}
 	}()
+
+	js.processOutput()
+
 	return nil
 }
 
@@ -178,6 +183,11 @@ func (js *JobScheduler) watchEndpoints() {
 
 func (js *JobScheduler) watchMetrics() {
 	go func() {
+		defer func() {
+			if r := recover(); r != nil {
+				slog.Error("Discovery recovered from panic", "error", r)
+			}
+		}()
 		for range js.metricsTicker.C {
 			var workerNum int
 			var hostnames []string
@@ -203,13 +213,22 @@ func (js *JobScheduler) watchMetrics() {
 	}()
 }
 
-func (js *JobScheduler) watchOutput() {
+func (js *JobScheduler) processOutput() {
 	file := OpenCSVAndWriteHeader(filepath.Join(config.C.OutputFilePath, js.JobBatchName+"-result.csv"))
 	go func() {
 		defer file.Close()
+		var count int
 		for job := range js.OutputChan {
 			AppendCSV(file, job)
+			count++
+			if count >= js.JobBatchSize {
+				break
+			}
 		}
+		js.Active = false
+		js.JobBatchName = ""
+		js.JobBatchSize = 0
+		js.JobBatchStartTIme = time.Time{}
 	}()
 }
 

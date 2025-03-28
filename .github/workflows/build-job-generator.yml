@@ -1,4 +1,4 @@
-name: "Build Mesh Proxy Docker Image"
+name: "Build Job Generator Docker Image"
 
 on:
   workflow_dispatch:
@@ -37,8 +37,7 @@ jobs:
 
     - name: Build and Push Multi-Arch Docker Image
       run: |
-        cd job-generator
         DOCKER_REPO="${{ secrets.DOCKER_USERNAME }}/kscale-job-generator"
         DOCKER_TAG="${{ github.event.inputs.version }}"
         docker buildx build --platform linux/amd64,linux/arm64 -t $DOCKER_REPO:$DOCKER_TAG -f Dockerfile --push .
-      working-directory: envoy-proxy
+      working-directory: job-generator

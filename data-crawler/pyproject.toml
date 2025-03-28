@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "data-crawler"
+version = "0.1.0"
+description = ""
+authors = ["PaoPaoYue <846260131@qq.com>"]
+readme = "README.md"
+packages = [{include = "data_crawler"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.3"
+urllib3 = "^2.3.0"
+pyarrow = "^19.0.1"
+fastparquet = "^2024.11.0"
+transformers = "^4.50.0"
+matplotlib = "^3.10.1"
+scikit-learn = "^1.6.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

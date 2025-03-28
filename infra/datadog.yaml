@@ -6,8 +6,12 @@ datadog:
     containerCollectAll: true
   ignoreAutoConfig:
     - docker_daemon
-  containerInclude: "kube_namespace:default kube_namespace:ypp"
-  containerExclude: "name:.*"
+  containerExcludeLogs: kube_namespace:datadog.* kube_namespace:kube-.* kube_namespace:calico-.* kube_namespace:tigera-.*
+  containerIncludeLogs: kube_namespace:ypp
+  kubelet:
+    # datadog.kubelet.tlsVerify -- Toggle kubelet TLS verification
+    # @default -- true
+    tlsVerify:  false
 
 clusterAgent:
   tolerations:

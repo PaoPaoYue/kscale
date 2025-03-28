@@ -1,0 +1,474 @@
+id,prompt,step,cfg,sampler,width,height,token_count
+22782,FurAffinity,20,7.0,8,512,512,4
+41291,"a [ gothic ]!, old, haunted, [ haunting ]! a forest [ beautiful ]!, 2 d realistic gothic style [ photorealism ]! 3 d gothic realistic art 3 d creepy ",20,7.0,8,512,512,40
+54439,"super - intelligent robot with kind eyes portrait, grant wood, pj crook, edward hopper, oil on canvas ",50,7.0,8,512,512,22
+42816,"close photographic portrait of a stunningly beautiful english renaissance female in soft dreamy light at sunset, beside the river, soft focus, contemporary fashion shoot, hasselblad nikon, in a denis villeneuve and tim burton movie, by edward robert hughes, annie leibovitz and steve mccurry, david lazar, jimmy nelsson, extremely detailed, breathtaking, hyperrealistic, perfect face ",50,15.0,8,512,512,84
+49615,"face dripping with blue goo hyperrealistic portrait, photo realistic, poster, artstation, volumetric lighting, digital art, very detailed face by magali villeneuve ",20,7.0,8,512,512,33
+15545,"a portrait of a cute young female Roman Centurion, Roman setting, vivid colors, soft lighting, atmospheric, cinematic, moody, in the style of Ilya Kuvshinov and Range Murata, Krenz Cushart, rule of thirds, oil on canvas, 8k",20,7.0,8,512,768,59
+20839,Tom Cruise playing Daniel Plainview in There Will Be Blood,20,7.0,8,512,512,11
+9566,"a face portrait of a young female vampire from skyrim, fantasy setting, beautiful face, dark colors, scary lighting, atmospheric, cinematic, moody, in the style of diego koi, gina heyer, luiz escanuela, art by alyssa monk, hyperrealism, rule of thirds, golden ratio, oil on canvas, 8 k ",32,10.0,8,704,960,71
+4086,"soviet propaganda of robert mueller holding a hammer and sickle in realistic collective farm, by j. c. leyendecker, bosch, and beksinski ",20,7.0,8,512,512,32
+56698,"cutest kitten ever wearing a pink bow, strong imagery, highly detailed, illustration, highly detailed water colour 8 k, cinematic lighting, hd, high detail, atmospheric, trending on artstation ",20,7.0,8,512,512,39
+10152,tifa lockheart by masamune shirow ,20,3.0,8,512,512,10
+25680,portrait of british shorthair cat sitting on piano keys with colorful musical notes in background,20,7.0,8,512,512,16
+43080,"orientalism painting of a a knight by theodore ralli and nasreddine dinet and anders zorn and edwin longsden long, bronze age, sword and sorcery, oil on canvas, masterful intricate artwork, excellent lighting, high detail 8 k ",20,7.0,8,512,512,52
+669,"a painting of a castle in the middle of a snowy mountain, a detailed matte painting by andreas rocha and greg rutkowski, featured on artstation, fantasy art, matte drawing, matte painting, artstation hq ",20,7.0,8,960,896,47
+7579,a pattern of small marker paintings of street food with off - white background in black and white ,17,7.0,8,512,512,18
+56093,"photo of a gorgeous young woman in the style of stefan kostic, realistic, half body shot, sharp focus, 8 k high definition, insanely detailed, intricate, elegant, art by stanley lau and artgerm ",50,12.0,8,512,704,44
+39290,"octane render by josh pierce and prateek vatash and roman bratschi, inside a futuristic dreamscape liminal void, very dreamy and luxurious with premium materials and puffy floating clouds, arched window showing the ocean, cinema 4 d, 4 k, ray tracing reflections, volumetric lighting and shadows, haze, light beams ",20,10.0,8,1024,512,69
+50900,"elegant full body portrait of a slim athletic muscular old mature angry batman, piercing bright red eyes, and pale skin, fantasy, intricate, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, matte, dramatic, full moon, art by artgerm and greg rutkowski and alphonse mucha, mark brookes, jim burns, tom bagshaw, artstation ",50,13.0,8,512,704,84
+37220,"sakura haruno using slug sage mode, directed by shinichiro watanabe, animated film still, sakuga, high quality cinematography animation, realistic shaded lighting artgerm, kyoto animation and ufotable, studio pierrot ",20,7.0,8,768,512,47
+52714,painting by ignacio diaz olano and jacek malczewski and edgar maxence and rhads and leyendecker. dark souls and bloodborne ,20,7.0,8,704,448,32
+7930,"headshot edwardian photograph of dorian gray, extremely handsome, classicaly beautiful, 1 9 2 0 s, realistic face, 1 8 9 0 s, 1 9 0 0 s, very grainy, slightly blurry, victorian ",20,7.0,8,512,512,46
+30051,"casino management video game screenshot, n64 (1998)",20,7.0,8,512,512,12
+35078,"an inter - dimensional - doorway leading to an alien landscape on the street in 1 9 8 4, concept art for unreal engine 5, cinestill 5 0 d ",20,7.0,1,640,640,34
+1606,photo of kim kardashian trapped inside a sewer grate ,20,7.0,8,512,512,13
+35408,"red ink comic art eldritch portrait of a robert smith trent reznor hybrid as a lich by todd mcfarlane, brian bolland and mike mignola ",20,7.0,8,512,768,34
+12126,the first minutes of world war iii ,20,7.0,8,512,512,7
+26437,"young, immortal super soldier Ghandi in Gears of War and boy is he MAD!",20,7.0,8,512,512,18
+13227,"doom ( 1 9 9 4 ), iso 3 d tabletop ",20,7.0,8,512,512,13
+29415,portrait of Angelina Jolie in red dress by Modigliani,20,7.0,8,512,704,13
+43515,bauhaus constrictive detailed portrait of cloris leachman at elderly age of 1 0 5 ,20,7.0,8,512,512,21
+16872,"Hugo Chavez portrait by Hirohiko Araki, Araki style, JJBA, anime",20,7.0,8,512,640,18
+43390,"a portrait of louis armstrong holding a white handkerchief, by julia condon, dramatic lighting, highly detailed digital painting ",20,6.0,8,512,704,22
+28639,"Cybertron, environmental concept art of an octopus swimming in the air near a navigation deck onboard the Peaceful Tyranny DJD Deception spaceship goth Decepticons vibes, Deception and goth colors, clean, dramatic lighting, glowing red hologram navigation panels, cinematography by Wes Anderson, 4k octane render, photorealistic, cinematic lighting, Artstation",20,7.0,8,512,512,72
+30615,"highly detailed digital painting, black male anthro - lynx, human with head of lynx, viking hair, gold earring in ear, with long thick wavy braided viking hair like fabio, facial scar, hairy masculine gigachad, muscular, wearing kilt and gold armbands, fur texture, as space viking, classic science fiction, trending on artstation, romance novel, ",20,7.0,8,512,512,79
+57029,"of a lake filled with ice - cream with strange cute friendly happy creatures with huge eyes, mouth, long tongue and round teeth appearing from the lake, in the style of gehry and giger, macro lens, shallow depth of field, highly detailed, digital painting, trending artstation, concept art, illustration, cinematic lighting, vibrant colors, photorealism, epic, octane render ",44,10.0,8,1024,512,80
+37483,a watercolour children's book illustration of cute zombie boy in a bucket hat ,20,7.0,8,512,512,17
+13561,"a mini australian shepard, wearing rubber boots!!!, while picking strawberries",20,7.0,8,512,512,16
+10350,"a black and white photo of a young man, a character portrait by henry justice ford, tumblr, harlem renaissance, 1 9 2 0 s, studio portrait, tintype photograph ",20,7.0,8,512,512,37
+23034,"pulp art, 1930s, 1970s hippie cloth style, medieval young girl with wooden jewelry, wearing rich jewerly, hat and boho poncho, decollete, bikini, sunglasses, fantasy character, low view, artwork by Joseph Leyendecker and Hugh Ferriss and gil elvgren and ilya repin and Greg Manchess, illustration, volumetric light, geometric shapes, impressionism, soviet paintings, 3d octane blender render, progressive rock album cover",20,7.0,8,640,768,98
+25671,"alternate outfit of tifa lockhart by WLOP, rossdraws, Logan Cure, Mingchen Shen, BangkuART, sakimichan, yan gisuka, JeonSeok Lee, zeronis, Chengwei Pan on artstation",26,7.5,8,512,512,51
+39460,"high detail portrait man green knight necromancer in helmet, green, green smoke, fantasy, warcraft, world of warcraft, lich king, arthas magic 4 k, artstation, game art ",20,5.0,8,512,704,43
+53495,"a still from the anime date alive, kurumi portrait, dynamic lighting, photorealistic fantasy concept art, trending on art station, stunning visuals, creative, cinematic, ultra detailed ",50,7.0,8,512,832,38
+4601,"frank the rabbit in donnie darko, airbrush, drew struzan illustration art, key art, movie poster ",20,7.0,8,512,640,23
+4835,"giant amethyst crystal in a clearing in a fairytale enchanted woodland, starry moonlit sky, ethereal, david attenborough nature documentry footage, ultra high definition, 8 k ",20,7.0,8,512,512,39
+10168,"hell, my little pony, lovecraft!!! ",20,5.0,8,512,512,11
+29746,colorful furry cute hedgehog 3d render,20,7.0,8,512,512,7
+26850,concept art of mouse,20,7.0,8,512,512,4
+4683,"movie still of a transcendental astronaut being, cinematic composition, cinematic light, anamorphic lens ",20,7.0,8,896,512,19
+894,"an ornate yellow planet amassed with water, with neighboring interstellar satellites, digital art, trending on artstation, atmospheric perspective!!!!!, golden ratio!!!!!, centered!!!!!, cgsociety contest winner ",20,7.0,8,512,512,53
+15747,"a photorealistic painting of an iceberg shaped like a pyramid, half-half underwater photo, 8K, digital art, detailed intricate elegant, octane render",20,7.0,8,512,512,33
+59102,"huge armless rat, 3d render",20,7.0,8,512,512,7
+6773,"a grass land and ruins and small fixed bustling village and tan pathways, 4 k, 8 k, photorealistic landscape, landscape imagery, 4 k luminous lighting, volumetric lighting, ",20,7.0,8,768,512,38
+398,close up of a robot holding an umbrella in a raining night in new york city neon lights moody 2 0 0 mm shot dark retrowave ,20,7.0,8,512,512,27
+15243,"a photo of a delicious scrumptious waffle in the shape of a skull with syrup, food photography",20,7.0,8,512,512,22
+20139,"highly realistic, symmetrical image, coherent image, high customization, 2. Sigara aşırmak, Phil Photos La dernière cigarette, Фото Девушка курит, Ragazza splendida con la sigaretta Fotografia Stoc, Smoking woman, Ελληνίδες καπνίστριες: Ο καρκίνος του πνεύμονα",50,14.0,8,512,512,105
+14312,"breathtaking detailed painting of clown girl , with anxious, piercing eyes, Atari game cover art by Hsiao-Ron Cheng, James jean, Miho Hirano, Hayao Miyazaki, extremely moody lighting, hyperrealistic, octane render, RPG portrait, ambient light, dynamic lighting",20,7.0,8,512,512,60
+41016,"black and white vogue closeup portrait by herb ritts of a beautiful female model, thai, high contrast ",20,7.0,8,512,512,22
+36760,"a old paper with an ancient medieval thinking man disperse ultra - detailed writing and draws, blue ballpoint pen, annotations and scratches, 1 2 0 0 dpi, 8 k ",20,14.0,8,512,512,37
+20651,"Concept art of random World War 2 cinematic scenes in winter, german and soviet soldiers, german and soviet tanks firing, some tanks destroyed, fire and grey smoke, boixcar style, matte painting, vaporwave vaporwave vaporwave watercolor cover art with warm and vibrant colors, volumetric light, art by Julian Totino Tedesco and Alex Ross, award-winning masterpiece with incredible and beautiful details digital art, trending on artstation, smooth, HD, 4K",20,7.0,8,704,896,97
+42075,"mickey mouse giving electroshock therapy to a child, by frank frazetta, simon bisley, brom ",20,7.0,8,512,512,23
+40182,"bibimbap restaurant, cute illustration, by hiroshi nagai, isometric view ",20,7.0,8,512,512,17
+34248,"breath taking macro photo of flowering crimson red gentian flowers with canary yellow interiors, covered in early morning dew. backlit by the morning sun. bokeh. ",20,7.0,8,512,512,33
+9114,"thom yorke singer songwriter in a spacesuit filling up with water, black background, glass reflecting light reflections, waterline in visor, ultrafine detail, hyper realistic face, beautiful blue eyes, black spherical pupils, eyes reflecting into eyes reflecting into infinity, eyes reflecting into eyes reflecting into infinity ",17,3.8,2,512,512,59
+58788,"Lemon Demon, a yellow lemon with black eyes, sharp teeth and red demon horns",20,7.0,8,512,512,16
+20977,"gorgeous actress wearing a tanktop, with light blonde shoulder-length hair, in the style of Ilya Kuvshinov and mark arian",50,7.0,8,512,512,29
+30722,"the goddess of the moon, hyper detailed, hyper realism, hyper surrealism, rendered in octane, 8 k, rpg concept art, jrpg character, alejandro jodorowsky ",20,7.0,8,512,576,37
+6156,"somerton man, 1 9 4 8 photo ",20,7.0,8,512,512,9
+42083,playstation 4 catching fire ,20,7.0,8,512,512,4
+53160,"peasant girl with long hair yarn knitting, cottage core, cinematic focus, polaroid photo bleached vintage pastel colors high - key lighting, soft lights, foggy, by steve hanks, by lisa yuskavage, by serov valentin, by tarkovsky, 8 k render, detailed, oil on canvas ",29,8.0,8,832,640,65
+1596,"photographic portrait of a stunningly beautiful renaissance beyonce with celtic tribal makeup in soft dreamy light at sunset, contemporary fashion shoot, by edward robert hughes, annie leibovitz and steve mccurry, david lazar, jimmy nelsson, breathtaking, 8 k resolution, extremely detailed, beautiful, establishing shot, artistic, hyperrealistic, beautiful face, octane render ",50,7.0,8,512,704,77
+33491,"identikit picture of a criminal in the newspaper, low detail, low face b & w ",20,10.0,8,512,512,20
+50187,"photo of a gaming computer with a futuristic city inside, 8 k, 8 5 mm f 1. 8 ",20,7.0,8,512,704,21
+58022,"an alien fruit, photorealistic, 8 k, food photography, trending on artstation ",20,7.0,8,512,512,19
+21414,The Augsburg Book of Miracles,20,7.0,8,512,512,5
+22245,"the Portal Gun from portal in the 1950's, award winning, hdr, octane renderer,",20,7.0,8,512,512,22
+3942,cyberpunk art by josan gonzalez and zdzislaw beksinski. ,35,7.0,8,512,640,18
+29416,"hyperrealistic up close eye painted in thick impasto style, hd iris texture trending on ArtStation",20,7.0,8,512,512,22
+28378,"an very old wizard is is a cyborg, half his face is technology, cyberpunk, exobiology, hyper realistic, hyper detailed, realistic picture, epic game, high angle shot, Long shot, 4k post-processing highly detailed, , 35mm, Kodachrome film, photograph",50,13.0,6,512,512,61
+39628,"atompunk denis coderre | | fine detail!! anime!! realistic shaded lighting!! dark scifi award winning illustration portrait of radio host, montreal canada, by ilya kuvshinov katsuhiro otomo, ghost - in - the - shell, magali villeneuve, artgerm, jeremy lipkin and michael garmash and rob rey ",20,11.5,8,512,768,75
+17533,"detailed image of Enrico Fermi by Ayami Kojima, Amano, Karol Bak, Greg Hildebrandt, and Mark Brooks, rich deep nuclear reactor colors. Beksinski painting, part by Adrian Ghenie and Gerhard Richter. art by Takato Yamamoto. masterpiece . intricate artwork by Tooth Wu and wlop and beeple, greg rutkowski, very coherent symmetrical artwork, cinematic, hyper realism, high detail, octane render, unreal engine, 8k, Vibrant colors, Smooth gradients, High contrast, depth of field. by Katsuhiro Otomo, full body character drawing, inspired by Evangeleon, clean ink detailed line drawing, intricate detail, extremely detailed. painting by Arthur Rackham, Eugene de Blaas, Frederic Leighton",50,20.0,8,512,704,160
+28821,anime portrait of Kawaii Wolverine,20,7.0,8,512,512,7
+18622,photorealistic 50mm of evil Donald Trump,20,7.0,8,512,512,9
+991,"an hd impressionist portrait painting of a woman in an owl costume mask retrofitted with a gas mask. she is wearing a jacket, and is brandishing a weapon in a threatening manner. ",35,7.0,8,512,512,39
+54593,"formal portrait of morgan freeman as don quixote, digital art by eugene de blaas, ross tran, and nasreddine dinet, vibrant color scheme, intricately detailed, in the style of romanticism, cinematic, artstation, greg rutkowski ",20,7.0,8,512,704,54
+6082,"young man with long brown hair riding a dinosaur, ultra realistic, lens flare, atmosphere, glow, detailed, intricate, full of colour, cinematic lighting, trending on artstation, 4 k, hyperrealistic, focused, extreme details, unreal engine 5, cinematic, masterpiece ",20,7.0,8,576,768,57
+10362,artwork by pablo carpio ,20,7.0,8,512,512,5
+43533,"liminal polaroid of central park at night, art by tim hildebrandt, deep depth of field. highly detailed, hyper realism, hd, 4 k ",50,7.0,8,512,512,33
+13513,"A big strong man walking away. Full body, professional photography.",20,7.0,8,512,768,13
+21579,"michael keaton uploading 'batgirl' to a torrent website, epic painting by james gurney",20,7.0,8,512,512,20
+23007,"Portrait of Yvonne Strahovski wearing epic bionic cyborg implants of different vibrant colors, detailed intricate ornate cables connected to head, portrait front face reference, by Dan Mumford and Naoto Hattori, extremely beautiful and proportionate, masterpiece, intricate, highly detailed, digital painting, Matrix Theme, artstation, concept art, crepuscular rays, smooth, sharp focus, illustration, background made from fractals of vibrant universe stars, cyberpunk colors, volumetric lighting, art by artgerm and james jean and Nick Sullo",20,10.0,8,768,512,113
+30676,"a portrait of a male tiefling scholar by krenz cushart, ruan jia, karol bak, beautiful background, delicate, digital illustration, very - detailed, deviantart, artstation ",20,11.0,8,512,704,44
+48504,"what stable diffusion looks like, ( ( digital art, oil painting, cold blue tones, fantasy, 8 k, trending on artstation, detailed ) ) ",50,13.0,8,512,704,32
+6728,"closeup portrait of a young vivian leigh, dramatic lighting, city background, night, moon, chiaroscuro, complementary contrast, high detail, painted by greg rutkowski, painted by igor kieryluk, painted by bobby chiu, trending on artstation ",20,7.0,8,512,512,56
+2174,scene from the 1 9 4 1 science fiction film the day the earth stood still ,20,7.0,8,704,512,16
+2232,huge mysterious ufo ignoring the laws of physics over a natural scene. detailed otherwordly material. entries in the 2 0 2 0 sony world photography awards. ,20,7.0,8,512,512,31
+38872,"madden 2 2 gameplay, playstation 5, gameplay footage, player face closeup, offensive lineman ",20,8.0,8,512,512,18
+55800,"a magical world with creatures that are part horse, part other animals. ",20,7.0,8,512,512,14
+42452,optical illusion imperceptive irregular polygon owl ,20,7.0,8,1024,576,9
+10901,"“ benedict cumberbatch retro minimalist portrait by jean giraud, moebius starwatcher comic, 8 k ” ",20,7.0,8,512,512,26
+31418,"a photograph of a futuristic street scene, brutalist style, straight edges, finely detailed oil painting, impasto brush strokes, soft light, 8 k, dramatic composition, dramatic lighting, sharp focus, octane render, masterpiece, by adrian ghenie and jenny saville and zhang jingna ",20,12.0,8,896,512,60
+13488,"the creature sits in a car, made of wax and metal, they look me in the eye, film still from the movie directed by Denis Villeneuve and David Cronenberg with art direction by Salvador Dalí, wide lens",20,12.0,8,1024,576,44
+46403,"analog medium format film night flash bokeh busy street in new york, 1 9 6 0 s hasselblad film street photography, featured on unsplash, photographed on vintage expired colour film ",50,7.0,8,768,768,40
+28707,anthropoorphic hippopotamus wearing santa suit and santa hat standing by a christmas tree realistic 4k 3d pixar render,20,7.0,8,512,512,28
+50587,guybrush threepwood's autopsy done by sherlock holmes on melee island ,20,7.0,8,512,512,15
+28913,a cute little rabbit abstract shape table lamp,20,7.0,8,512,512,8
+45197,"octane render portrait by wayne barlow and carlo crivelli and glenn fabry and salvador dali and wes anderson, a screaming black marble statue of a roman woman covered in a gold shiny fishing net inside a european museum, cinema 4 d, ray traced lighting, very short depth of field, bokeh ",20,7.0,8,768,768,61
+35759,"film still of a human and a robot having a moment of jealousy, cinematic composition, cinematic light, by edgar wright and gaspar noe ",20,7.0,8,512,512,28
+49507,"lovecraftian spaceship isometric illustration, technical drawing, sci fi ",20,7.0,8,896,512,13
+17726,A cyberpunk cafe painted by Ilya Kuvshinov and Gustav Klimt and Edward Hopper,35,7.0,8,768,512,21
+47800,"portrait of stalin, propaganda poster, wholesome smile, detailed ",20,7.0,8,512,704,12
+33948,"concept art of shark attack, lovecraftian, lots of teeth, melting horror, fighting the horrors of the unknown with laser guns ",20,7.0,8,1088,512,26
+24028,"POV shot of a womans toes sticking out from a bubble bath, cute, photorealistic, neon blue nail polish",20,7.0,8,512,512,25
+35455,"a single lone cyberpunk spaceship emerging from a galactic nebula, by gi kim jung, highly detailed ",20,7.0,8,768,512,20
+6885,cow in the paws of a bear ,20,12.0,8,512,512,7
+48774,fauci vaccinating fauci while fauci oversees ,20,7.0,8,512,512,15
+42391,"classical oil painting, a fantasy kobold that is dressed as a medieval worker, as a dnd character, standing at a productive farm, cottagecore, highly detailed, digital illustration, concept art, smooth, sharp focus, art by tim hildebrandt, and greg hildebrandt ",50,15.0,8,512,768,59
+4699,"goddess wearing a cloud fashion is looking on us from above, photoshop, colossal, creative, albino skin, giant, digital art, photo manipulation, clouds, covered in clouds, girl clouds, on clouds, covered by clouds, airplane in the sky, white hair, digital painting, artstation ",20,7.0,8,512,512,60
+7804,"art by studio ghibli. three goths loitering in the shade, talking beneath a cherry blossom outside a blockbuster video store. ",50,7.0,8,640,512,29
+24436,"Shiba Inu cosmonaut portrait, moon mission,  60s poster, 1968 Soviet",20,7.0,8,512,768,17
+45293,"very wide cinematic shot inside a scifi combination of capsule hotel and shopping mall as ikea ad, modern lush condo as shopfront, terrarium lounge area, very tall cathedral ceiling with holographic sky art, detailed archviz render, archdaily, scifi artstation concept, comfy lighting, mass effect, fine details, unreal engine, hyperrealism, realistic shading, blender render ",50,18.0,8,704,896,84
+43419,historical sharp 4 k photograph of a man turning into a grotesque monster with goathorns and roots growing from his face in a pasture in the alps ,20,7.0,8,1024,512,29
+57639,"toriko manga, coloured, smooth lines ",20,7.0,8,512,512,8
+39099,"female flight attendant with green eyes holding white teacup with first class seats in background, full body. pixar disney 4 k 3 d render funny animation movie oscar winning trending on artstation and behance, ratatouille style ",20,8.0,8,512,768,49
+16543,Gran Canaria at the style of Moebius,20,7.0,8,512,512,9
+56510,"arc hallway for secret overwatch living quarters carved inside a cave surrounding a lush garden, trimmed, magical, natural light, clean lines, cozy, fantasy, minimalist architecture, sharp focus, concept art, by greg rutkowski and craig mullins,, octane render 8 k ",20,8.0,8,768,768,57
+57007,"pikachu meeting a demigorgon, photorealistic, digital art, ",20,7.0,8,512,512,16
+13026,"Henry Cavill as Witcher Geralt riding a giant cockroach, epic fantasy digital art by Eugene de Blaas and Ross Tran, vibrant color scheme, intricate detail, cinematic, artstation, Greg rutkowski, Artgerm",20,7.0,8,512,704,50
+55560,"sadie sink with very short hair in oversized man's coat : a still from a scifi dystopian cyberpunk film from 1 9 8 0 s. by steven spielberg, robert zemeckis, francis ford coppola, james cameron. 6 5 mm low grain film stock. sharp focus, realistic facial expression, perfect anatomy, global illumination, radiant light, detailed and intricate environment, trending on artstation ",50,10.0,8,960,512,87
+47390,icon of warehouse worker stylized minimalist behance ,35,8.0,8,512,512,10
+36479,anime style moscow art hd detailed 8 k red square ,20,7.0,8,512,512,10
+26597,"A goth portrait painted by Frida Kahlo. Her hair is dark brown and cut into a short, messy pixie cut. She has a slightly rounded face, with a pointed chin, large entirely-black eyes, and a small nose. She is wearing a black tank top, a black leather jacket, a black knee-length skirt, a black choker, and black leather boots.",20,7.0,8,512,512,80
+36158,"ethereal glowing white angel dmt deity, tribal repeating patterns, tim hildebrandt, wayne barlowe, bruce pennington, donato giancola, trending on artstation, cinematic composition, beautiful lighting, hyper detailed, 8 k, oil on canvas ",20,15.0,8,640,640,54
+8032,"designer purse with several images of richard nixon!!! pattern on it, fashion design, high fashion, elle magazine, cosmopolitan, glossy photo, crisp details, michael kors, givenchy, burberry ",20,7.0,8,512,512,42
+10413,"a portrait of a character in a scenic environment by sandra chevrier, purple rain, prince rogers nelson, trending on artstation ",20,7.0,8,512,512,27
+27600,"the statue of liberty on mars, cinematic, dramatic lighting",20,7.0,8,1024,512,11
+1236,"giant octopus wearing space helmet standing in postapocalyptic abandoned destroyed times square, wrecked buildings, destroyed flipped wrecked cars, polaroid photo, vintage, foggy, 1 9 8 5, neutral colors, rainy day, color photo by shawn heinrichs by brian skerry by gregory crewdson ",35,7.0,8,704,512,59
+5375,"kommissar tarsis, grimdark digital art, highly detailed, digital painting, beautiful eyes!, pretty face!!, symmetry, concept art, sharp focus, illustration, art by artgerm! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!, octane render ",50,18.0,8,512,512,68
+19468,illustration of the outlines of two crows setting on branch with orange half circle background,20,7.0,8,512,512,15
+57897,"indian superhero, artwork by salman toor, cinematic light, atmospheric effects ",20,7.0,8,576,832,14
+7136,"woman, full length portrait, photo ",20,7.0,8,512,512,7
+56347,"photo of the modern room as aquarium with a big jellyfish and corals, realistic colors, realistic shadows, daylight made in blender, 3 d by beeple and damian hirst ",20,7.0,8,512,512,37
+44565,"a tiny cute steampunk monster with cogs screws big eyes smiling waving, back view, isometric 3 d, ultra hd, character design by mark ryden pixar hayao miyazaki, unreal 5, daz, hyperrealistic, octane render, cosplay, rpg portrait, dynamic lighting, intricate detail, summer vibrancy, cinematic, symmetrically isometrically centered ",24,20.0,8,512,768,84
+8997,lineman's pliers oil painting by matisse ,20,7.0,8,512,512,10
+17184,"a civilization of members of Yoda's species interacting with eachother on their home planet, award winning national geographic photo",20,7.0,8,512,512,25
+53204,"small wooden house in the middle of spring forest, bright colours, watercolor, volumetric wool felting, macro photography, children illustration, by christophe vacher ",20,7.0,8,512,512,32
+24894,creepy 1920 photo taken during a séance showing a spirit medium manifesting ectoplasm,20,7.0,8,512,512,18
+47993,"male wizard, young robert plant, art by artgerm and greg rutkowski and magali villeneuve, d & d, fantasy, portrait, highly detailed, headshot, digital painting, trending on artstation, concept art, sharp focus, illustration ",20,7.0,8,512,512,53
+31367,"she is a goddess, she is on a rock by the sea at sunset, dress by gold, art by greg rutkowski ",20,7.0,8,512,512,26
+7297,painting by ivan kramskoy ,20,7.0,8,448,576,7
+8877,"attractive male dracula the vampire roller skating in a medieval style roller rink as a full moon shines through a window. highly detailed, sharp focus, digital painting, full body shot, intricate, hyper - realism, fantasy art style, volumetric lighting, by gaston bussiere, craig mullins, j. c. leyendecker 8 k ",20,7.0,8,512,512,70
+31095,"beautiful prince, male, black clothes, red, gold, highly detailed, smooth, art by finnian macmanus, ayami kojima, anato finnstark, cedric peyravernay, joseph leyendecker, ruan jia, peter mohrbacher, marc simonetti, frances sterrett, kay nielsen, victo ngai ",20,14.0,8,512,768,75
+6696,"jesus christ posing with grey aliens, self portrait, high detailed, pencil art ",20,7.0,8,512,512,15
+28389,"a photograpic portrait of a anthropomorphic grey furry wolf wearing casual black clothes, black spikey hair, grey skin, floppy ears, furry character, fursona, fantasy, intricate, elegant, highly detailed, digital painting, artstation, smooth, sharp focus, illustration, art by artgerm and H R Giger and alphonse mucha",20,7.0,8,512,512,75
+1993,"a portrait photograph of divine in pink flamingos in a kid room in 1 9 9 0 s, studio light photography, high definition, 8 k, taken by alex webb with sun and shadows ",20,7.0,8,1024,832,38
+11975,"“ portrait of jung ho - yeon by greg rutkowski, young, attractive, highly detailed portrait, scifi, digital painting, artstation, concept art, smooth, sharp foccus ilustration, artstation hq ” ",20,7.0,8,512,512,48
+28979,covert surveillance photo of unidentified female suspect on a New York City street in 1985,20,7.0,8,512,512,15
+46518,"feeling of infinite and repition with a box inside gift box which is inside another gift box with another box inside like matriochkas, illustration by victo ngai ",20,7.0,8,512,512,34
+17606,"Skynet's most popular endoskeletal cyborg was its Series 800 Terminator, which used a metallic endoskeleton covered with living tissue. The Series 800 Terminator was a breakthrough in developing Terminators that were similar to humans.",50,7.0,8,512,512,53
+44448,"kcs logo, minimalistic icon in black, red, and purple ",20,7.0,8,512,512,14
+5048,"photo of a black reflecting statue, photorealistic, octane render, unreal engine, 8 k, ultra detailed ",20,7.0,8,512,512,24
+32908,"a small ancient city nestled in the hollow of a tree, studio lighting, golden ratio, details, scifi, dark fantasy, intricate, decadent, ornate, highly detailed, digital painting, octane render, ray tracing reflections, 8 k, artstation, concept art, smooth, sharp focus, illustration, art by artgerm, loish, by wlop ",20,17.0,8,512,640,76
+40999,sunset in a japanese village by osamu tezuka ,20,7.0,8,512,512,11
+33784,"detailed portrait of perfect white haired girl, cyborg, beautiful, pretty face, blue eyes, innocent, scifi, 4 k, sun yunjoo, ultra realistic, highlights, cinematic lighting, highly detailed, sharp focus, artstation, masterpiece, art by emika lightweaver ",20,7.0,8,512,640,58
+30450,"1990s 3D modeling software interface screenshot, sphere in the middle of the ground plane",20,7.0,8,640,512,16
+3791,down in the valley on a foggy little rock stood a pretty little demon blowing his top fire in his eyes and smoke from his head you gotta be real cool to hear the words he said he said mop mop muckity muck muck that cat was mad! by glen orbik and mort drucker ,20,7.0,8,512,512,65
+37901,"a rainy day where one man holds his wife, while he's focused serenading to the sizzling bacon in the cast iron pan in the kitchen. hd, 8 k, ektachrome, professional, stock photo, edward hopper, wideangle ",20,7.0,8,1024,512,51
+17522,"movie still 35mm film photograph a screaming and angry dangerous shape mechanical creature, with multiple wires, glowing TV monitors lower torso inside of a 1970s science lab, neon lights, dirty, ektachrome photograph, volumetric lighting, f8 aperture, cinematic Eastman 5384 film",20,7.0,8,1024,512,55
+53527,"movie still of super spy agent cyborg, cinematic composition, cinematic light, by alejandro jodorosky ",20,7.0,8,512,512,21
+50202,"an idealistic marble statue with classic cloth and fractal flowery hair in a fractal garden, glowing delicate flower and mushrooms that grow in a dark fatansy forest on the planet pandora,, symmetrical, ",50,7.0,8,512,512,44
+56794,"bmw 1 m solar punk japanese touge halo headlights, rainbow colors, drifting, drone photo, smoke, racing, beautiful, beautiful photography ",20,7.0,8,512,512,27
+18735,"extremely detailed awe  stunning beautiful futuristic smooth curvilinear museum interior, translucent gills, hyper real, 8k, colorful, 3D cinematic volumetric light, atmospheric light",20,7.0,8,1024,512,34
+38656,"a painting in the style of rob gonsalves of a beautiful large shinto shrine with a torii in a natural setting, soft lighting, seasonal weather, in the desert southwest ",20,7.0,8,768,512,37
+12296,"video game art depicting a person playing videogames, high quality digital design ",50,7.0,8,512,512,14
+8127,draw with me by mike inel ,20,7.0,8,512,512,7
+53480,"birds eye view battle of cape ecnomus, in the style of jackson pollock ",20,7.0,8,512,512,16
+54794,"sexy seducing woman in short by agnes cecile, half body portrait, 3 / 4 view from back, bending over, extremely luminous bright design, pastel colours, ink drips, autumn lights ",20,7.0,8,512,704,41
+45418,"a close - up of a young hispanic woman with long black hair clutching a small rose in the rain!!, photorealistic, crying, photo by annie leibovitz, moody ",7,7.0,8,512,512,38
+53574,"movie still of cyborg sasuke cinematic composition, cinematic light, criterion collection, by david lynch - n 9 ",20,7.0,8,512,512,22
+43920,"tiny cute crotchet stuffed animal frog wields a sword and battles a mighty dragon, very detailed, beautiful, epic ",20,7.0,8,512,512,24
+46962,"realistic wide angle portrait of a dark bishop, dark magic, heroic pose, beautiful face, full body, dramatic lighting, dark and horror, dust and blood, intricate, wild, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, art by artgerm and greg rutkowski and alphonse mucha, footage from space camera ",20,14.0,8,512,640,76
+8833,"full body full height, elegant alien mecha character model, default pose. super high resolution photo. symmetrical. orthographic front view. ",20,7.0,8,768,1344,28
+55839,a pile of turds by vincent van gogh ,20,7.0,8,512,512,9
+17430,"goddess close-up portrait ram skull. jellyfish phoenix head, nautilus, orchid, skull, betta fish, bioluminiscent creatures, intricate artwork by Tooth Wu and wlop and beeple. octane render, trending on artstation, greg rutkowski very coherent symmetrical artwork. cinematic, hyper realism, high detail, octane render, 8k",20,12.0,8,832,1024,77
+39752,"beautiful young male prince, gold, 1 9 2 0 s fashion, detailed, smooth, art by anato finnstark, joseph leyendecker, peter mohrbacher, ruan jia, marc simonetti, ayami kojima, cedric peyravernay, finnian macmanus, alphonse mucha, victo ngai ",20,9.0,8,512,704,74
+47203,"elon musk totalitarian dictator in the style of beksinski, parts by edward hopper, parts by rodcenko, parts by yue minjun, intricate and epic composition, red by caravaggio, insanely quality, highly detailed, masterpiece, red light, war propaganda, artstation, 4 k ",20,12.0,8,1024,512,63
+25012,"Apsaras warrior with shield,traditional Chinese textures, hyper detailed, smooth,by Brook Shaden",20,7.0,8,512,512,20
+51767,painting by sargent and leyendecker and greg hildebrandt savrasov levitan above the low clouds on new zealand sokotra faroe island a woman hiking in the mountains overcast thunder storm ,20,9.0,8,512,640,43
+26129,a psychedelic painting of the rapper wiz khalifa smoking a joint surrounded by paper planes,20,7.0,8,512,512,16
+20331,"painting of sorceress with intricate jewelry riding a dragon, immaculate scale, hyper-realistic, Unreal Engine, Octane Render, digital art, trending on Artstation, 8k, detailed, atmospheric, immaculate",20,12.0,8,1024,512,44
+50575,"photorealistic close up documentary style cinematography of a sexy woman with back to camera at the 1 9 6 9 woodstock festival silhouetted and backlit by lens flared magic hour sun shot on 1 6 mm eastman 7 2 5 4 film with a 6 5 mm cooke panchro macro lens shot by cinematographers, malcolm hart, don lenzer, michael margetts, david myers, richard pearce, michael wadleigh and alfred wertheimer at the 1 9 6 9 woodstock music festival during magic hour. ",50,7.0,8,768,384,103
+44996,"orientalism face detail of a beautiful woman priestess bangs and thick dark curls hair and hair ties and eyelashes by theodore ralli and nasreddine dinet and anders zorn and edwin longsden long, oil on canvas, masterful intricate artwork, excellent lighting, high detail 8 k ",20,7.0,8,512,512,56
+3910,"an hd goth emo punk portrait painted by pablo picasso. her hair is dark brown and cut into a short, messy pixie cut. she has a slightly rounded face, with a pointed chin, large entirely - black eyes, and a small nose. she is wearing a black tank top, a black leather jacket, a black knee - length skirt, and a black choker. ",35,9.0,8,512,512,77
+7795,an artwork from the 2 0 1 0 s ,50,10.0,8,1024,640,9
+5096,"an extremely detailed matte painting audrey hepburn as a vampire queen in a resplendent black dress with gold and crimson trim and a long leg slit, in the style of magic the gathering, 8 k, sharp focus, detailed face, art by john collier and albert aublet and krenz cushart and artem demura and alphonse mucha ",20,7.0,8,512,512,75
+36575,"an empty bedroom, evening, painted by norman rockwell ",20,7.0,8,832,512,10
+29113,"My icepunk Seel fursona, realistic, anthro, trending on artstation",20,7.0,8,512,512,21
+13371,(Johnny Depp) as Freddy Krueger from the movie A Nightmare on Elm Street,20,7.0,8,512,512,18
+18418,"a girl with pink pigtails, and face tattoos, HD, photorealistic",50,7.0,8,512,512,16
+53298,"hovering indecision, surrealist painting, by karel thole, by mandy jurgens, oil on canvas, ",20,7.0,8,768,1024,23
+57212,"goddess ascending, white hair, long hair, light, divine, intricate, 4 k, highly detailed, sharp focus, digital painting, by artgerm and greg rutkowski and alphonse mucha ",20,7.0,8,512,512,42
+42562,super generic hot chick scientist ,20,7.0,8,512,704,5
+45896,minecraft villager ,20,7.0,8,512,512,4
+42213,"high fashion extreme close - up photoshoot octane render portrait by wayne barlow and carlo crivelli and glenn fabry, a werewolf wearing cool shiny reflective 8 0's sunglasses with colorful lenses and a gold necklace covered flowers, inside a colorful field of beautiful flowers, very short depth of field, bokeh ",20,7.0,8,768,768,63
+32853,"beautiful prince, male, black and red clothes, gold details, high fantasy, highly detailed, intricate, smooth, art by anato finnstark, joseph leyendecker, peter mohrbacher, ruan jia, marc simonetti, ayami kojima, cedric peyravernay, finnian macmanus, alphonse mucha, victo ngai ",20,12.0,8,512,768,79
+19319,"quarter length photograph of a 10 year old girl, red hair, freckles, studio quality, studio lighting",20,7.0,8,512,512,22
+23148,"“a delicate renaissance marble sculpture covered with water veil, highly detailed transparent marble cloth, gi, global illumination, physically based rendering, photorealistic, top light , dark background”",20,7.0,8,512,512,36
+33056,"blurry and dreamy screencap of a character from 8 0 s horror anime, vampire woman with short hair wearing dress suit with tie, satoshi kon anime, character design by yoshitaka amano and junji ito, glitchy vhs tape, streets of night tokyo in the background, perfect blue color palette, noisy film grain effect, blurry image ",20,15.0,8,640,512,74
+43301,"i dreamt of love, highly detailed, intricate, artstation, digital painting, by makoto shinkai and thomas kindle and james gilleard ",20,7.0,8,512,512,31
+3798,"jedi knight that looks like an anthropomorphic panda, fan art ",20,7.0,8,512,512,14
+5916,hunt showdown western weapons burning city cinematic highly detailled ,20,16.0,8,512,512,10
+17084,"we’re all made up stars theme, various fruits on a ornated porcelain plate on a wooden intricated table, ancien abandoned kitchen, detailed, photorealism, autumn rays of light come from the window, diffuse light, smoky background, fluid coloured smoke, octane render",49,17.0,8,1024,576,58
+56267,"the empress tarot card, diane arbus portrait photography ",38,20.0,8,512,704,11
+4575,mid century modern owl by cat telsa artist andbernard simunovic ,20,7.0,8,512,768,15
+35990,"photo of a stain glass artwork depictinf a mirrored delicate minimalist art nouveau tattoo, vibrant colors, intricate detail, clean lines ",20,15.0,8,512,768,26
+27237,a beautiful picture of an island floating above the flood on the hills,20,7.0,8,512,512,13
+48738,"painting by sargent and leyendecker and greg hildebrandt savrasov levitan polenov, studio ghibly style mononoke, huge giant old ruins, middle earth above the layered low clouds praire road between forests trees river lakes stones plain land overcast storm masterpiece ",20,7.0,8,704,512,59
+30803,"photograph of a very very beautiful steampunk medium format camera!!. plain grey background. centered. highly detailed. gold. big shiny lens. artstation, concept art, symmetry, smooth, sharp focus, art by john singer sargent and and mucha by theodore ralli and nasreddine dinet and anders zorn and nikolay makovsky and edwin long ",20,15.0,4,832,832,73
+44353,"film still of old men laughing!!!! sitting at a round table and finger painting in a red room covered in torches directed by david lynch, vibrant colours, backlighting ",7,7.0,8,1024,512,36
+10301,a beautiful close - up of a blonde actor from the 1 9 3 0 s. high cheekbones. good bone structure. dressed in 1 9 4 0 s style. butterfly lightning. key light sculpting the cheekbones. by george hurrell. ,20,7.0,8,512,512,50
+52323,"formula one car stylized, art gta 5 cover, official fanart behance hd artstation by jesper ejsing, by rhads, makoto shinkai and lois van baarle, ilya kuvshinov, ossdraws, that looks like it is from borderlands and by feng zhu and loish and laurie greasley, victo ngai, andreas rocha, john harris ",20,9.0,8,1024,704,87
+34274,"milky way flowing down a cascading waterfall into a reflective pool under a dark night sky, wide angle, digital art, james jean, lavish color scheme, 8 k ",20,7.0,8,512,512,34
+7106,"vox ac 3 0 mecha, character sheet, concept design, contrast, hot toys, kim jung gi, greg rutkowski, zabrocki, karlkka, jayison devadas, trending on artstation, 8 k, ultra wide angle, pincushion lens effect ",20,7.0,8,1024,512,59
+40102,"beautiful young male prince orientalism expressive face detail by theodore ralli and nasreddine dinet and anders zorn and edwin longsden long and wlop, bronze age, ancient world, oil on canvas, masterful intricate artwork, excellent lighting, high detail 8 k ",20,7.0,8,512,768,55
+6671,"portrait of a hybrid of emma stone and emma roberts and emma watson, photo realistic, highly detailed, perfect face, art by artgerm ",20,7.0,8,512,512,28
+38348,"[ threateningly supposed evil anthropomorphic black cat ]! illustrated by [ trevor henderson ]!, horror! art style, macabre feel, dark! atmosphere and lighting, 4 k photorealistic! photography, shot by jimmy nelson, trending on [ unsplash ]!, contest winner, cgsociety photorealism, award winning, anthropomorphic full - body! ",20,9.0,8,512,512,83
+5822,"sagittarius astrological sign sculpture in bronze by stanisław szukalski and wadim kashin, highly detailed, 3 d, star chart overlay ",20,7.0,8,768,512,32
+48908,"8 k concept art from the modern arcane supernatural cybergnostic horror thriller anthology miniseries / on things unspoken /, by david mattingly and samuel araya and michael whelan and dave mckean and drew struzan. realistic matte painting with photorealistic hdr lighting. composition and layout inspired by christopher mckinney and anka zhuravleva and jordan hoffne. ",20,7.0,8,512,768,82
+39611,"chocolate brownie as an actor, on stage ",20,7.0,8,512,512,9
+14832,"“Natalie Portman, full color, mcbess poster, super detailed image””",20,7.0,8,512,512,18
+46151,"a head and shoulders portrait of an anthropomorphic frog wearing a suit looking off camera, a character portrait by john trumbull, american romanticism, soft focus ",50,15.0,8,512,512,34
+32862,"beautiful prince, male, black and red clothes, gold details, fantasy, highly detailed, intricate, smooth, art by anato finnstark, joseph leyendecker, peter mohrbacher, ruan jia, marc simonetti, ayami kojima, cedric peyravernay, finnian macmanus, alphonse mucha, victo ngai ",20,14.0,8,512,704,78
+22345,"secret hidden path in the forest leading to a portal to outerspace, prismatic weather, flowers, expressive oil painting",20,7.0,8,512,512,23
+15784,"Very very very very highly detailed epic central composition studio photography of Daniel Radcliffe smiling holding a wizard wand,  intricate, medieval, extremely detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, studio lighting, incredible art by Anna Dittmann and Anton Pieck",20,7.0,8,512,512,57
+45264,"professional octane render portrait by wayne barlow and carlo crivelli and glenn fabry, a sinister man in a bright colorful patterned pastel wes anderson elevator operator costume inside a dark and moody vintage elevator in a high - end exotic vintage boutique hotel, very short depth of field, bokeh ",20,7.0,8,768,768,59
+58647,artwork by Grant Wood,20,7.0,8,512,512,4
+27562,"A goth portrait by Gustave Dore. Her hair is dark brown and cut into a short, messy pixie cut. She has a slightly rounded face, with a pointed chin, large entirely-black eyes, and a small nose. She is wearing a black tank top, a black leather jacket, a black knee-length skirt, a black choker, and black leather boots.",20,7.0,8,512,512,77
+13879,"a real sized statue in the shape of a peanut, black and white, creepy, polaroid",20,7.0,8,512,512,19
+45266,"vpgue octane render portrait by wayne barlow and carlo crivelli and glenn fabry, a sinister man in a bright colorful patterned pastel wes anderson elevator operator costume inside a dark and moody vintage elevator in a high - end exotic vintage boutique hotel, very short depth of field, bokeh ",20,7.0,8,768,768,60
+29718,strange alien landscape with unusual trees and luminescent flowers with glowing pond and blue and purple mountains detailed artistic airbrush painting,20,7.0,8,512,512,24
+1009,"a digital painting of some trees and rocks by ilya ostroukhov, trending on artstation, speedpainting, 2 d game art ",20,7.0,8,768,768,32
+42406,beautiful elegant ernst haeckel fauna illustration of many greek cheek conures and flowers ,20,7.0,8,512,512,16
+4702,"a colossal goddess is watching us from above, highly detailed, digital painting, artstation, octane render, concept art, matte, sharp focus, illustration ",20,7.0,8,512,512,32
+52042,"morrigan aenslandcasting magic, a charming succubus, strapless dress, fantasy, d & d, by greg rutkowski and raymond swanland, sharp focus, trending on artstation, 8 k realistic digital art, cryengine, symmetric, league of legends splash art, concept art, frostbite 3 engine ",50,10.0,8,576,512,72
+3015,beautiful fluffy magestic white tiger sitting in snowy winter landscape detailed painting 4 k ,20,7.0,8,512,512,15
+28142,"The mascot for a once-popular fast food chain, 1980",20,7.0,8,512,512,12
+57792,"skinny male fantasy alchemist, long dark hair, 1 9 2 0 s fashion, elegant, highly detailed, intricate, smooth, sharp focus, artstation, digital paining, concept art, art by donato giancola, greg rutkowski, artgerm, cedric peyravernay, valentina remenar, craig mullins ",35,6.0,8,512,768,71
+38402,jake paul vs ksi ,20,7.0,8,512,512,5
+20749,toucan relaxing on an island beach with palm trees detailed oil painting,20,7.0,8,512,512,14
+42978,"orientalism painting of a potter by theodore ralli and nasreddine dinet and anders zorn and nikolay makovsky and edwin longsden long, oil on canvas, masterful intricate artwork, excellent lighting, high detail 8 k ",20,7.0,8,512,512,46
+43297,"child, young boy, green hair, short hair, happy, intricate, smiling, highly detailed, sharp focus, artstation, watercolor, by charlie bowater and ross tran ",20,7.0,8,512,512,36
+21845,"urban school zombie girl in tattered clothes crying blood fanart, dark blue long hair, muted colors, matte print, pastel colors, ornate, digital art, cute smile, digital painting, fan art, elegant, pixiv, by Ilya Kuvshinov, by Studio Ghibli",20,7.0,8,512,768,63
+45114,"league of legends, best friends, kai'sa and xayah, beautiful, laughing, photorealism ",20,7.0,8,512,512,22
+59150,"photo, a giant massive group of men wearing full body shiny reflective latex suits including pants and shirts and boots and masks, performing an incredibly acrobatic wild dance inside a decaying condemned 1980's mall, a giant massive shiny reflective latex kaiju",20,7.0,8,512,512,53
+11492,"the creature in the basement, made of ceramic and blood, surrounded by animals, film still from the movie directed by denis villeneuve and david cronenberg with art direction by salvador dali and zdzisław beksinski, wide lens ",20,12.0,8,1024,576,48
+36062,"a headshot of a stokely the slump god, headlocks, made of fractals facing each other, ultra realistic, wide angle, intricate details, the fifth element artifacts, highly detailed by peter mohrbacher, hajime sorayama, wayne barlowe, boris vallejo, aaron horkey, gaston bussiere, craig mullins ",20,10.0,8,512,640,74
+56768,a cloud bedroom ,20,7.0,8,512,512,3
+37664,"a painting in the style of rob gonsalves of a beautiful large shinto shrine with a torii in a natural setting, soft lighting, seasonal weather, forest of giant mushrooms ",20,7.0,8,768,512,37
+59070,"Pope Francis sitting on a chair and crying while a black and white cat sits on his lap, realistic oil painting, painted by Roberto Ferri",50,7.0,8,512,512,28
+19939,Scene from the 1954 science fiction film The Terminator,20,7.0,8,704,512,10
+27945,"warrior woman in glowing azure sci-fi armor standing in doorway sliced by a iridescent glass cracks shattering the sky , centered,  crimson clouds, besinski style , 6 billion demons style,  background art deco palace, photorealism, 8k, artstation trending, Ray Tracing, octane renderer, high detail, vollumetric lighting",20,7.0,8,512,768,72
+38355,"[ grimes in medieval cyberpunk armor ]! holding a [ sword in her hand ]! looking out into the [ futuristic cyberpunk city ]!, digital art style, anime style, trending on [ artstation ], 4 k, cgsociety contest winner, award winning, neon! lighting, neon subsurface scattering!, intricate, full - body!, volumetric lighting! ",20,9.0,8,768,896,83
+4532,"digital concept art of a random fantasy mage by malgorzata kmiec, digital painting, artstation, concept art, smooth ",20,7.0,8,512,768,26
+12205,“ low poly batman ” ,20,7.0,8,512,512,5
+28249,"selena gomez, beauty expressive pose, fantasy, intricate, elegant, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, art by artgerm and greg rutkowski and alphonse mucha",20,12.0,8,512,512,48
+49770,"detailed painting of a cat sitting on a toilet. vibrant, high quality, very funny, beautiful, hq. hd. 4 k. award winning. trending on artstation ",20,7.0,8,512,832,35
+54225,"sims 4 medieval home, lilsimsie, behance contest winner, 4 k, 8 k, lush lighting, beautiful volumetric atmosphere ",20,7.0,8,512,640,29
+21674,"Some goths hanging out at a Hot Topic store in the mall, painted by John William Waterhouse",20,7.0,8,704,512,20
+23084,Where's Waldo? digital photography,20,7.0,8,1024,768,7
+28075,Neoclassicist rave party,20,7.0,8,1024,1024,6
+55336,"a full impasto portrait of snoop dogg in the aesthetic of shaun tan and edward hopper, ",20,7.0,8,704,512,19
+7243,"impasto acrylic painting of a woman in a serene san francisco streetscape at night. inspired by leonid afremov, artstation, art - deco, cinematic lighting ",20,7.0,8,512,512,36
+29047,"the stars like grains of sand, john atkinson grimshaw",20,7.0,8,512,512,11
+51342,"hyper detailed 3 d render like an oil painting - portrait of majoras mask by jacek yerka, mariusz lewandowski, houdini algorithmic generative render, abstract brush strokes, masterpiece, edward hopper and james gilleard, zdzislaw beksinski, mark ryden, wolfgang lettl, hints of yayoi kasuma, octane render, 8 k ",20,7.0,8,512,512,82
+44913,donald trump as a calico critters ,20,7.0,8,512,512,9
+46452,"stunning symmetrical portrait of alain delon in front of a tall moog synthesizer, high contrast grainy blank and white photography print ilford warm tone ",20,7.0,8,512,512,29
+16309,"Gal Gadot as the Scarlet Witch, illustrated by Antoine Verney-Carron and J. Lesaffre, trending on artstation, 4k, 8k, artstation 3d, artstation rendering, artstation 3d render, artstation 2d render",20,7.0,8,512,512,53
+5064,"medium shot native american man, in a dark forest, mysterious, backlit, still from a pixar dreamworks movie, trending on artstation ",20,7.0,8,512,512,31
+33312,"portrait of a cyberpunk robotic male artist, rock band, half skull, music, beautifully, detailed lighting, smooth, elegant, award winning, by alphonse mucha ",20,7.0,8,640,640,36
+51484,jazz cup pattern 9 0 s ,20,7.0,8,512,512,6
+38465,"a highly detailed portrait of a red dragon, in dragon age, stephen bliss ",13,14.0,8,512,512,15
+18017,"three sitting girl in cyan and brown and white maxi dresses between clouds above green fields in sunset light, close up portrait, elegant, intricate, digital painting, artstation, concept art, golden hour, smooth, sharp focus, illustration, art by ed mell and Daniel F. Gerhartz and Jacek Malczewski and gustav klimt, Tibor Nagy",20,7.0,8,832,1024,78
+11074,"a futuristic ergonomic virtual reality headset in the style of a bugatti cheyvron, insanely integrate, 8 k, productphoto, full shot, studiolight ",20,13.0,8,1024,1024,37
+14717,"baby Angel, baby cherub,wearing angel, face covered, Gucci, x logo, Chanel style , halo, ski mask, balaclava, face covered, wearing angel halo covered face, orange hoodie, hip hop, multiple golden necklaces, fantasy art apex fortnite Video game icon, 2d game art gta5 cover , official fanart behance hd artstation by Jesper Ejsing, by RHADS, Makoto Shinkai and Lois van baarle, ilya kuvshinov, rossdraws",20,7.0,8,512,512,113
+7051,iron inside a transmilenio ,20,7.0,8,512,512,7
+49665,"very very beautiful furry art, bust profile picture of a male robotic anthro dolphin, synthetic cetacean hybrid android, face covered by dark fully opaque visor, wide bottlenose snout below visor, sleek round shapes, all ultramarine metal, integrated design, commission on furaffinity, cgsociety, octane render, sea in background ",50,8.0,8,512,512,76
+26963,"human robot, unreal engine full body ",20,7.0,8,512,512,8
+12230,"portrait pure joy, unreal engine, fantasy art by greg rutkowski, loish, rhads, ferdinand knab, makoto shinkai and lois van baarle, ilya kuvshinov, rossdraws, tom bagshaw, alphonse mucha, global illumination, radiant light, detailed and intricate environment ",20,8.0,8,512,704,69
+48308,illustrated by zdzisław beksinski and greg rutkowski ,20,7.0,8,512,512,14
+40591,"a marble sculpture of angela merkel holding a burning sword in her left hand, high details ",20,7.0,8,512,512,18
+59189,"Virtual Reality music studio Ableton Live theme concept, light rays coming out of the windows, Paris loft style, raytracing, highly detailed, futuristic, unreal engine 5, photoscan",20,7.0,8,512,512,38
+31741,guys from berserk ,20,7.0,8,512,512,5
+36471,"a movie still by tarkovsky of henry iv on a horse in a field with lily of the valley and one birch, cinestill 8 0 0 t 3 5 mm, heavy grain, high quality, noir, natural textures, photorealistic, natural textures, ambient occlusion, hd, fog, criterion collection ",20,13.0,8,1024,512,64
+28207,"a photograpic portrait of a pretty woman, steampunk, fantasy, intricate, elegant, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, art by artgerm and H R Giger and alphonse mucha",20,7.0,8,512,512,55
+26468,"God of forging and fire hephaistus creating the first artificial neural network in his volcanic laboratory, cinematic lighting, dark background, 50mm leica noctilux",20,7.0,8,512,512,35
+28490,a viking warrior suplexing an astronaut,20,7.0,8,512,512,8
+45434,"film still of wrinkly old men wearing surgical masks sitting at a round table and finger painting, directed by fellini, vibrant colours ",7,7.0,8,2048,256,27
+1853,"a dark, mossy, gloomy, rainy road surrounded by woodland trees, leading to a beautiful, radiant house!!!!!!!, illustrated by greg rutkowski and gaston bussiere, cgsociety contest winner, trending on artstation, intricately defined, complexly detailed, gloomy, rainy atmosphere, 4 k ",20,7.0,8,768,512,73
+5287,painting by sargent and leyendecker and greg hildebrandt savrasov levitan above the low clouds on new zealand sokotra faroe island sunset overcast thunder storm ,20,10.0,8,640,448,38
+36153,"3 d close - up coherent symmetrical aesthetic satanic goddess water waves human skull, beautiful detailed japanese crow kitsune mask and classical japanese kimono highly detailed. iridescent accents. by wlop, tooth wu, greg rutkowski, alena aenami, beeple, octane render, ultra realistic. high contrast. teal, gold, black, white ",20,10.0,8,832,1024,75
+37998,"portrait of a bicolor cat thief in a scenic urban environment by jesper ejsing and eddie mendoza, night ",20,7.0,8,512,512,23
+30236,portrait of joker+Jack Nicholson,20,7.0,8,512,512,6
+52203,"high quality landscape photo of an orangutan wearing cool dark sun glasses, ultra wide lens picture, detailed picture, cinematic composition, by edgar wright and david lynch ",20,7.0,8,512,512,33
+12713,seamless hand painted texture of forest world of warcraft,20,7.0,8,512,512,11
+16752,"A goth character portrait by Jean-Michel Basquiat. She has large evil eyes with entirely-black sclerae!!!!!! Her hair is dark brown and cut into a short, messy pixie cut. She has a slightly rounded face, with a pointed chin, and a small nose. She is wearing a black leather jacket, a black knee-length skirt, a black choker, and black leather boots.",20,7.0,8,512,640,88
+57775,"beautiful code, syntax highlighting, aesthetically pleasing, emacs, vim ",50,7.0,8,512,512,16
+56832,"snail with glasses, digital illustration, low poly, vibrant colors ",20,7.0,8,512,512,12
+49724,alexandria ocasio cortez paying for groceries at the bodega ,20,7.0,8,512,512,15
+18230,a screenshot of Barack Obama in Sea of Thieves (2018),20,7.0,8,640,512,13
+59074,Wide shot of Avatar Aang from the Last Airbender shooting fire at Anakin Skywalker from Star Wars Episode 3 next to lava on Mustafar,50,7.0,8,512,512,30
+52588,"movie still of god sun cyborg, cinematic composition, cinematic light, criterion collection, by edgar wright ",20,7.0,8,512,512,20
+58592,artwork by yuumei,20,7.0,8,512,512,5
+25221,Gardevoir speaking at a TED talk about black holes,20,7.0,8,576,512,11
+55766,"beautiful young king, blonde hair, gold, 1 9 2 0 s fashion, fantasy, highly detailed, intricate, artstation, digital paining, character concept art, art by joseph leyendecker, donato giancola, dean cornwell, ruan jia, ayami kojima, alphonse mucha, cedric peyravernay, tom bagshaw ",20,7.0,8,512,768,77
+10208,"bob ross!!! riding!!! a dinosaur!!, giant afro!, model pose, ultra realistic, concept art, intricate details, highly detailed, photorealistic, octane render, 8 k, unreal engine. art by artgerm and greg rutkowski and alphonse mucha ",20,9.0,8,512,512,64
+57999,"mads mikkelson as clifford unger from death stranding, mysterious portrait, oil painting, orange fill light ",20,7.0,8,512,640,24
+1787,"closeup realistic portrait of a zombie with a gasmask, backlit, oil painting, concept art, filip hodas, john howe, mike winkelmann, jessica rossier, andreas rocha, bruce pennington, albert bierstadt, peter mohrbacher, donato giancola, joseph christian leyendecker, wlop, boris vallejo ",20,15.0,8,512,704,78
+58098,"metalhead, by yoshitaka amano, ruan jia, kentaro miura, artgerm, detailed, intricate details, trending on artstation, hd, masterpiece ",20,13.0,8,768,512,37
+16669,A vaporwave cafe painted by Ilya Kuvshinov and Gustav Klimt and Edward Hopper,35,7.0,8,512,512,20
+38287,"enormous fantasy armor, silver with gold trim, character concept art, fantasy art, extremely clean, exaggerated proportions, trending on artstation, by stanley lau, by artgerm, by wlop, by greg rutkowski, flat shading, smooth, polished, shiny, orthographic front view ",20,10.0,8,512,768,63
+11328,shield fantasy epic legends game icon stylized digital illustration radiating a glowing aura global illumination ray tracing hdr fanart arstation by ian pesty and katarzyna da „ bek - chmiel ,20,7.0,8,512,768,39
+37805,"death metal apocalypse fantasy, waves of waging war, tides of turning time d & d, fantasy, highly detailed, digital painting, trending on artstation, concept art, sharp focus ",20,7.0,8,1024,512,38
+47154,landscape digital painting of modern apocalyptic london big ben houses of parliment themse intricate highly detailed dark fantasy art by charlie bowater tyler edlin ,20,7.0,8,768,512,29
+2308,"a fantasy style portrait painting a character if spider man wanda maximoff and thanos had a daughter, purple skin, powerful chin, thanos style traits, painting, unreal 5, daz., rpg, portrait, extremely detailed, artgerm greg rutkowski _ greg ",20,15.0,8,512,704,57
+9795,"beautiful gold fantasy city made from white stone and bright copper built on the side of a volcano, gondor, misty, red sky, medieval city, metropolis, magic, gorgeous clouds, white marble, god rays, digital art, landscape, fantasy art, octane render, ureal engine, high detail, very realistic, by greg rutkowski. by james gurney ",20,13.0,8,512,1024,75
+7229,"beautiful happy picturesque charming sci - fi organic pod - like homes of the future in a beautiful natural scene. water, trees and rocks. beautiful light. soft colour scheme. beautiful artistic detailed watercolor by lurid. ( 2 0 2 2 ) ",20,7.0,8,512,512,49
+49280,"a dark, mossy, gloomy, rainy ( ( ( ( road ) ) ) ) surrounded by woodland trees, leading to a beautiful, radiant house!!!!, illustrated by greg rutkowski and gaston bussiere, cgsociety contest winner, trending on artstation, intricately defined, complexly detailed, gloomy, rainy atmosphere, 4 k ",20,7.0,8,768,512,78
+5086,"a highly detailed tarot card of a large cross standing on the beach as a storm comes in with the tide, woman in a chair watching the ocean, epic fantasy, god rays, rocky beach, ultrawide lense, aerial photography, unreal engine, exquisite detail, 8 k, art by hokusai and jeong seon ",20,7.0,8,512,512,68
+18307,"Cyrano de Bergerac and  Roxanne (Haley Bennet), are looking a teach other hand romantically. dramatic, high contrast, romantic, theatrical, lumnious, cinematic lights, oil canvas by Csók István, Munkácsi and Hollósy Simon",41,14.0,8,512,512,58
+46869,"royal dinner room, art nouveau architecture, art by joseph leyendecker, ivan aivazovsky, ruan jia, reza afshar, marc simonetti, alphonse mucha ",50,14.0,8,960,512,40
+8903,"mage, woman, portrait, dirty alley, a beautiful fantasy city, made from white stone and bright gold, built on the side of a volcano, gondor, misty, red sky, medieval city, metropolis, gorgeous clouds, god rays, fantasy art, octane render, ureal engine, high detail, alphonse mucha, greg rutkowski, james gurney, johannes voss ",20,13.0,8,512,640,80
+40481,"highly detailed portrait of a boy with spikey blue hair and ice powers, in my hero academia, stephen bliss, 8 k, ferdinand knab, makoto shinkai and lois van baarle, anime key visual, big eyes, by akira toriyama, fantasy art by greg rutkowski, shonen art style, by kohei horikoshi, promotional image ",15,10.0,8,576,512,75
+53717,abiodun olaku mona lisa by abiodun olaku mona! lisa by abiodun olaku ,20,7.0,8,512,512,25
+22222,Evil Yoda,20,7.0,8,512,512,3
+54364,"concrete surface texture, photo from above ",20,7.0,8,1024,1024,7
+38173,"photo by josh pierce and prateek vatash, inside a smooth sleek soft dreamscape made out of colorful pastel soft foam, velvet furniture, arched window showing the ocean, pastel colors, giant rococo oil painting in a gold frame, sunset, cinema 4 d, 4 k, ray tracing reflections, volumetric lighting and shadows, haze, light beams ",20,10.0,8,768,768,74
+8713,"3 3 rd century!!!!! lively!!!!! town street, cinematic photography, fisheye!!!!! lens, ( ( ( ( ( worm's - eye view ) ) ) ) ), illustrated by max hay, artstation, cgsociety contest winner, dramatic lighting, vignette ",20,7.0,8,512,512,69
+39392,"the offspring, concept art, digital art ",20,12.0,8,512,512,8
+26867,"Portrait studio photograph of Kanye West & an anthropomorphic teddy bear, close up, shallow depth of field, in the style of Felice Beato, Noir film still, 40mm",20,7.0,8,512,512,38
+57923,"big colorful mushroom, a computer render by jonathan zawada, flume, a 3 d render, featured on polycount, shutterstock contest winner, psychedelic art, psychedelic, rendered in cinema 4 d, 3 d ",20,7.0,8,896,896,45
+13134,"Full shot, Atmospheric lighting, By Makoto Shinkai, Stanley Artgerm Lau, WLOP , Rossdraws, James Jean, Andrei Riabovitchev, Marc Simonetti, krenz cushart, Sakimichan, D&D trending on ArtStation, digital art.",20,7.0,8,512,640,64
+56280,greg rutkowski and wlop woman of tarot card the star card shows a woman kneeling at the edge of a small pond she is holding two containers of water one container hyperrealistic beautiful sexy ethereal white north pole girl portrait art nouveau fantasy intricate flower designs elegant highly detailed sharp focus art by artgerm pours the water into the river soul care nature peace galaxies female white fine line fractal glow ,50,13.0,8,512,704,84
+7713,"sims 4 medieval home, lilsimsie, behance contest winner, 4 k, 8 k, lush lighting, beautiful volumetric atmosphere ",20,7.0,8,768,512,29
+59159,"photo, a giant massive huge crowd of people in black cult robes holding lit fire torches worshipping a giant huge massive idol of an alien owl bat monster made of shiny reflective colorful latex, inside a massive dark cave, dripping blood raining from above, fog and mist, a beam of moonlight from a hole in the cave ceiling",20,7.0,8,512,512,65
+40660,"hyper realistic, advanced digital art, style of final + fantasy + 1 5, beautiful female knight wearing metal reflective armor, gaussian blur, city reflection, 8 8 mm lens, lens flare, fire particle in front, depth of field, close up shot, rim lights wlop ",20,13.0,8,512,512,58
+44064,close - up of a korean woman sleeps from behind in levitation above her bed vibrant by akihiko yoshida and edward hopper ,20,7.0,8,512,512,26
+47362,"a beautiful woman with cybernetic muscles, painted by artgerm and tom bagshaw, fantasy art, dramatic lighting, highly detailed oil painting ",20,11.0,8,512,704,29
+19378,"detailed masterpiece head and shoulders portrait of struggling Thor Chris Hemsworth with helmet by Ayami Kojima, Amano, Karol Bak, Gottfried Helnwein and Mark Brooks and Meats Meier and Ryan Brown, rich deep colors. the agony is real. Beksinski painting, part by Adrian Ghenie and Gerhard Richter and Jeremy Mann. art by Takato Yamamoto. medium shot. masterpiece . intricate artwork by Tooth Wu and wlop and greg rutkowski, very coherent artwork, cinematic, hyper realism, high detail, octane render, unreal engine, 8k, Vibrant colors, Smooth gradients, High contrast. by Katsuhiro Otomo, inspired by anime, movie grain, intricate detail, extremely detailed. painting by Arthur Rackham, Eugene de Blaas",20,7.0,8,512,512,163
+34090,"blade runner movie poster of group of hungry homeless cyborgs at dinner in a garbage dump, full of electronic garbage and dirty disorder, strong rain, mud, volumetric fog, deep displacement, reflections, raytracing, raymarching, subsurface scattering, digital art, painted by zdzislaw beksinski ",20,13.0,8,1280,704,67
+47461,giant head in the ocean ,20,7.0,8,512,512,5
+10519,"a face portrait of a beautiful sorceress from skyrim casting a healing spell, fantasy setting, young face, serene colors, soft lighting, atmospheric, cinematic, moody, in the style of diego koi, gina heyer, luiz escanuela, art by alyssa monk, hyperrealism, rule of thirds, golden ratio, oil on canvas, 8 k ",30,10.0,8,704,960,76
+1501,painting of a jungle frozen over!!! dry leaves scene on an alien planet by vincent bons. ultra sharp high quality digital render. detailed. beautiful landscape. weird vegetation. water. ,20,7.0,8,1600,512,38
+3643,airplane in aerodynamic stall ,20,7.0,8,512,512,4
+11650,an endless typhoon by utagawa hiroshige and luca della robbia in the style of jack vettriano ,20,7.0,8,768,512,21
+40033,"portrait of a cross with nature and some thing about creation, christianity, cartoon, vector ",20,7.0,8,512,512,17
+7664,"aku - aku from crash bandicoot saga, jungle safari photography ",20,7.0,8,512,512,15
+2823,"steampunk himalayan rocksalt lamp pocketwatch inside a glass jar half - buried in sands of time, intricate detail, hyper detailed, ultra realistic, sharp focus, octane render, lantern, volumetric, ray tracing, artstation trending, moon, pocketwatch, cgsociety, sense of awe, swirling mist, moon, 4 k ",20,7.0,8,512,704,73
+17548,"a singular beautiful smiling dog running happily towards its owner, ethereal heavenly rainbow bridge in the background behind the dog, hyperreal, hyperdetailed, golden retriever, tall golden heavenly gates, amazing, stunning artwork, featured on artstation, cgosciety, behance",44,7.0,8,512,704,58
+41465,"detailed render of chibi style brown skinned nekomimi, fox ears, cute character design, pixiv context winner, clear clean design, minimalist ",20,7.0,8,512,512,32
+25429,"fox animals conducting experiments in a chemistry lab, award winning photograph",20,7.0,8,512,512,12
+12864,"a fat cute bumblebee, high resolution still from a disney pixar movie, huge adorable eyes",20,7.0,8,512,512,21
+58509,"movie scene of a man standing in front of a multiverse machine, movie still, cinematic composition, cinematic light, by David Lynch",50,7.0,8,1024,576,26
+8381,"sideview waist up portrait of violator spawn clown by laurie greasley and rene magritte, etching by gustave dore, intricate, sharp focus, illustration, highly detailed, digital painting, concept art, masterpiece ",20,10.0,8,512,768,45
+11207,a self portrait by karl kopinski. pen and ink drawing on bristol board ,20,7.0,8,512,512,16
+48631,"furry art, male aeromorph, robotic anthro with a jet fighter cockpit for a head and wings on back, human body plan, beautifully integrated highly original anthro design, sleek flowing shapes, commission on furaffinity, cgsociety, octane render ",35,20.0,8,512,512,59
+6448,"things hidden inside my head by takashi murakami, superflat, pop culture, colorful, intricate, hyper detailed ",20,7.0,8,512,512,25
+52399,"kovil in background, wearing a silk kurta, photograph of drake the rapper, drake the rapper's face ",20,7.0,8,512,512,23
+51666,"merry and pippin taking selfies on their smartphones while gandalf the gray and samwise gamgee stand behind them scowling, beautiful nature scenery, movie still by peter jackson, merry brandybuck and pippin took holding smartphones in their hands ",20,7.0,8,512,512,52
+17393,"Cow with wings, full-body portrait, 4k, 8k",20,7.0,8,512,512,14
+20452,Beautiful portrait digital painting of an anthro anthropomorphic mint color wolf minimalist background,20,7.0,8,512,512,19
+55321,"an alien planet with eerily thin trees and yellow algae, sci fi concept art by tyler edlin, antoine blanchard, thomas cole ",20,7.0,8,512,512,26
+52371,"hwasa as a vampire. wearing intricate styled dress, semi realism, anime realism, symmetrical face, slim face, appealing, photorealism, uhd, amazing depth, glowing, golden ratio, sakimichan, greg rutowski, volumetric lighting, cinematic lighting, red orange lighting, artstation concept art ",20,7.0,8,512,704,66
+42772,"thin young male alchemist, long dark hair, 1 9 2 0 s fashion, fantasy, art by joseph leyendecker, peter mohrbacher, ruan jia, finnian macmanus, marc simonetti, ayami kojima, vasnetsov, cedric peyravernay, alphonse mucha, victo ngai ",50,14.0,8,512,768,74
+53045,"orientalism face detail of an evil demon by edwin longsden long and theodore ralli and nasreddine dinet and adam styka, masterful intricate art. oil on canvas, excellent lighting, high detail 8 k ",20,7.0,8,512,512,45
+3471,a rat with a job as a business analyst at mckinsey ,20,7.0,8,512,512,13
+37897,spaceship by doug chiang ,20,7.0,8,512,512,4
+13843,"A beautiful photograph. It has no visible auditory organs, just eyes, human eyes, hundreds of them, in the ends of stalks that radiate from its body like some exotic fruit. dutch golden age, iStock by Claude Monet ecstatic",20,7.0,8,512,512,50
+3844,"turbulent ocean made of dark - red energy under a bed of loquaciously indulgent cloudy skies, emanating red mist, illustrated by greg rutkowski and gaston bussiere, artstation, cgsociety contest winner, intricately defined, complexly detailed, zbrush, mannerism, 4 k ",20,7.0,8,768,512,67
+37953,"a horror movie scene photograph of a real estate 1 9 7 0's hotel room, shadow figure, demonic, ghostly screaming child, shot on a disposable camera while on vacation, finely detailed, a liminal space, macabre lighting, decapitated, masked intruder, hyper - realistic # wtf # wtf # wtf ",20,7.0,1,640,512,71
+12317,“ large boiling glass of chocolate milk ” ,20,7.0,8,512,512,8
+29794,"Furries in an Old West-era pride parade, today\'s featured photograph 4k",20,7.0,8,512,512,19
+31244,froge digital art ,20,7.0,8,512,512,4
+2122,scene from the 1 9 1 7 science fiction film robocop ,20,7.0,8,704,512,13
+45571,"steve harvey holding lightsaber, clean, realistic ",50,7.0,8,512,512,10
+19581,"ultra detailed illustration of a angry latin girl covered in a sea of iridescent liquid by nekro, Karol Bak, colorful, vivid colors, 8k, coherent, anime vibes, uplifting, magical composition, artstation, synthwave, 8k, coherent, artgerm, uplifting, unreal engine, magical composition, artstation",20,13.0,8,704,704,74
+34539,"close up profile of a calyrex, colourful, elegant, alphonse mucha, rhads, ross tran, artstation, artgem, octane render, 1 6 k ",20,7.0,8,704,512,40
+5695,"photo of a custom shape electric guitar with ornaments and gems, ultra realistic ",20,7.0,8,512,512,14
+27566,"A goth portrait painted by Gustav Klimt. Her hair is dark brown and cut into a short, messy pixie cut. She has a slightly rounded face, with a pointed chin, large entirely-black eyes, and a small nose. She is wearing a black tank top, a black leather jacket, a black knee-length skirt, a black choker, and black leather boots.",20,7.0,8,512,512,79
+17813,cute alien squid creature detailed 3d pixar render,20,7.0,8,512,512,10
+52846,"thin male alchemist, long dark hair, silver, 1 9 2 0 s fashion, fantasy, art by joseph leyendecker, donato giancola, dean cornwell, peter mohrbacher, ruan jia, marc simonetti, ayami kojima, cedric peyravernay, alphonse mucha, thomas kinkade, victo ngai ",20,7.0,8,512,768,79
+334,"tall castle enclosed palisaded, with christian wooden churches and domes on them, log houses built on snow hills, slavic, russian, slovenian, tartarian architecture, contrasting, gray skies, hyper - detailed, artstation, cgsociety, 8 k ",20,7.0,8,896,512,53
+47127,"a big black cat, no fur!!!!!! covered with feathers, by bob eggleton, magnificent, ultra detailed, ",50,7.0,8,512,704,27
+42145,"inigo the fully - voiced red / black weasel thief companion, skyrim mod, photorealistic, dungeons & dragons concept fanart by liam wong ",20,15.0,8,512,640,30
+41167,"celestial body orgasm detailed mixed media collage with canvas texture in style of contemporary art, punk art, photorealism, sensual bodies, expressionism, masterpiece, spectacular quality, intricate oil details, broken glass photo, torn paper intricate texture, large cracks, liquid glue spots, vivid and balanced ",20,7.0,8,704,896,58
+52439,a space photograph of a hamster riding a dolphin on a cosmic rainbow ,20,7.0,8,512,512,14
+29979,"4k digital artwork of a rococo princess, rococo ballgown, rococo fashion, pink and white",20,7.0,8,512,640,23
+25745,"Christopher walken as pinhead from Hellraiser,",20,7.0,8,512,512,11
+34969,"spritesheet game asset vector art, smooth style beeple, by thomas kinkade hearstone league of legends dofus overwatch ",20,7.0,8,512,512,28
+44188,"a wholesome animation key shot of a brown and ashy short - haired 1 3 - year - old yorkshire terrier with a pink faded collar with five glass stars, studio ghibli, pixar and disney animation, sharp, rendered in unreal engine 5, anime key art by greg rutkowski, bloom, dramatic lighting ",35,15.0,8,1024,512,69
+4268,painting by sargent and leyendecker and greg hildebrandt savrasov levitan kuindzhi aiwazovsky gorgeous fantasy landscape deep dark night and moonlight above the layered low clouds on madeira faroe azores iceland black coast icebergs and glacier alaska overcast storm wide angle view from above masterpiece ,20,7.0,8,448,640,63
+36080,"radoslaw pujankawaii's aesthetic tetrachromacy hyper - realistic photo of an ancient goddess wrapped in fine silk, retro - futurism. highly detailed. hyper - fashion. intricate and sensual. ",20,7.0,8,640,640,45
+41578,"a portrait of an anthropomorphic cyberpunk great white shark head, shredding an electric guitar by sandra chevrier, by jon foster, detailed render, epic composition, cybernetics, 4 k realistic, fender stratocaster, cryengine, realistic shaded lighting, sharp focus, masterpiece, by enki bilal ",20,12.5,8,512,640,70
+34616,"seduction illustration, by lliam brazier, petros afshar, peter mohrbacher and victo ngai ",20,7.0,8,512,512,25
+2650,"overgrown postapocalyptic ruins, birds in the sky, a rainbow, waterfall : : close shot : : 3 5 mm, realism, octane render, 8 k, exploration, cinematic, trending on artstation, realistic, 3 5 mm camera, unreal engine, hyper detailed, photo - realistic maximum detail, volumetric light, moody cinematic epic concept art, realistic matte painting, hyper photorealistic, concept art, volumetric light, cinematic epic, octane render, 8 k, corona render, movie concept art, octane render, 8 k, corona render, cinematic, trending on artstation, movie concept art, cinematic composition, ultra - detailed, realistic, hyper - realistic, volumetric lighting, 8 k ",20,7.0,8,512,512,151
+38856,"languid temptation. minimalistic analogue mixed media collage with canvas texture in style of contemporary art, punk art, realistic face, expressionism, masterpiece, perfect composition, photorealistic beautiful face, spectacular quality, intricate details, shattered glass textures, colorful ",20,7.0,8,704,896,51
+15359,"highly detailed portrait of a hopeful pretty astronaut lady with a wavy blonde hair, by Jamie Hewlett , 4k resolution, nier:automata inspired, bravely default inspired, vibrant but dreary but upflifting red, black and white color scheme!!! ((Space nebula background))",47,18.0,8,512,704,64
+14217,"fantasy desiccated island,  surrounded by crystal  cliffs, viewed from the ocean, extremely detailed oil painting, unreal 5 render, rhads, Bruce Pennington, Studio Ghibli, tim hildebrandt, digital art, octane render, beautiful composition, trending on artstation, award-winning photograph, masterpiece",20,7.0,8,1024,512,68
+13700,Duke Nukem in Warhammer Total War,20,9.0,8,512,512,9
+36030,"giant bobbit worm attacking horse in the desert, 1 8 9 0 woodcut ink illustrated magazine page, old manuscrypt page, old book page, notes, informative text around illustrations, diagrams, intristic detailed ",20,7.0,8,512,768,47
+48782,"coronation ceremony, fantasy, art by joseph leyendecker, peter mohrbacher, ivan aivazovsky, ruan jia, reza afshar, marc simonetti, alphonse mucha ",50,10.0,8,960,512,43
+11866,"Sucy from little witch academia, anime style, countryside, calm, fantasy character portrait, dark outlines, dynamic pose, above view, sunny day, artwork by Makoto Shinkai, very coherent asymmetrical artwork, sharp edges, perfect face, simple form, 100mm",20,13.0,8,512,704,56
+8024,"a woman sitting on top of a wooden stool, a polaroid photo by louisa puller, trending on pinterest, minimalism, white background, studio portrait, minimalist ",20,7.0,8,512,512,37
+27162,"a male anime cyberpunk hero protagonist with two swords, wearing a heavy jacket and heavy black boots, character concept exploration, outfit designs, trending on artstation; clear silhouette, strong design, perfect anatomy, clean edges",20,7.0,8,1280,512,45
+50021,"ernest hemmingway laughing, demented, scary pencil sketch ",50,7.0,8,512,512,12
+22989,"3d dark infrared octane render portrait of beauty anime schoolgirl eating under dark japan subway. cute face. dramatic light, trending on artstation, 3d art by hayao miyazaki oil painting",20,7.0,8,512,768,40
+50509,"spongebob and patrick, octane render, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, art by artgerm and greg rutkowski and alphonse mucha and william - adolphe bouguereau ",20,7.0,8,512,512,54
+34402,"red medieval gown, white lace headband, beautiful girl in ballet pose, fantasy, han so - hee, friendly, pure, perfect face, blue eyes, highly detailed, masterpiece, artstation, art by emika lightweaver and antoine collignon and akihiko yoshida ",20,7.0,8,512,768,58
+22031,illustrations from the newly discovered 2nd volume of the Voynich manuscript,20,7.0,8,512,512,13
+4745,"mixture of dragon and cat, cute, fun, scary ",20,7.0,8,512,512,11
+39282,"octane render by josh pierce and prateek vatash and roman bratschi and peter tarka, inside a beautiful boutique art deco hotel lobby with bright pastel colors and patterned wallpaper, cinema 4 d, 4 k, ray tracing reflections, volumetric lighting and shadows ",20,10.0,8,512,512,57
+48365,"the somnambulist from the cabinet of dr. caligari playing a very large moog modular synthesizer, style of aubrey beardsley ",20,7.0,8,512,512,29
+32596,"fashion photography of a dog, wearing carhartt clothes, outside, streetwear, casual outfit, photo 3 5 mm leica, hyperdetail, 4 k, very detailed, black and white ",19,14.0,8,704,1280,40
+40222,a city with palm and sea in the style of david hockney ,20,7.0,8,512,512,13
+17617,"Selfie!!!!! of a man, first person view, fisheye lens, photorealistic image, trending on artstation, 4k, 8k",20,7.0,8,512,512,35
+57096,a gothic girl in a candy world realistic detailled ,20,7.0,8,512,512,10
+6199,"machine, matte painting, peter elson ",20,10.0,8,704,512,9
+53270,"artwork by max ernst, edward hopper ",20,7.0,8,512,512,7
+13260,A poorly made photoshop graphic image of the funniest meme ever,27,7.0,8,512,512,15
+39853,"full - body d & d mtg surreal colorful undead giant with wings anatomy on white background, action pose, intricate, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, art by norman rockwell emiliano ponzi andrey remnev yoann lossel aaron jasinski, reference sheet ",20,7.0,8,512,704,68
+35821,"worm's eye view of a tall brightly lit cyberpunk cathedral with stained glass at night in the rain, worm's eye view of a woman holding an umbrella gazing upward with wonder, octane ray tracing, volumetric lighting, worm's eye view, trending on artstation, extreme low angle, woman with umbrella, cathedral ",20,7.0,8,640,768,69
+6899,"ancient greek ruins, digital painting, concept art, fantasy, colourful, night, golden hour ",20,7.0,8,768,512,18
+17426,"a japanese woman diffuse lighting, fantasy, intricate, elegant, highly detailed, lifelike, photorealistic, digital painting, artstation, illustration, concept art, smooth, sharp focus, art by John Collier and Albert Aublet and Krenz Cushart and Artem Demura and Alphonse Mucha",20,7.0,8,512,512,65
+3596,a beautiful painting of a civilization by hieronymous bosch ,35,20.0,8,1024,512,12
+44424,"concept art of a hyper realistic vaporwave futuristic palace made of glass and steel, illuminated dense fog, depth of field, cinematic dramatic lights, deep focus, intricate, elegant, highly detailed, foggy, mysterious, digital painting, artstation, concept art, matte, sharp focus, art by artgerm and greg rutkowski and alphonse mucha ",50,13.0,8,1024,512,74
+40325,"octane render by ricardo bofill and buckminster fuller and weta digital, inside a high - end exotic colorful pastel vintage boutique hotel lounge, deep depth of field, 8 k, cinema 4 d, raytraced lighting and reflections, very sharp focus, crisp render, trending on cgsociety ",20,10.0,8,768,768,65
+33626,"little spiders on large dinosaur egg, alien dinosaur close - up, lush rainbow jungle, sun beams, glowing alien artifact, les edwards, zdzislaw beksinski, carl gustav carus, john harris, michal karcz, zhang kechun, mikko lagerstedt, scott listfield, steven outram, jessica rossier ",20,7.0,8,512,512,73
+19905,"a superhero whose body is made of glue, concept art",50,5.0,8,512,512,11
+13237,"stary night, mosque, tower, house, city ",20,7.0,8,1024,512,11
+6521,a lion fighting a polar bear ,20,7.0,8,704,512,6
+36696,"horizon forbidden west machine monster figurine mech | face of beautiful, rich, soft, crisp, enticing madison beer | architectural biomechanical floral ramjet bumblebee temple | an ultrafine hyperrealistic illustration by artgerm and mucha and beeple : : intricate linework, octane render and artstation and hi - fructose, intricate environment ",20,12.0,8,512,512,78
+38705,"greg manchess oil matte painting, anthropomorphic thresher shark with a lightsaber fighting a blond knight, fantasy, wonderful masterpiece highly detailed, scifi, beautiful cinematic light deep focus, elegant, digital painting, smooth, sharp focus, golden ratio, dramatic illumination, ultra realistic, 4 k, art by greg rutkowski wlop rossdraws ",20,7.0,8,704,512,77
+17248,Angelina Jolie as Jessica Rabbit,20,7.0,8,512,512,6
+39535,"photo through an airplane window of a giant creature far away, ultra detailed, 4 k ",20,7.0,8,512,768,17
+34098,"a beautiful fashion charming blond flight attendant, masterpiece retrowave art, symmetrical, maximalist, lily frame, art by ilya kuvshinov, rossdraws, sharp focus, art by wlop and artgerm, extreme detail, detailed drawing, detailed face ",20,12.0,8,768,512,55
+16398,"a flying ghost!!! in a waterfall, close up, hyperdetailed, artstation, cgsociety, 8k",20,12.0,8,1024,576,29
+17999,"а fantasy  real spider inspired   blizzard games, full body, detailed and realistic, 4k, trending on artstation, octane render",20,7.0,8,512,1024,27
+41940,"battered warrior maile and surcoat orientalism face detail by theodore ralli and nasreddine dinet and anders zorn and edwin longsden long and wlop, bronze age, sword and sorcery, oil on canvas, masterful intricate artwork, excellent lighting, high detail 8 k ",20,7.0,8,512,768,60
+17976,"film still of Kendall Jenner in the new Denis Villeneuve film, mysterious glamour, sexy, intriguing, film lighting, photography film portrait by Paolo Reversi. Emotionnal.",20,7.0,8,512,768,36
+2145,"imperium, matte painting, chris foss ",20,10.0,8,704,512,11
+57963,"shiba on the moon fantasy art heartstone video game icon, 2 d game art gta cover, official fanart behance hd artstation by jesper ejsing, by rhads, makoto shinkai and lois van baarle, ilya kuvshinov, rossdraws ",20,7.0,8,512,512,63
+50997,"psychedelic angelic celestial being artwork of esao andrews frank xavier leyendecker, energy body, sacred geometry, esoteric art, divinity detailed, saturated colors, ",50,12.0,8,512,512,33
+23935,"epic bull headed minotaur beast in silver heavy armor wielding giant axe, artwork, vivid colors, concept art, greek mythology, detailed, modern design, dark fantasy, digital painting, artstation, d&d",20,15.0,8,512,512,43
+36990,"athens style, small building, city, street, science fiction, cyberpunk, rain day, wide angle, full of people, moon, a lot of lights, cinematic lighting, high detail, digital painting, concept art, illustration, smooth, sharp focus, trending on artstation, trending on deviantart, 4 k ",20,7.0,8,1024,512,68
+53474,"no negative space uhd hyperrealistic photorealisitc hyperdetailed detailed bigfoot screaming, motion lines!!!! sparks flying!!! motion blur!! with sparking circuits, studio lighting, by phil hale!!!! goya!!! ayami kojima amano karol bak, greg hildebrandt and mark brooks ",20,7.0,8,512,768,76
+38820,"gandalf the grey as a muppet, ",20,7.0,8,512,512,10
+55492,"turquoise sightseeing album cover, film, soft lighting gradient. no text no watermarks. ",20,7.0,8,768,768,19
+25252,"fox-like guy in a lab coat, casting a spell, trending on artstation, doctor who",20,7.0,8,512,512,21
+16405,"the creature sells a used car, made of wax and water, film still from the movie directed by Denis Villeneuve with art direction by Salvador Dalí, wide lens",20,12.0,8,1024,576,32
+7093,"princes of hell in alice in wonderland tripping on ayahuasca with faces in the background, intricate detail, painting, klimt, royo, frazetta, whealan, ",20,7.0,8,512,512,40
+54183,"majestic futuristic elf city made of white stone and decorated with gold, a lot of plants and trees, futuristic vehicles flying around, epic buildings in the center, light clouds, cinematic sky, sunrise, 8 k, unreal engine 5, sharp ",50,7.0,8,960,512,48
+55180,screenprint solarized portrait of a cop in riot gear by andy warhol ,20,7.0,8,512,512,15
+35465,"a single lone cyberpunk spaceship emerging from a galactic nebula, by gi kim jung, highly detailed ",20,8.0,8,768,512,20
+5787,"painting of crossbred between cat & chameleon!!!, by zdzislaw beksinski, by dariusz zawadzki, by francis barlow, cold hue's, warm tone gradient background, concept art, nature painting, beautiful composition ",20,9.5,8,512,768,55
+23912,Woman and her robot against the world. In a beautiful natural scene. Rough strokes and grainy. Interesting colour scheme. Fine detail. Beautiful digital artwork by artist Lurid. (2022),20,7.0,8,512,512,39
+22404,Dallas from payday two at a McDonalds,20,7.0,8,512,512,9
+42543,"close - up on poor quality food, water, and gruel : on a table. background : empty minimalist interior of a dirty automated kiosk, black tiles on walls. black and white, pencil and ink. by gabriel hardman, joe alves, chris bonura. cinematic atmosphere, detailed and intricate, perfect anatomy ",20,15.0,8,704,704,67
+16139,"  futuristic sci-fi city of Atlantis zeus statue and hill valley grec greeble temple of olympus glory island  little wood bridge painting of tower  ivy plant   in marble  late afternoon light, wispy clouds in a blue sky, by frank lloyd wright and greg rutkowski and ruan jia  ",20,12.0,8,1280,704,58
+45706,"astronauts in dark minimalists underwater void - hyperdetailed suit. reflection and dispersion materials. rays and dispersion of light. volumetric light. 5 0 mm, f / 3 2. noise film photo. flash photography. ultra realistic, wide angle. poster by wayne barlowe, hajime sorayama aaron horkey, craig mullins. dark key. ",50,5.0,8,512,704,78
+31036,"beautiful prince, male, gold, portrait, fantasy, detailed, smooth, sharp focus, art by finnian macmanus, ayami kojima, ruan jia, cedric peyravernay, joseph leyendecker, anato finnstark, peter mohrbacher, marc simonetti, victo ngai, virginia frances sterrett, kay nielsen ",20,9.0,8,512,704,77
+33058,"blurry and dreamy screencap of a character from 8 0 s horror anime, woman with short hair and black eyes wearing dress suit with tie, satoshi kon anime, character design by yoshitaka amano and junji ito, glitchy vhs tape, streets of night tokyo in the background, perfect blue color palette, noisy film grain effect, blurry image ",20,15.0,8,640,512,76
+6472,vladimir putin in a donald trump costume ,20,7.0,8,512,512,7
+1549,"ancient irish dinosaur, relief wood carving, detailed ",20,7.0,8,704,704,9
+15503,"Lara croft as samurai , wet face , heavy rain ,dramatic, intricate, highly detailed, concept art, smooth, sharp focus, illustration, Unreal Engine 5, 8K",20,7.0,8,512,512,35
+20884,"50 year old black haired man with very short hair, buzz cut,  round face, square face, round jaw, wide chin , romanian, silver silver glasses,  romanian heritage, brown eyes, brown eyes, olive skin, round nose, round chin, clean shaven wide face,smiling, thin lips, digital art, concept art, cgsociety, painterly, painting, 8k, illustration, painting, dramatic,  beautiful, art by loish loish loish, cartoon, stylized  painterly, trending on artstation, medium shot, uncropped ",20,20.0,8,512,512,116

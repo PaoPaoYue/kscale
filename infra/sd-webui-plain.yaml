@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sd-webui
+  namespace: ypp
+  labels:
+    app: sd-webui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sd-webui
+  template:
+    metadata:
+      labels:
+        app: sd-webui
+    spec:
+      containers:
+      - name: sd-webui-container
+        image: py846260131/sd-webui:01
+        ports:
+        - containerPort: 7860
+        resources:
+          limits:
+            nvidia.com/gpu.shared: 1
+          requests:
+            nvidia.com/gpu.shared: 1
+        env:
+        - name: CLI_ARGS
+          value: "--api --listen --xformers --skip-torch-cuda-test --skip-python-version-check --skip-install --no-download-sd-model --do-not-download-clip" #--nowebui
+        volumeMounts:
+        - name: models-volume
+          mountPath: /data
+          subPath: data
+      volumes:
+      - name: models-volume
+        persistentVolumeClaim:
+          claimName: nfs-pvc
+      nodeSelector:
+        instance-type: gpu
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sd-webui-service
+  namespace: ypp
+spec:
+  type: NodePort
+  selector:
+    app: sd-webui
+  ports:
+    - protocol: TCP
+      port: 7860
+      targetPort: 7860
+      nodePort: 30010  
+

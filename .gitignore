@@ -1,0 +1,4 @@
+metadata.parquet
+output
+output.*
+.idea

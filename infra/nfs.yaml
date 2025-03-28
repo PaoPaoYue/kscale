@@ -1,8 +1,19 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-storage
+provisioner: kubernetes.io/no-provisioner
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: nfs-pv
+  labels:
+    nfs: shared-storage
 spec:
+  storageClassName: nfs-storage
   capacity:
     storage: 50Gi
   volumeMode: Filesystem
@@ -11,7 +22,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /mnt/shared-disk
-    server: 10.128.0.2
+    server: 10.128.0.7
   mountOptions:
     - nfsvers=4.1
 ---
@@ -21,6 +32,10 @@ metadata:
   name: nfs-pvc
   namespace: ypp
 spec:
+  storageClassName: nfs-storage
+  selector:
+    matchLabels:
+      nfs: shared-storage
   accessModes:
     - ReadWriteMany
   resources:

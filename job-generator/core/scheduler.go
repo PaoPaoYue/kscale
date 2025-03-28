@@ -192,10 +192,12 @@ func (js *JobScheduler) watchMetrics() {
 			var workerNum int
 			var hostnames []string
 			for _, worker := range js.Workers {
-				workerNum++
-				for _, names := range hostnames {
-					if names != worker.Hostname {
-						hostnames = append(hostnames, worker.Hostname)
+				if worker.Active {
+					workerNum++
+					for _, names := range hostnames {
+						if names != worker.Hostname {
+							hostnames = append(hostnames, worker.Hostname)
+						}
 					}
 				}
 			}

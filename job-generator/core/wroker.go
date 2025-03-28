@@ -6,12 +6,15 @@ import (
 	"github.com/paopaoyue/kscale/job-genrator/config"
 	"github.com/paopaoyue/kscale/job-genrator/metrics"
 	"github.com/paopaoyue/kscale/job-genrator/util"
+	"log/slog"
 	"time"
 )
 
 type JobWorker struct {
 	Endpoint util.Endpoint
 	Hostname string
+
+	Active bool
 
 	JobScheduler *JobScheduler
 
@@ -44,9 +47,12 @@ func (jw *JobWorker) Start() {
 
 	t := time.Now()
 	_ = api.SwitchModel("http://"+jw.Endpoint.String(), config.C.ModelName)
-	metrics.Client.Time(metrics.WorkerStartDuration, time.Since(t), jw.MetricsTags...)
-	metrics.DatadogClient.Time(metrics.WorkerStartDuration, time.Since(t), jw.dataDogMetricsTags...)
+	switchTime := time.Since(t)
+	metrics.Client.Time(metrics.WorkerStartDuration, switchTime, jw.MetricsTags...)
+	metrics.DatadogClient.Time(metrics.WorkerStartDuration, switchTime, jw.dataDogMetricsTags...)
+	slog.Info("Worker Model switched", "endpoint", jw.Endpoint.String(), "model", config.C.ModelName, "time", switchTime)
 
+	jw.Active = true
 	go func() {
 		for {
 			select {

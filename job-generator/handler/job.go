@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/paopaoyue/kscale/job-genrator/core"
 	"net/http"
@@ -36,4 +37,22 @@ func SubmitJobHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Jobs uploaded successfully",
 	})
+}
+
+func DownloadResultHandler(c *gin.Context) {
+	batchName := c.DefaultQuery("batchname", "")
+
+	if batchName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "batchname is required"})
+		return
+	}
+
+	filePath := filepath.Join("/tmp/output", fmt.Sprintf("%s-result.csv", batchName))
+
+	if _, err := filepath.Abs(filePath); err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": fmt.Sprintf("File %s not found", filePath)})
+		return
+	}
+
+	c.File(filePath)
 }

@@ -106,6 +106,8 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 		js.JobBatchSize = iter.Size()
 		js.JobBatchStartTIme = time.Now()
 
+		js.processOutput()
+
 		js.jobTicker = time.NewTicker(time.Second)
 
 		if job, ok := iter.Next(); ok {
@@ -124,8 +126,6 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 			}
 		}
 	}()
-
-	js.processOutput()
 
 	return nil
 }

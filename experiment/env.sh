@@ -1,4 +1,5 @@
 #!/bin/bash
 export API_ENDPOINT="http://35.209.52.225:30010"
-export GENERATOR_ENDPOINT="http://35.209.52.225:30010"
-export BENCHMARK_FILE="benchmark/test1.csv"
+export GENERATOR_ENDPOINT="http://35.184.82.190:30011"
+export TEST_NAME="test1"
+export TEST_FILE="benchmark/$TEST_NAME.csv"

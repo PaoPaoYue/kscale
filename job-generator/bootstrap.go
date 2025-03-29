@@ -25,6 +25,7 @@ func main() {
 	r := gin.Default()
 
 	r.POST("/submit-job", handler.SubmitJobHandler)
+	r.GET("/download-result", handler.DownloadResultHandler)
 	r.GET("/metrics", handler.MetricsHandler)
 
 	port := fmt.Sprintf(":%d", config.C.Port)

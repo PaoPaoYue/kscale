@@ -59,7 +59,7 @@ func (it *CSVIterator) Size() int {
 }
 
 func OpenCSVAndWriteHeader(csvFilePath string) *os.File {
-	file, err := os.OpenFile(csvFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile(csvFilePath, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 	if err != nil {
 		slog.Error("Error opening CSV file", "err", err)
 		return nil

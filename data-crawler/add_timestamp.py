@@ -1,7 +1,7 @@
 import csv
 
 input_file = '../data/train_mini.csv'
-output_file = '../experiment/benchmark/test1.csv'
+output_file = '../experiment/input/test1.csv'
 
 with open(input_file, mode='r', newline='') as infile:
     reader = csv.reader(infile)

@@ -15,7 +15,7 @@ spec:
       labels:
         app: sd-webui
     spec:
-      terminationGracePeriodSeconds: 30  # 给容器30秒的时间来优雅关闭
+      terminationGracePeriodSeconds: 10  
       containers:
       - name: sd-webui-container
         image: py846260131/sd-webui:01

@@ -1,6 +1,6 @@
 # Exposing more metrics than the default for additional monitoring - this requires the use of a dedicated ConfigMap for which the Kubernetes ServiceAccount used by the exporter has access thanks to step 1.
 # Ref: https://github.com/NVIDIA/dcgm-exporter/blob/e55ec750def325f9f1fdbd0a6f98c932672002e4/deployment/values.yaml#L38
-arguments: ["-m", "default:datadog-dcgm-exporter-configmap"]
+arguments: ["-m", "datadog:datadog-dcgm-exporter-configmap"]
 
 # Datadog Autodiscovery V2 annotations
 podAnnotations:

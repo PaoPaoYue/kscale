@@ -27,10 +27,10 @@ nvidia-device-plugin:
 # helm repo update
 dcgm:
 	kubectl apply -f dcgm-config.yaml --timeout=$(TIMEOUT)
-	helm install dcgm-datadog gpu-helm-charts/dcgm-exporter -n datadog -f dcgm-values.yaml --timeout=$(TIMEOUT)
+	helm upgrade -i dcgm-datadog gpu-helm-charts/dcgm-exporter -n datadog -f dcgm-values.yaml --timeout=$(TIMEOUT)
 
 sd-webui:
-	kubectl apply -f sdwebui-plain.yaml --timeout=$(TIMEOUT)
+	kubectl apply -f sd-webui-plain.yaml --timeout=$(TIMEOUT)
 
 job-generator:
 	kubectl apply -f job-generator.yaml --timeout=$(TIMEOUT)

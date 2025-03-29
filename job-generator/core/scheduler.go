@@ -117,6 +117,7 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 					metrics.DatadogClient.Count(metrics.JobRequest)
 					js.JobChan <- job
 					if job, ok = iter.Next(); !ok {
+						js.jobTicker.Stop()
 						break
 					}
 				}
@@ -182,6 +183,7 @@ func (js *JobScheduler) watchEndpoints() {
 }
 
 func (js *JobScheduler) watchMetrics() {
+	js.metricsTicker = time.NewTicker(time.Second)
 	go func() {
 		defer func() {
 			if r := recover(); r != nil {
@@ -227,6 +229,8 @@ func (js *JobScheduler) processOutput() {
 				break
 			}
 		}
+
+		slog.Info("Job batch completed", "Name", js.JobBatchName, "Size", js.JobBatchSize, "Duration", time.Since(js.JobBatchStartTIme))
 		js.Active = false
 		js.JobBatchName = ""
 		js.JobBatchSize = 0
@@ -281,7 +285,7 @@ func extractPodSpec(pod *v1.Pod) (util.Endpoint, string, bool) {
 			return util.Endpoint{
 				Host: pod.Status.PodIP,
 				Port: port.ContainerPort,
-			}, pod.Spec.Hostname, true
+			}, pod.Spec.NodeName, true
 		}
 	}
 	return util.Endpoint{}, "", false

@@ -6,7 +6,6 @@ import (
 	"github.com/paopaoyue/kscale/job-genrator/config"
 	"github.com/paopaoyue/kscale/job-genrator/metrics"
 	"github.com/paopaoyue/kscale/job-genrator/util"
-	"log/slog"
 	"time"
 )
 

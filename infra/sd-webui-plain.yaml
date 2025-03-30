@@ -18,7 +18,7 @@ spec:
       terminationGracePeriodSeconds: 10  
       containers:
       - name: sd-webui-container
-        image: py846260131/sd-webui:01
+        image: py846260131/sd-webui:02
         ports:
         - containerPort: 7860
         resources:

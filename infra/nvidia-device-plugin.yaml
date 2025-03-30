@@ -3,11 +3,11 @@ config:
     l4: |-
       version: v1
       sharing:
-        mps:
+        timeSlicing:
           renameByDefault: true
           failRequestsGreaterThanOne: false
           resources:
           - name: nvidia.com/gpu
-            replicas: 2
+            replicas: 3
   default: l4
   

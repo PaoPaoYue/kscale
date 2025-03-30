@@ -45,12 +45,12 @@ func NewJobWorker(endpoint util.Endpoint, hostname string, jobScheduler *JobSche
 
 func (jw *JobWorker) Start() {
 
-	t := time.Now()
-	_ = api.SwitchModel("http://"+jw.Endpoint.String(), config.C.ModelName)
-	switchTime := time.Since(t)
-	metrics.Client.Time(metrics.WorkerStartDuration, switchTime, jw.MetricsTags...)
-	metrics.DatadogClient.Time(metrics.WorkerStartDuration, switchTime, jw.dataDogMetricsTags...)
-	slog.Info("Worker Model switched", "endpoint", jw.Endpoint.String(), "model", config.C.ModelName, "time", switchTime)
+	// t := time.Now()
+	// _ = api.SwitchModel("http://"+jw.Endpoint.String(), config.C.ModelName)
+	// switchTime := time.Since(t)
+	// metrics.Client.Time(metrics.WorkerStartDuration, switchTime, jw.MetricsTags...)
+	// metrics.DatadogClient.Time(metrics.WorkerStartDuration, switchTime, jw.dataDogMetricsTags...)
+	// slog.Info("Worker Model switched", "endpoint", jw.Endpoint.String(), "model", config.C.ModelName, "time", switchTime)
 
 	jw.Active = true
 	go func() {

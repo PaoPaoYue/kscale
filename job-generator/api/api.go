@@ -24,6 +24,8 @@ type GenerateRequestParam struct {
 	Height int `json:"height"`
 }
 
+var client = &http.Client{Timeout: time.Duration(config.C.APITimeout) * time.Second}
+
 func SwitchModel(apiURL, model string) error {
 	requestData := map[string]string{"sd_model_checkpoint": model}
 	jsonData, err := json.Marshal(requestData)
@@ -39,7 +41,6 @@ func SwitchModel(apiURL, model string) error {
 	}
 	req.Header.Set("Content-Type", "application/json")
 
-	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
 		slog.Error("Error sending model switch request", "error", err)
@@ -71,7 +72,6 @@ func GenerateImage(apiURL string, params GenerateRequestParam, filename string) 
 	}
 	req.Header.Set("Content-Type", "application/json")
 
-	client := &http.Client{Timeout: 30 * time.Second}
 	resp, err := client.Do(req)
 	if err != nil {
 		slog.Error("Error sending request", "error", err)

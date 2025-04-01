@@ -17,9 +17,9 @@ type JobWorker struct {
 
 	JobScheduler *JobScheduler
 
-	StopChan chan struct{}
+	stopChan chan struct{}
 
-	MetricsTags        []tstorage.Label
+	metricsTags        []tstorage.Label
 	dataDogMetricsTags []string
 }
 
@@ -29,9 +29,9 @@ func NewJobWorker(endpoint util.Endpoint, hostname string, jobScheduler *JobSche
 		Hostname: hostname,
 
 		JobScheduler: jobScheduler,
-		StopChan:     make(chan struct{}),
+		stopChan:     make(chan struct{}),
 
-		MetricsTags: []tstorage.Label{
+		metricsTags: []tstorage.Label{
 			{Name: "hostname", Value: hostname},
 			{Name: "endpoint", Value: endpoint.String()},
 		},
@@ -44,18 +44,11 @@ func NewJobWorker(endpoint util.Endpoint, hostname string, jobScheduler *JobSche
 
 func (jw *JobWorker) Start() {
 
-	// t := time.Now()
-	// _ = api.SwitchModel("http://"+jw.Endpoint.String(), config.C.ModelName)
-	// switchTime := time.Since(t)
-	// metrics.Client.Time(metrics.WorkerStartDuration, switchTime, jw.MetricsTags...)
-	// metrics.DatadogClient.Time(metrics.WorkerStartDuration, switchTime, jw.dataDogMetricsTags...)
-	// slog.Info("Worker Model switched", "endpoint", jw.Endpoint.String(), "model", config.C.ModelName, "time", switchTime)
-
 	jw.Active = true
 	go func() {
 		for {
 			select {
-			case <-jw.StopChan:
+			case <-jw.stopChan:
 				return
 			default:
 				select {
@@ -69,7 +62,7 @@ func (jw *JobWorker) Start() {
 						return
 					}
 					jw.processJob(job)
-				case <-jw.StopChan:
+				case <-jw.stopChan:
 					return
 				}
 			}
@@ -78,7 +71,7 @@ func (jw *JobWorker) Start() {
 }
 
 func (jw *JobWorker) Stop() {
-	close(jw.StopChan)
+	close(jw.stopChan)
 }
 
 func (jw *JobWorker) processJob(job Job) {
@@ -94,7 +87,7 @@ func (jw *JobWorker) processJob(job Job) {
 			return
 		} else {
 
-			metrics.Client.Count(metrics.JobFailure, jw.MetricsTags...)
+			metrics.Client.Count(metrics.JobFailure, jw.metricsTags...)
 			metrics.DatadogClient.Count(metrics.JobFailure, jw.dataDogMetricsTags...)
 
 			jw.JobScheduler.OutputChan <- job
@@ -105,13 +98,13 @@ func (jw *JobWorker) processJob(job Job) {
 	t2 := time.Now()
 	job.EndTime = t2.UnixMilli()
 
-	metrics.Client.Count(metrics.JobSuccess, jw.MetricsTags...)
+	metrics.Client.Count(metrics.JobSuccess, jw.metricsTags...)
 	metrics.DatadogClient.Count(metrics.JobSuccess, jw.dataDogMetricsTags...)
 
-	metrics.Client.Time(metrics.JobDuration, t2.Sub(t1), jw.MetricsTags...)
+	metrics.Client.Time(metrics.JobDuration, t2.Sub(t1), jw.metricsTags...)
 	metrics.DatadogClient.Time(metrics.JobDuration, t2.Sub(t1), jw.dataDogMetricsTags...)
 
-	metrics.Client.Time(metrics.JobLatency, t2.Sub(time.UnixMilli(job.RequestTime)), jw.MetricsTags...)
+	metrics.Client.Time(metrics.JobLatency, t2.Sub(time.UnixMilli(job.RequestTime)), jw.metricsTags...)
 	metrics.DatadogClient.Time(metrics.JobLatency, t2.Sub(time.UnixMilli(job.RequestTime)), jw.dataDogMetricsTags...)
 
 	jw.JobScheduler.OutputChan <- job

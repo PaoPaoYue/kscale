@@ -23,6 +23,7 @@ type Config struct {
 	ShutdownPeriod             int // in seconds
 	SaveImage                  bool
 	ImageStorePath             string
+	APITimeout                 int // in seconds
 }
 
 func LoadConfig() {
@@ -45,6 +46,7 @@ func LoadConfig() {
 		MaxQueueSize:               getEnvInt("MAX_QUEUE_SIZE", 60000),
 		MaxRetryQueueSize:          getEnvInt("MAX_RETRY_QUEUE_SIZE", 1000),
 		ShutdownPeriod:             getEnvInt("SHUTDOWN_PERIOD", 2),
+		APITimeout:                 getEnvInt("API_TIMEOUT", 60),
 	}
 
 	_ = os.MkdirAll(C.OutputFilePath, os.ModePerm)

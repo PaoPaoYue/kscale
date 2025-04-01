@@ -24,7 +24,12 @@ type GenerateRequestParam struct {
 	Height int `json:"height"`
 }
 
-var client = &http.Client{Timeout: time.Duration(config.C.APITimeout) * time.Second}
+var client = &http.Client{
+	Timeout: time.Duration(config.C.APITimeout) * time.Second,
+	Transport: &http.Transport{
+		ForceAttemptHTTP2: false,
+	},
+}
 
 func SwitchModel(apiURL, model string) error {
 	requestData := map[string]string{"sd_model_checkpoint": model}

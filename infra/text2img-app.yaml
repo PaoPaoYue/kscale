@@ -1,0 +1,68 @@
+apiVersion: ray.io/v1alpha1
+kind: RayService
+metadata:
+  name: text2img-app
+spec:
+  serviceUnhealthySecondThreshold: 300
+  deploymentUnhealthySecondThreshold: 300
+  serveConfigV2: |
+    applications:
+      - name: text2img
+        import_path: core.image_service:entrypoint
+        runtime_env: 
+          working_dir: /serve-app
+          env_vars:
+            "MODEL_PATH": "/data/models/v1-5-pruned-emaonly.safetensors"
+        deployments:
+          - name: ImageService
+            max_ongoing_requests:5
+            autoscaling_config：
+              target_ongoing_requests:2
+              upscale_delay_s:10
+              downscale_delay_s:10
+              metrics_interval_s:2
+            ray_actor_options:
+                num_gpus: 1
+  rayClusterConfig:
+    rayVersion: '2.44.1'
+    headGroupSpec:
+      rayStartParams:
+        dashboard-host: '0.0.0.0'
+      template:
+        spec:
+          containers:
+            - name: ray-head
+              image: py846260131/kscale-text2img-app:01
+              ports:
+                - containerPort: 6379
+                  name: gcs-server
+                - containerPort: 8265
+                  name: dashboard
+                - containerPort: 10001
+                  name: client
+                - containerPort: 8000
+                  name: serve
+          tolerations:
+            - key: "node-role.kubernetes.io/control-plane"
+              operator: "Exists"
+              effect: "NoSchedule"
+    workerGroupSpecs:
+      - replicas: 1
+        minReplicas: 1
+        maxReplicas: 2
+        groupName: worker-group
+        rayStartParams: {}
+        template:
+          spec:
+            containers:
+              - name: ray-worker
+                image: py846260131/kscale-text2img-app:01
+                lifecycle:
+                  preStop:
+                    exec:
+                      command: ["/bin/sh", "-c", "ray stop"]
+                resources:
+                  limits:
+                    nvidia.com/gpu: 1
+                  requests:
+                    nvidia.com/gpu: 1

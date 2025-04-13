@@ -1,0 +1,43 @@
+name: "Build Text2Img APP Docker Image"
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Docker Image Version'
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: '1.23.1'
+
+    - name: Authenticate to Docker Hub
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      with:
+        buildkitd-flags: --debug
+
+    - name: Create Buildx Builder Instance
+      run: |
+        docker buildx create --name multiarch-builder --use
+        docker buildx inspect --bootstrap
+
+    - name: Build and Push Multi-Arch Docker Image
+      run: |
+        DOCKER_REPO="${{ secrets.DOCKER_USERNAME }}/kscale-text2img-app"
+        DOCKER_TAG="${{ github.event.inputs.version }}"
+        docker buildx build --platform linux/amd64 -t $DOCKER_REPO:$DOCKER_TAG -f Dockerfile --push .
+      working-directory: text2img-app

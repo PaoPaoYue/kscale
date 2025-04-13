@@ -30,7 +30,7 @@ def run_local_test():
         height=height
     )
 
-    image.save("generated_image.png")
+    image.save("output/generated_image.png")
     print(f"✅ Image saved as 'generated_image.png' in {duration:.4f} seconds.")
 
 
@@ -57,9 +57,9 @@ def run_ray_serve():
         print(f"✅ Generation took {data['duration']:.4f} seconds.")
 
         image_data = base64.b64decode(data["image"])
-        with open("ray_serve_generated.png", "wb") as f:
+        with open("output/generated_image.png", "wb") as f:
             f.write(image_data)
-        print("✅ Test image saved as 'ray_serve_generated.png'")
+        print("✅ Test image saved as 'generated_image.png'")
     else:
         print("❌ Request failed:", response.status_code, response.text)
 

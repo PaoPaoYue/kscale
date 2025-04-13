@@ -1,6 +1,6 @@
 FROM rayproject/ray:2.9.0-gpu
 
-RUN pip install torch==2.6.0 diffusers==0.33.1 transformers==4.51.2 xformers==0.0.29.post3 accelerate==1.6.0
+RUN pip install torch diffusers transformers xformers accelerate
 
 # Set the working dir for the container to /serve_app
 WORKDIR /serve_app

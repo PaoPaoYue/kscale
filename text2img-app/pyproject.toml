@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "text2img-app"
+version = "0.1.0"
+description = ""
+authors = ["PaoPaoYue <846260131@qq.com>"]
+readme = "README.md"
+packages = [{include = "text2img_app"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = "^2.6.0"
+diffusers = "^0.33.1"
+transformers = "^4.51.2"
+xformers = "^0.0.29.post3"
+accelerate = "^1.6.0"
+ray = {extras = ["serve"], version = "^2.44.1"}
+fastapi = "^0.115.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -69,7 +69,7 @@ class ImageGenerator:
         SchedulerClass, kwargs = scheduler_map.get(name, (DPMSolverMultistepScheduler, {}))
         return SchedulerClass.from_config(self.pipe.scheduler.config, **kwargs)
 
-    def generate_image(self, prompt: str, steps: int, scale: float, sampler_index: str, width: int, height: int):
+    def generate_image(self, prompt: str, steps: int, cfg_scale: float, sampler_index: str, width: int, height: int):
         scheduler = self.sampler_index_to_scheduler(sampler_index)
         self.pipe.scheduler = scheduler
 
@@ -77,7 +77,7 @@ class ImageGenerator:
         result = self.pipe(
             prompt=prompt,
             num_inference_steps=steps,
-            guidance_scale=scale,
+            guidance_scale=cfg_scale,
             width=width,
             height=height,
         )

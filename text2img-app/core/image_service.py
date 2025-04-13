@@ -21,17 +21,17 @@ class ImageService:
     @app.get("/generate")
     async def generate(
         self,
-        index: int = Query(0),
+        id: str = Query("0"),
         prompt: str = Query(...),
         steps: int = Query(30),
-        scale: float = Query(7),
+        cfg_scale: float = Query(7),
         sampler_index: str = Query("DPM++ 2M Karras"),
         width: int = Query(512),
         height: int = Query(512)
     ):
-        image, duration = self.generator.generate_image(prompt, steps, scale, sampler_index, width, height)
+        image, duration = self.generator.generate_image(prompt, steps, cfg_scale, sampler_index, width, height)
 
-        print(f"Image {index} generation completed in {duration:.4f} seconds.")
+        print(f"Image {id} generation completed in {duration:.4f} seconds.")
 
         # 转 base64
         buffer = io.BytesIO()

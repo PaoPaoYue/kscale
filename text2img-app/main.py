@@ -42,10 +42,10 @@ def run_ray_serve():
     response = requests.get(
         "http://127.0.0.1:8000/generate",
         params={
-            "index": 0,
+            "id": 0,
             "prompt": "A futuristic city with neon lights at night, cyberpunk style",
             "steps": 20,
-            "scale": 7,
+            "cfg_scale": 7,
             "sampler_index": "DPM++ 2M Karras",
             "width": 512,
             "height": 512

@@ -255,9 +255,9 @@ func (js *JobScheduler) removeWorker(pod *v1.Pod) {
 	defer js.mu.Unlock()
 	ep, hostname, ok := extractPodSpec(pod)
 	if ok {
-		slog.Info("Removing pod Endpoint", "Name", pod.Name, "Host", ep.Host, "Port", ep.Port, "hostname", hostname)
 		for i, worker := range js.Workers {
 			if worker.Endpoint == ep {
+				slog.Info("Removing pod Endpoint", "Name", pod.Name, "Host", ep.Host, "Port", ep.Port, "hostname", hostname)
 				worker.Stop()
 				js.Workers = append(js.Workers[:i], js.Workers[i+1:]...)
 				break

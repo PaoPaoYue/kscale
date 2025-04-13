@@ -3,3 +3,4 @@ output
 output.*
 .idea
 tmp
+__pycache__

@@ -6,7 +6,7 @@ metadata:
   labels:
     app: sd-webui
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: sd-webui
@@ -38,12 +38,6 @@ spec:
             port: 7860
           initialDelaySeconds: 5
           periodSeconds: 5
-          failureThreshold: 3
-        livenessProbe:
-          tcpSocket:
-            port: 7860 
-          initialDelaySeconds: 10
-          periodSeconds: 10
           failureThreshold: 3
       volumes:
       - name: models-volume

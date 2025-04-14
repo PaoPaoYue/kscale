@@ -1,6 +1,7 @@
 TIMEOUT := 100s
 DATADOG_VERSION := 3.61.0
 NVIDIA_DEVICE_PLUGIN_VERSION := 0.17.1
+KUBERAY_VERSION := 1.3.0
 
 # remember to set the data-dog api key in datadog-secret before running this
 # > helm repo add datadog https://helm.datadoghq.com
@@ -29,11 +30,24 @@ dcgm:
 	kubectl apply -f dcgm-config.yaml --timeout=$(TIMEOUT)
 	helm upgrade -i dcgm-datadog gpu-helm-charts/dcgm-exporter -n datadog -f dcgm-values.yaml --timeout=$(TIMEOUT)
 
+# helm repo add kuberay https://ray-project.github.io/kuberay-helm/
+# helm repo update
+kuberay:
+	helm upgrade --install kuberay-operator kuberay/kuberay-operator \
+	--namespace kuberay \
+	--create-namespace \
+	--version $(KUBERAY_VERSION) \
+	--values kuberay.yaml \
+	--timeout=$(TIMEOUT)
+
 sd-webui:
 	kubectl apply -f sd-webui-plain.yaml --timeout=$(TIMEOUT)
+
+text2img-app:
+	kubectl apply -f text2img-app.yaml --timeout=$(TIMEOUT)
 
 job-generator:
 	kubectl apply -f job-generator.yaml --timeout=$(TIMEOUT)
 
 
-.PHONY: datadog nfs nvidia-device-plugin dcgm sd-webui job-generator
+.PHONY: datadog nfs nvidia-device-plugin kuberay sd-webui text2img-app job-generator

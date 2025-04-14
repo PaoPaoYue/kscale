@@ -15,6 +15,7 @@ import (
 	"mime/multipart"
 	"path/filepath"
 	"sync"
+	"sync/atomic"
 	"time"
 )
 
@@ -27,15 +28,17 @@ type JobScheduler struct {
 	JobBatchSize      int
 
 	JobChan    chan Job
-	RetryChan  chan Job
 	OutputChan chan Job
 	StopChan   chan struct{}
 
-	Workers []*JobWorker
+	worker *JobWorker
 
 	mu            *sync.Mutex
 	jobTicker     *time.Ticker
 	metricsTicker *time.Ticker
+
+	queueSize  atomic.Int32
+	workerPods map[util.Endpoint]string
 }
 
 func NewJobScheduler(client *kubernetes.Clientset) *JobScheduler {
@@ -45,15 +48,16 @@ func NewJobScheduler(client *kubernetes.Clientset) *JobScheduler {
 		JobBatchName: "",
 		JobBatchSize: 0,
 		JobChan:      make(chan Job, config.C.MaxQueueSize),
-		RetryChan:    make(chan Job, config.C.MaxRetryQueueSize),
 		OutputChan:   make(chan Job),
 		StopChan:     make(chan struct{}),
-		Workers:      make([]*JobWorker, 0),
 		mu:           &sync.Mutex{},
 	}
 }
 
 func (js *JobScheduler) Start() {
+	ep, _ := util.NewEndpoint(config.C.APIEndpoint)
+	js.worker = NewJobWorker(ep, js)
+
 	// Get list of pods for the deployment
 	pods, err := js.client.CoreV1().Pods(config.C.Environment).List(context.Background(), metav1.ListOptions{
 		LabelSelector: fmt.Sprintf("app=%s", config.C.AppName),
@@ -65,7 +69,7 @@ func (js *JobScheduler) Start() {
 	// Loop through the pods and get IP addresses of running pods
 	for _, pod := range pods.Items {
 		if isPodReady(&pod) {
-			js.addWorker(&pod)
+			js.addWorkerPod(&pod)
 		}
 	}
 
@@ -80,11 +84,9 @@ func (js *JobScheduler) Stop() {
 		js.jobTicker.Stop()
 	}
 	time.Sleep(time.Duration(config.C.ShutdownPeriod) * time.Second) // wait for workers to finish
-	for _, worker := range js.Workers {
-		worker.Stop()
-	}
+
+	js.worker.Stop()
 	close(js.JobChan)
-	close(js.RetryChan)
 	close(js.OutputChan)
 	close(js.StopChan)
 	if js.metricsTicker != nil {
@@ -113,10 +115,11 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 		if job, ok := iter.Next(); ok {
 			for range js.jobTicker.C {
 				current := time.Now()
-				for current.Sub(js.JobBatchStartTIme) > time.Duration(job.RequestTime)*time.Second {
-					job.RequestTime = current.UnixMilli()
+				for current.Sub(js.JobBatchStartTIme) > job.RequestTime.Sub(time.UnixMilli(0)) {
+					job.RequestTime = current
 					metrics.Client.Count(metrics.JobRequest)
 					metrics.DatadogClient.Count(metrics.JobRequest)
+					js.queueSize.Add(1)
 					js.JobChan <- job
 					if job, ok = iter.Next(); !ok {
 						js.jobTicker.Stop()
@@ -150,11 +153,11 @@ func (js *JobScheduler) watchEndpoints() {
 			}
 
 			if !isPodReady(oldState) && isPodReady(newState) {
-				js.addWorker(newState)
+				js.addWorkerPod(newState)
 			}
 
 			if !isPodTerminating(oldState) && isPodTerminating(newState) {
-				js.removeWorker(newState)
+				js.removeWorkerPod(newState)
 			}
 		},
 		DeleteFunc: func(obj interface{}) {
@@ -170,7 +173,7 @@ func (js *JobScheduler) watchEndpoints() {
 				return
 			}
 
-			js.removeWorker(state)
+			js.removeWorkerPod(state)
 		},
 	})
 	if err != nil {
@@ -193,24 +196,20 @@ func (js *JobScheduler) watchMetrics() {
 		for range js.metricsTicker.C {
 			var workerNum int
 			var hostnames []string
-			for _, worker := range js.Workers {
-				if worker.Active {
-					workerNum++
-					for _, names := range hostnames {
-						if names != worker.Hostname {
-							hostnames = append(hostnames, worker.Hostname)
-						}
+			for _, hostname := range js.workerPods {
+				workerNum++
+				for _, name := range hostnames {
+					if name != hostname {
+						hostnames = append(hostnames, hostname)
 					}
 				}
 			}
 
-			metrics.Client.Gauge(metrics.QueueSize, float64(len(js.JobChan)))
-			metrics.Client.Gauge(metrics.RetryQueueSize, float64(len(js.RetryChan)))
+			metrics.Client.Gauge(metrics.QueueSize, float64(js.queueSize.Load()))
 			metrics.Client.Gauge(metrics.WorkerNum, float64(workerNum))
 			metrics.Client.Gauge(metrics.NodeNum, float64(len(hostnames)))
 
-			metrics.DatadogClient.Gauge(metrics.QueueSize, float64(len(js.JobChan)))
-			metrics.DatadogClient.Gauge(metrics.RetryQueueSize, float64(len(js.RetryChan)))
+			metrics.DatadogClient.Gauge(metrics.QueueSize, float64(js.queueSize.Load()))
 			metrics.DatadogClient.Gauge(metrics.WorkerNum, float64(workerNum))
 			metrics.DatadogClient.Gauge(metrics.NodeNum, float64(len(hostnames)))
 		}
@@ -223,6 +222,7 @@ func (js *JobScheduler) processOutput() {
 		defer file.Close()
 		var count int
 		for job := range js.OutputChan {
+			js.queueSize.Add(-1)
 			AppendCSV(file, job)
 			count++
 			if count >= js.JobBatchSize {
@@ -238,28 +238,25 @@ func (js *JobScheduler) processOutput() {
 	}()
 }
 
-func (js *JobScheduler) addWorker(pod *v1.Pod) {
+func (js *JobScheduler) addWorkerPod(pod *v1.Pod) {
 	js.mu.Lock()
 	defer js.mu.Unlock()
 	ep, hostname, ok := extractPodSpec(pod)
 	if ok {
 		slog.Info("Adding pod Endpoint", "Name", pod.Name, "Host", ep.Host, "Port", ep.Port, "hostname", hostname)
-		worker := NewJobWorker(ep, hostname, js)
-		worker.Start()
-		js.Workers = append(js.Workers, worker)
+		js.workerPods[ep] = hostname
 	}
 }
 
-func (js *JobScheduler) removeWorker(pod *v1.Pod) {
+func (js *JobScheduler) removeWorkerPod(pod *v1.Pod) {
 	js.mu.Lock()
 	defer js.mu.Unlock()
 	ep, hostname, ok := extractPodSpec(pod)
 	if ok {
-		for i, worker := range js.Workers {
-			if worker.Endpoint == ep {
+		for iep, _ := range js.workerPods {
+			if iep == ep {
 				slog.Info("Removing pod Endpoint", "Name", pod.Name, "Host", ep.Host, "Port", ep.Port, "hostname", hostname)
-				worker.Stop()
-				js.Workers = append(js.Workers[:i], js.Workers[i+1:]...)
+				delete(js.workerPods, ep)
 				break
 			}
 		}

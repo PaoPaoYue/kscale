@@ -2,15 +2,17 @@ package core
 
 import (
 	"github.com/paopaoyue/kscale/job-genrator/api"
+	"time"
 )
 
 type Job struct {
 	Id          string
+	Success     bool
 	Param       api.GenerateRequestParam
 	Retry       int
-	RequestTime int64
-	StartTime   int64
-	EndTime     int64
+	RequestTime time.Time
+	EndTime     time.Time
+	Duration    time.Duration
 }
 
 func NewJob(id string, param api.GenerateRequestParam) *Job {

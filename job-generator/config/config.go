@@ -11,7 +11,7 @@ var C Config
 
 type Config struct {
 	Port                       int
-	ModelName                  string
+	APIEndpoint                string
 	Environment                string
 	AppName                    string
 	OutputFilePath             string
@@ -34,7 +34,7 @@ func LoadConfig() {
 
 	C = Config{
 		Port:                       getEnvInt("PORT", 8080),
-		ModelName:                  getEnv("MODEL_NAME", "v1-5-pruned-emaonly.ckpt"),
+		APIEndpoint:                getEnv("API_ENDPOINT", "svc-api:8000"),
 		Environment:                getEnv("ENVIRONMENT", "ypp"),
 		AppName:                    getEnv("APP_NAME", "sd-webui"),
 		OutputFilePath:             getEnv("OUTPUT_FILE_PATH", "/tmp/output"),
@@ -46,7 +46,7 @@ func LoadConfig() {
 		MaxQueueSize:               getEnvInt("MAX_QUEUE_SIZE", 60000),
 		MaxRetryQueueSize:          getEnvInt("MAX_RETRY_QUEUE_SIZE", 1000),
 		ShutdownPeriod:             getEnvInt("SHUTDOWN_PERIOD", 2),
-		APITimeout:                 getEnvInt("API_TIMEOUT", 60),
+		APITimeout:                 getEnvInt("API_TIMEOUT", 3600),
 	}
 
 	_ = os.MkdirAll(C.OutputFilePath, os.ModePerm)

@@ -1,5 +1,3 @@
 . ./env.sh
-curl -X POST "$API_ENDPOINT/sdapi/v1/txt2img" \
-     -H "Content-Type: application/json" \
-     -d '{"prompt": "a mountain", "sampler_index": "DPM++ 2M", "scheduler": "Automatic", "steps": 20, "cfg_scale": 7.5, "width": 512, "height": 512}' \
-     | jq -r '.images[0]' | base64 -d > output.png
+curl "$API_ENDPOINT/generate?index=0&prompt=A%20Mountain&steps=20&scale=7&sampler_index=DPM%2B%2B%202M%20Karras&width=512&height=512" \
+     | jq -r '.image' | base64 -d > output.png

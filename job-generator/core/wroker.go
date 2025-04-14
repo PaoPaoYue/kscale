@@ -1,11 +1,11 @@
 package core
 
 import (
-	"github.com/nakabonne/tstorage"
 	"github.com/paopaoyue/kscale/job-genrator/api"
 	"github.com/paopaoyue/kscale/job-genrator/config"
 	"github.com/paopaoyue/kscale/job-genrator/metrics"
 	"github.com/paopaoyue/kscale/job-genrator/util"
+	"log/slog"
 	"time"
 )
 
@@ -18,27 +18,14 @@ type JobWorker struct {
 	JobScheduler *JobScheduler
 
 	stopChan chan struct{}
-
-	metricsTags        []tstorage.Label
-	dataDogMetricsTags []string
 }
 
-func NewJobWorker(endpoint util.Endpoint, hostname string, jobScheduler *JobScheduler) *JobWorker {
+func NewJobWorker(endpoint util.Endpoint, jobScheduler *JobScheduler) *JobWorker {
 	return &JobWorker{
 		Endpoint: endpoint,
-		Hostname: hostname,
 
 		JobScheduler: jobScheduler,
 		stopChan:     make(chan struct{}),
-
-		metricsTags: []tstorage.Label{
-			{Name: "hostname", Value: hostname},
-			{Name: "endpoint", Value: endpoint.String()},
-		},
-		dataDogMetricsTags: []string{
-			string(metrics.NewTag("hostname", hostname)),
-			string(metrics.NewTag("endpoint", endpoint.String())),
-		},
 	}
 }
 
@@ -56,12 +43,7 @@ func (jw *JobWorker) Start() {
 					if !ok {
 						return
 					}
-					jw.processJob(job)
-				case job, ok := <-jw.JobScheduler.RetryChan:
-					if !ok {
-						return
-					}
-					jw.processJob(job)
+					go jw.processJob(job)
 				case <-jw.stopChan:
 					return
 				}
@@ -75,37 +57,37 @@ func (jw *JobWorker) Stop() {
 }
 
 func (jw *JobWorker) processJob(job Job) {
-	t1 := time.Now()
-	job.StartTime = t1.UnixMilli()
+	for ; job.Retry < config.C.MaxRetryCount; job.Retry++ {
+		duration, err := api.GenerateImage("http://"+jw.Endpoint.String(), job.Param, job.Id)
 
-	err := api.GenerateImage("http://"+jw.Endpoint.String(), job.Param, job.Id)
-
-	if err != nil {
-		if job.Retry < config.C.MaxRetryCount {
-			job.Retry++
-			jw.JobScheduler.RetryChan <- job
-			return
+		if err != nil {
+			slog.Error("Error generating image, retrying...", "err", err, "jobId", job.Id, "retry", job.Retry+1)
 		} else {
-
-			metrics.Client.Count(metrics.JobFailure, jw.metricsTags...)
-			metrics.DatadogClient.Count(metrics.JobFailure, jw.dataDogMetricsTags...)
-
-			jw.JobScheduler.OutputChan <- job
-			return
+			job.Success = true
+			job.EndTime = time.Now()
+			job.Duration = duration
+			break
 		}
 	}
+	if job.Retry >= config.C.MaxRetryCount {
+		slog.Error("Error generating image, max retries reached", "jobId", job.Id)
+		metrics.Client.Count(metrics.JobFailure)
+		metrics.DatadogClient.Count(metrics.JobFailure)
 
-	t2 := time.Now()
-	job.EndTime = t2.UnixMilli()
+		job.Success = false
+		job.EndTime = time.Now()
+		jw.JobScheduler.OutputChan <- job
+		return
+	}
 
-	metrics.Client.Count(metrics.JobSuccess, jw.metricsTags...)
-	metrics.DatadogClient.Count(metrics.JobSuccess, jw.dataDogMetricsTags...)
+	metrics.Client.Count(metrics.JobSuccess)
+	metrics.DatadogClient.Count(metrics.JobSuccess)
 
-	metrics.Client.Time(metrics.JobDuration, t2.Sub(t1), jw.metricsTags...)
-	metrics.DatadogClient.Time(metrics.JobDuration, t2.Sub(t1), jw.dataDogMetricsTags...)
+	metrics.Client.Time(metrics.JobDuration, job.Duration)
+	metrics.DatadogClient.Time(metrics.JobDuration, job.Duration)
 
-	metrics.Client.Time(metrics.JobLatency, t2.Sub(time.UnixMilli(job.RequestTime)), jw.metricsTags...)
-	metrics.DatadogClient.Time(metrics.JobLatency, t2.Sub(time.UnixMilli(job.RequestTime)), jw.dataDogMetricsTags...)
+	metrics.Client.Time(metrics.JobLatency, job.EndTime.Sub(job.RequestTime))
+	metrics.DatadogClient.Time(metrics.JobLatency, job.EndTime.Sub(job.RequestTime))
 
 	jw.JobScheduler.OutputChan <- job
 }

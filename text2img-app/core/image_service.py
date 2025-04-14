@@ -8,7 +8,6 @@ from core.image_generator import ImageGenerator
 app = FastAPI()
 
 @serve.deployment(
-    num_replicas="auto",
     ray_actor_options={
         "num_gpus": 1,
     },

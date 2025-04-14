@@ -2,32 +2,37 @@ apiVersion: ray.io/v1alpha1
 kind: RayService
 metadata:
   name: text2img-app
+  namespace: ypp
 spec:
   serviceUnhealthySecondThreshold: 300
   deploymentUnhealthySecondThreshold: 300
   serveConfigV2: |
     applications:
       - name: text2img
-        import_path: core.image_service:entrypoint
-        runtime_env: 
-          working_dir: /serve-app
+        import_path: core.image_service:entrypoint  # Python 模块路径和绑定函数
+        runtime_env:
           env_vars:
-            "MODEL_PATH": "/data/models/v1-5-pruned-emaonly.safetensors"
+            MODEL_PATH: "/data/models/Stable-diffusion/v1-5-pruned-emaonly.safetensors"  # 模型路径
+
         deployments:
-          - name: ImageService
-            max_ongoing_requests:5
-            autoscaling_config：
-              target_ongoing_requests:2
-              upscale_delay_s:10
-              downscale_delay_s:10
-              metrics_interval_s:2
+          - name: ImageService                      # 必须与 Python 中定义的类名一致
+            max_ongoing_requests: 2                 # 并发请求数上限
+            autoscaling_config:
+              target_ongoing_requests: 2            # 每个副本理想的并发数
+              min_replicas: 1
+              max_replicas: 2
+              upscale_delay_s: 10                   # 扩容延迟
+              downscale_delay_s: 10                 # 缩容延迟
+              metrics_interval_s: 2                 # 采样间隔
             ray_actor_options:
-                num_gpus: 1
+              num_gpus: 1                           # 每个副本使用 1 个 GPU
   rayClusterConfig:
     rayVersion: '2.44.1'
+    enableInTreeAutoscaling: true
     headGroupSpec:
       rayStartParams:
         dashboard-host: '0.0.0.0'
+        num-cpus: "0"
       template:
         spec:
           containers:
@@ -51,7 +56,9 @@ spec:
         minReplicas: 1
         maxReplicas: 2
         groupName: worker-group
-        rayStartParams: {}
+        rayStartParams:
+          num-cpus: "1" 
+          num-gpus: "1"
         template:
           spec:
             containers:
@@ -66,3 +73,26 @@ spec:
                     nvidia.com/gpu: 1
                   requests:
                     nvidia.com/gpu: 1
+                volumeMounts:
+                  - name: models-volume
+                    mountPath: /data
+                    subPath: data
+            volumes:
+              - name: models-volume
+                persistentVolumeClaim:
+                  claimName: nfs-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ray-service
+  namespace: ypp
+spec:
+  type: NodePort
+  selector:
+    ray.io/node-type: head
+  ports:
+    - protocol: TCP
+      port: 8265
+      targetPort: 8265
+      nodePort: 30021

@@ -7,6 +7,7 @@ import (
 	"mime/multipart"
 	"os"
 	"strconv"
+	"time"
 )
 
 type CSVIterator struct {
@@ -46,11 +47,10 @@ func (it *CSVIterator) Next() (Job, bool) {
 			Steps:        parseInt(record[2], 20),
 			Scale:        parseFloat(record[3], 7.0),
 			SamplerIndex: convertToSamplerIndex(record[4]),
-			Scheduler:    "Automatic",
 			Width:        parseInt(record[5], 512),
 			Height:       parseInt(record[6], 512),
 		},
-		RequestTime: int64(parseInt(record[8], 0)),
+		RequestTime: time.Unix(int64(parseInt(record[8], 0)), 0),
 	}, true
 }
 
@@ -73,7 +73,6 @@ func OpenCSVAndWriteHeader(csvFilePath string) *os.File {
 		"Success",
 		"Retry",
 		"RequestTime",
-		"StartTime",
 		"EndTime",
 		"Duration",
 		"Latency",
@@ -90,13 +89,12 @@ func AppendCSV(file *os.File, job Job) {
 
 	err := writer.Write([]string{
 		job.Id,
-		strconv.FormatBool(job.EndTime > 0),
+		strconv.FormatBool(job.Success),
 		strconv.Itoa(job.Retry),
-		strconv.FormatInt(job.RequestTime, 10),
-		strconv.FormatInt(job.StartTime, 10),
-		strconv.FormatInt(job.EndTime, 10),
-		strconv.FormatInt(job.EndTime-job.StartTime, 10),
-		strconv.FormatInt(job.EndTime-job.RequestTime, 10),
+		formatTimeWithMillis(job.RequestTime),
+		formatTimeWithMillis(job.EndTime),
+		strconv.FormatInt(job.Duration.Milliseconds(), 10),
+		strconv.FormatInt(job.EndTime.Sub(job.RequestTime).Milliseconds(), 10),
 	})
 	if err != nil {
 		slog.Error("Error writing CSV row", "err", err)
@@ -115,6 +113,10 @@ func parseFloat(value string, defaultValue float64) float64 {
 		return v
 	}
 	return defaultValue
+}
+
+func formatTimeWithMillis(t time.Time) string {
+	return t.Format("2006-01-02 15:04:05.000")
 }
 
 func convertToSamplerIndex(value string) string {

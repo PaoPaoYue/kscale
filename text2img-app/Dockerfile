@@ -1,4 +1,4 @@
-FROM rayproject/ray:2.9.0-gpu
+FROM rayproject/ray:2.9.0
 
 RUN pip install torch diffusers transformers xformers accelerate
 

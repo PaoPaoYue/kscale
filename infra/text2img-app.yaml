@@ -19,25 +19,25 @@ spec:
             max_ongoing_requests: 2                 # 并发请求数上限
             autoscaling_config:
               target_ongoing_requests: 2            # 每个副本理想的并发数
-              min_replicas: 1
+              min_replicas: 2
               max_replicas: 2
               upscale_delay_s: 10                   # 扩容延迟
               downscale_delay_s: 10                 # 缩容延迟
               metrics_interval_s: 2                 # 采样间隔
             ray_actor_options:
-              num_gpus: 1                           # 每个副本使用 1 个 GPU
+              num_gpus: 1                      # 每个副本使用的 CPU 核心数
   rayClusterConfig:
     rayVersion: '2.44.1'
     enableInTreeAutoscaling: true
     headGroupSpec:
       rayStartParams:
         dashboard-host: '0.0.0.0'
-        num-cpus: "0"
+        num-cpus: '0' 
       template:
         spec:
           containers:
             - name: ray-head
-              image: py846260131/kscale-text2img-app:01
+              image: py846260131/kscale-text2img-app:03
               ports:
                 - containerPort: 6379
                   name: gcs-server
@@ -56,31 +56,41 @@ spec:
         minReplicas: 1
         maxReplicas: 2
         groupName: worker-group
-        rayStartParams:
-          num-cpus: "1" 
-          num-gpus: "1"
+        rayStartParams: 
+          num-gpus: '1'
         template:
+          metadata:
+            labels:
+              app: text2img
           spec:
+            hostIPC: true
             containers:
               - name: ray-worker
-                image: py846260131/kscale-text2img-app:01
+                image: py846260131/kscale-text2img-app:03
                 lifecycle:
                   preStop:
                     exec:
                       command: ["/bin/sh", "-c", "ray stop"]
                 resources:
                   limits:
-                    nvidia.com/gpu: 1
+                    cpu: 4
+                    nvidia.com/gpu.shared: 1
                   requests:
-                    nvidia.com/gpu: 1
+                    cpu: '500m'
+                    nvidia.com/gpu.shared: 1
                 volumeMounts:
                   - name: models-volume
                     mountPath: /data
                     subPath: data
+                  - mountPath: /dev/shm
+                    name: dshm
             volumes:
               - name: models-volume
                 persistentVolumeClaim:
                   claimName: nfs-pvc
+              - name: dshm
+                emptyDir:
+                  medium: Memory
 ---
 apiVersion: v1
 kind: Service
@@ -96,3 +106,9 @@ spec:
       port: 8265
       targetPort: 8265
       nodePort: 30021
+      name: dashboard
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: 30020
+      name: serve

@@ -34,9 +34,9 @@ func LoadConfig() {
 
 	C = Config{
 		Port:                       getEnvInt("PORT", 8080),
-		APIEndpoint:                getEnv("API_ENDPOINT", "svc-api:8000"),
+		APIEndpoint:                getEnv("API_ENDPOINT", "ray-service:8000"),
 		Environment:                getEnv("ENVIRONMENT", "ypp"),
-		AppName:                    getEnv("APP_NAME", "sd-webui"),
+		AppName:                    getEnv("APP_NAME", "text2img"),
 		OutputFilePath:             getEnv("OUTPUT_FILE_PATH", "/tmp/output"),
 		MetricsStorePath:           getEnv("METRICS_STORE_PATH", "/tmp/metrics"),
 		ImageStorePath:             getEnv("IMAGE_STORE_PATH", "/tmp/image"),

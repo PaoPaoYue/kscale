@@ -33,12 +33,7 @@ def run_local_test():
     image.save("output/generated_image.png")
     print(f"✅ Image saved as 'generated_image.png' in {duration:.4f} seconds.")
 
-
-def run_ray_serve():
-    serve.run(entrypoint, route_prefix="/")
-
-    time.sleep(1)
-
+def ray_serve_test():
     response = requests.get(
         "http://127.0.0.1:8000/generate",
         params={
@@ -63,9 +58,19 @@ def run_ray_serve():
     else:
         print("❌ Request failed:", response.status_code, response.text)
 
+
+def run_ray_serve():
+    serve.run(entrypoint, route_prefix="/")
+
+
 if __name__ == "__main__": 
     # set MODEL_PATH and other env vars if needed
     if "serve" in sys.argv:
         run_ray_serve()
-    else:
+        if "test" in sys.argv:
+            time.sleep(1)
+            ray_serve_test()
+        while True:
+            time.sleep(3600)
+    elif "test" in sys.argv:
         run_local_test()

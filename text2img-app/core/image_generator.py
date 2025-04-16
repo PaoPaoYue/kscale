@@ -30,7 +30,7 @@ class ImageGenerator:
         start_time = time.time()
         self.pipe = StableDiffusionPipeline.from_single_file(
             self.model_path,
-            torch_dtype=torch.float32,
+            torch_dtype=torch.float16,
             use_safetensors=True,
         )
         self.pipe.set_progress_bar_config(disable=True)

@@ -20,9 +20,10 @@ type JobWorker struct {
 	stopChan chan struct{}
 }
 
-func NewJobWorker(endpoint util.Endpoint, jobScheduler *JobScheduler) *JobWorker {
+func NewJobWorker(endpoint util.Endpoint, hostname string, jobScheduler *JobScheduler) *JobWorker {
 	return &JobWorker{
 		Endpoint: endpoint,
+		Hostname: hostname,
 
 		JobScheduler: jobScheduler,
 		stopChan:     make(chan struct{}),
@@ -43,15 +44,7 @@ func (jw *JobWorker) Start() {
 					if !ok {
 						return
 					}
-					go func() {
-						// catch panic
-						defer func() {
-							if r := recover(); r != nil {
-								slog.Error("Worker recovered from panic", "jobId", job.Id, "err", r)
-							}
-						}()
-						jw.processJob(job)
-					}()
+					jw.processJob(job)
 				case <-jw.stopChan:
 					return
 				}

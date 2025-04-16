@@ -43,6 +43,8 @@ func GenerateImage(apiURL string, params GenerateRequestParam, id string) (time.
 		id,
 	)
 
+	slog.Info("Generating image", "url", reqURL)
+
 	req, err := http.NewRequest("GET", reqURL, nil)
 	if err != nil {
 		slog.Error("Error creating request", "error", err)

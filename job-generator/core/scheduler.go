@@ -58,6 +58,7 @@ func NewJobScheduler(client *kubernetes.Clientset) *JobScheduler {
 func (js *JobScheduler) Start() {
 	ep, _ := util.NewEndpoint(config.C.APIEndpoint)
 	js.worker = NewJobWorker(ep, js)
+	js.worker.Start()
 
 	// Get list of pods for the deployment
 	pods, err := js.client.CoreV1().Pods(config.C.Environment).List(context.Background(), metav1.ListOptions{
@@ -123,7 +124,6 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 		if job, ok := iter.Next(); ok {
 			for range js.jobTicker.C {
 				current := time.Now()
-				slog.Info("Job scheduler tick", "current", current.Sub(js.JobBatchStartTIme), "requestTime", job.RequestTime.Sub(time.UnixMilli(0)))
 				for current.Sub(js.JobBatchStartTIme) > job.RequestTime.Sub(time.UnixMilli(0)) {
 					job.RequestTime = current
 					metrics.Client.Count(metrics.JobRequest)

@@ -104,6 +104,13 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 		return err
 	}
 	go func() {
+		// catch panic
+		defer func() {
+			if r := recover(); r != nil {
+				slog.Error("Ticker recovered from panic", "error", r)
+			}
+		}()
+
 		js.Active = true
 		js.JobBatchName = jobBatchName
 		js.JobBatchSize = iter.Size()
@@ -116,6 +123,7 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 		if job, ok := iter.Next(); ok {
 			for range js.jobTicker.C {
 				current := time.Now()
+				slog.Info("Job scheduler tick", "current", current.Sub(js.JobBatchStartTIme), "requestTime", job.RequestTime.Sub(time.UnixMilli(0)))
 				for current.Sub(js.JobBatchStartTIme) > job.RequestTime.Sub(time.UnixMilli(0)) {
 					job.RequestTime = current
 					metrics.Client.Count(metrics.JobRequest)

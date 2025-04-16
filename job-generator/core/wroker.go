@@ -47,7 +47,7 @@ func (jw *JobWorker) Start() {
 						// catch panic
 						defer func() {
 							if r := recover(); r != nil {
-								slog.Error("Recovered from panic", "jobId", job.Id, "err", r)
+								slog.Error("Worker recovered from panic", "jobId", job.Id, "err", r)
 							}
 						}()
 						jw.processJob(job)

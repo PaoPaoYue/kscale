@@ -16,7 +16,7 @@ app = FastAPI()
 @serve.ingress(app)
 class ImageService:
     def __init__(self):
-        # self.generator = ImageGenerator()
+        self.generator = ImageGenerator()
         self.lock = asyncio.Lock()  # 创建一个锁，确保任务串行执行
         self.active_requests = 0
 

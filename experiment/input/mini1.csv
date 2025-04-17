@@ -1,0 +1,10 @@
+id,prompt,step,cfg,sampler,width,height,token_count,timestamp
+22782,FurAffinity,20,7.0,8,512,512,4,0
+41291,"a [ gothic ]!, old, haunted, [ haunting ]! a forest [ beautiful ]!, 2 d realistic gothic style [ photorealism ]! 3 d gothic realistic art 3 d creepy ",20,7.0,8,512,512,40,0
+54439,"super - intelligent robot with kind eyes portrait, grant wood, pj crook, edward hopper, oil on canvas ",50,7.0,8,512,512,22,0
+42816,"close photographic portrait of a stunningly beautiful english renaissance female in soft dreamy light at sunset, beside the river, soft focus, contemporary fashion shoot, hasselblad nikon, in a denis villeneuve and tim burton movie, by edward robert hughes, annie leibovitz and steve mccurry, david lazar, jimmy nelsson, extremely detailed, breathtaking, hyperrealistic, perfect face ",50,15.0,8,512,512,84,0
+49615,"face dripping with blue goo hyperrealistic portrait, photo realistic, poster, artstation, volumetric lighting, digital art, very detailed face by magali villeneuve ",20,7.0,8,512,512,33,0
+15545,"a portrait of a cute young female Roman Centurion, Roman setting, vivid colors, soft lighting, atmospheric, cinematic, moody, in the style of Ilya Kuvshinov and Range Murata, Krenz Cushart, rule of thirds, oil on canvas, 8k",20,7.0,8,512,768,59,0
+20839,Tom Cruise playing Daniel Plainview in There Will Be Blood,20,7.0,8,512,512,11,0
+9566,"a face portrait of a young female vampire from skyrim, fantasy setting, beautiful face, dark colors, scary lighting, atmospheric, cinematic, moody, in the style of diego koi, gina heyer, luiz escanuela, art by alyssa monk, hyperrealism, rule of thirds, golden ratio, oil on canvas, 8 k ",32,10.0,8,704,960,71,0
+4086,"soviet propaganda of robert mueller holding a hammer and sickle in realistic collective farm, by j. c. leyendecker, bosch, and beksinski ",20,7.0,8,512,512,32,0

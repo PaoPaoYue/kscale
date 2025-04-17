@@ -1,4 +1,4 @@
-name: Zip Specific Folder
+name: Build Text2Img APP ZIP
 
 on:
   workflow_dispatch: {}

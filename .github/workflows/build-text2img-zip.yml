@@ -18,6 +18,7 @@ jobs:
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v2'
 
+
       - name: Zip project
         run: |
           zip -r text2img-app.zip text2img -x '*__pycache__*' 'output'
@@ -27,3 +28,4 @@ jobs:
           BUCKET_NAME="kscale-text2img-app"
           OBJECT_NAME="deploy.zip"
           gsutil cp text2img-app.zip gs://$BUCKET_NAME/$OBJECT_NAME
+

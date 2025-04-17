@@ -4,7 +4,6 @@ import base64
 import requests
 
 from ray import serve
-from dotenv import load_dotenv
 
 from core.image_generator import ImageGenerator
 from core.image_service import entrypoint

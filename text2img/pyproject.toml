@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "text2img-app"
+name = "text2img"
 version = "0.1.0"
 description = ""
 authors = ["PaoPaoYue <846260131@qq.com>"]
 readme = "README.md"
-packages = [{include = "text2img_app"}]
+packages = [{include = "text2img"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

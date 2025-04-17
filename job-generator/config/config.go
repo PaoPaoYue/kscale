@@ -21,7 +21,6 @@ type Config struct {
 	MaxQueueSize               int
 	MaxRetryQueueSize          int
 	ShutdownPeriod             int // in seconds
-	SaveImage                  bool
 	ImageStorePath             string
 	APITimeout                 int // in seconds
 }
@@ -40,7 +39,6 @@ func LoadConfig() {
 		OutputFilePath:             getEnv("OUTPUT_FILE_PATH", "/tmp/output"),
 		MetricsStorePath:           getEnv("METRICS_STORE_PATH", "/tmp/metrics"),
 		ImageStorePath:             getEnv("IMAGE_STORE_PATH", "/tmp/image"),
-		SaveImage:                  getEnv("SAVE_IMAGE", "false") == "true",
 		MaxRetryCount:              getEnvInt("MAX_RETRY_COUNT", 1),
 		MetricsAggregationInterval: getEnvInt("METRICS_AGGREGATION_INTERVAL", 1),
 		MaxQueueSize:               getEnvInt("MAX_QUEUE_SIZE", 60000),

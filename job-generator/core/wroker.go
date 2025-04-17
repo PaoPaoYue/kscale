@@ -66,7 +66,6 @@ func (jw *JobWorker) Stop() {
 
 func (jw *JobWorker) processJob(job Job) {
 	for ; job.Retry < config.C.MaxRetryCount; job.Retry++ {
-		slog.Info("Processing job", "jobId", job.Id, "retry", job.Retry)
 		duration, err := api.GenerateImage("http://"+jw.Endpoint.String(), job.Param, job.Id)
 
 		if err != nil {

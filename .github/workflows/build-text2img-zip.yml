@@ -1,0 +1,28 @@
+name: Build Text2Img APP ZIP
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  zip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install gcloud CLI
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          version: 'latest'
+          service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          export_default_credentials: true
+
+      - name: Zip project
+        run: |
+          zip -r text2img-app.zip text2img -x '*__pycache__*' 'output'
+
+      - name: Upload to GCS
+        run: |
+          BUCKET_NAME="kscale-text2img-app"
+          OBJECT_NAME="deploy.zip"
+          gsutil cp text2img-app.zip gs://$BUCKET_NAME/$OBJECT_NAME

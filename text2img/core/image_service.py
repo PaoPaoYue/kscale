@@ -46,9 +46,9 @@ class ImageService:
                 # image.save(buffer, format="PNG")
                 # encoded_image = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
-                # return {
-                #     "image": encoded_image,
-                #     "duration": round(duration, 4),
+                return {
+                    "image": "",
+                    "duration": 1,
                 }
         finally:
             self.active_requests -= 1

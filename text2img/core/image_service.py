@@ -37,18 +37,18 @@ class ImageService:
         try:
             async with self.lock:
                 await asyncio.sleep(1)  # Simulate some processing time
-                # image, duration = self.generator.generate_image(prompt, steps, cfg_scale, sampler_index, width, height)
+                image, duration = self.generator.generate_image(prompt, steps, cfg_scale, sampler_index, width, height)
 
-                # print(f"Image {id} generation completed in {duration:.4f} seconds.")
+                print(f"Image {id} generation completed in {duration:.4f} seconds.")
 
-                # # 转 base64
-                # buffer = io.BytesIO()
-                # image.save(buffer, format="PNG")
-                # encoded_image = base64.b64encode(buffer.getvalue()).decode("utf-8")
+                # 转 base64
+                buffer = io.BytesIO()
+                image.save(buffer, format="PNG")
+                encoded_image = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
                 return {
                     "image": "",
-                    "duration": 1,
+                    "duration": duration,
                 }
         finally:
             self.active_requests -= 1

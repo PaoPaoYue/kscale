@@ -52,6 +52,7 @@ func NewJobScheduler(client *kubernetes.Clientset) *JobScheduler {
 }
 
 func (js *JobScheduler) Start() {
+	slog.Info("Looking for pods in the cluster", "appName", config.C.AppName)
 	// Get list of pods for the deployment
 	pods, err := js.client.CoreV1().Pods(config.C.Environment).List(context.Background(), metav1.ListOptions{
 		LabelSelector: fmt.Sprintf("app=%s", config.C.AppName),
@@ -64,6 +65,8 @@ func (js *JobScheduler) Start() {
 	for _, pod := range pods.Items {
 		if isPodReady(&pod) {
 			js.addWorker(&pod)
+		} else {
+			slog.Warn("Pod not ready", "podName", pod.Name)
 		}
 	}
 

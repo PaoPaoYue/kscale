@@ -59,7 +59,7 @@ def ray_serve_test():
 
 
 def run_ray_serve():
-    serve.run(entrypoint, route_prefix="/")
+    serve.run(entrypoint, route_prefix="/", host="0.0.0.0", port=8000)
 
 
 if __name__ == "__main__": 

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: text2img
-        image: py846260131/kscale-text2img-app:04
+        image: py846260131/kscale-text2img-app:mps-01
         command: [ "python", "main.py", "serve" ]
         resources:
           limits:

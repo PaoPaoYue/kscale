@@ -15,7 +15,7 @@ jobs:
           zip -r text2img-app.zip text2img-app
 
       - name: Upload ZIP as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: text2img-app-zip
           path: text2img-app.zip

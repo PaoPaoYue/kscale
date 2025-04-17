@@ -9,9 +9,9 @@ spec:
   serveConfigV2: |
     applications:
       - name: text2img
-        import_path: "text2img.image_service:entrypoint" # Python 模块路径和绑定函数
+        import_path: "core.image_service:entrypoint" # Python 模块路径和绑定函数
         runtime_env:
-          working_dir: "https://codeload.github.com/PaoPaoYue/kscale/zip/refs/heads/latency-test"
+          working_dir: "gs://kscale-text2img-app/deploy.zip"
           env_vars:
             MODEL_PATH: "/data/models/Stable-diffusion/v1-5-pruned-emaonly.safetensors"  # 模型路径
 
@@ -38,7 +38,7 @@ spec:
         spec:
           containers:
             - name: ray-head
-              image: py846260131/kscale-text2img-app:04
+              image: py846260131/kscale-text2img-app:06
               ports:
                 - containerPort: 6379
                   name: gcs-server
@@ -67,7 +67,7 @@ spec:
             hostIPC: true
             containers:
               - name: ray-worker
-                image: py846260131/kscale-text2img-app:04
+                image: py846260131/kscale-text2img-app:06
                 lifecycle:
                   preStop:
                     exec:

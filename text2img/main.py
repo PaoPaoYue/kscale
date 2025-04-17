@@ -4,10 +4,9 @@ import base64
 import requests
 
 from ray import serve
-from dotenv import load_dotenv
 
-from image_generator import ImageGenerator
-from image_service import entrypoint
+from core.image_generator import ImageGenerator
+from core.image_service import entrypoint
 
 
 def run_local_test():

@@ -4,7 +4,7 @@ import io
 from fastapi import FastAPI, Query
 from ray import serve
 
-from core.image_generator import ImageGenerator
+from image_generator import ImageGenerator
 
 app = FastAPI()
 

@@ -1,0 +1,21 @@
+name: Zip Specific Folder
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  zip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Zip target folder
+        run: |
+          zip -r text2img-app.zip text2img-app
+
+      - name: Upload ZIP as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: text2img-app-zip
+          path: text2img-app.zip

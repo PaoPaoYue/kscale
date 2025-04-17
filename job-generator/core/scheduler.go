@@ -2,6 +2,7 @@ package core
 
 import (
 	"context"
+	"fmt"
 	"github.com/paopaoyue/kscale/job-genrator/config"
 	"github.com/paopaoyue/kscale/job-genrator/metrics"
 	"github.com/paopaoyue/kscale/job-genrator/util"
@@ -51,9 +52,10 @@ func NewJobScheduler(client *kubernetes.Clientset) *JobScheduler {
 }
 
 func (js *JobScheduler) Start() {
-	slog.Info("Looking for pods in the cluster", "appName", config.C.AppName, "namespace", config.C.Environment)
 	// Get list of pods for the deployment
-	pods, err := js.client.CoreV1().Pods(config.C.Environment).List(context.Background(), metav1.ListOptions{})
+	pods, err := js.client.CoreV1().Pods(config.C.Environment).List(context.Background(), metav1.ListOptions{
+		LabelSelector: fmt.Sprintf("app=%s", config.C.AppName),
+	})
 	if err != nil {
 		slog.Error("Failed to list pods using k8s api", "err", err.Error())
 	}
@@ -62,8 +64,6 @@ func (js *JobScheduler) Start() {
 	for _, pod := range pods.Items {
 		if isPodReady(&pod) {
 			js.addWorker(&pod)
-		} else {
-			slog.Warn("Pod not ready", "podName", pod.Name)
 		}
 	}
 

@@ -9,8 +9,9 @@ spec:
   serveConfigV2: |
     applications:
       - name: text2img
-        import_path: core.image_service:entrypoint  # Python 模块路径和绑定函数
+        import_path: "text2img.image_service:entrypoint" # Python 模块路径和绑定函数
         runtime_env:
+          working_dir: "https://codeload.github.com/PaoPaoYue/kscale/zip/refs/heads/latency-test"
           env_vars:
             MODEL_PATH: "/data/models/Stable-diffusion/v1-5-pruned-emaonly.safetensors"  # 模型路径
 
@@ -74,10 +75,10 @@ spec:
                 resources:
                   limits:
                     cpu: 4
-                    nvidia.com/gpu.shared: 1
+                    nvidia.com/gpu: 1
                   requests:
                     cpu: '500m'
-                    nvidia.com/gpu.shared: 1
+                    nvidia.com/gpu: 1
                 volumeMounts:
                   - name: models-volume
                     mountPath: /data

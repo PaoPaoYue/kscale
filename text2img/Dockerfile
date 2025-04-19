@@ -1,9 +1,4 @@
-FROM rayproject/ray:2.9.0
+FROM rayproject/ray:2.44.1
 
-RUN pip install torch diffusers transformers xformers accelerate
+RUN pip install torch diffusers transformers xformers accelerate smart_open google-cloud-storage boto3
 
-WORKDIR /app
-
-COPY . /app
-
-CMD [ "python", "main.py", "serve" ]

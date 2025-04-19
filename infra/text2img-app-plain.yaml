@@ -6,7 +6,7 @@ metadata:
   labels:
     app: text2img
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: text2img
@@ -17,8 +17,14 @@ spec:
     spec:
       containers:
       - name: text2img
-        image: py846260131/kscale-text2img-app:mps-01
+        image: py846260131/kscale-text2img-app:mps-02
         command: [ "python", "main.py", "serve" ]
+        ports:
+          - containerPort: 8000
+            name: serve
+        env:
+          - name: MODEL_PATH
+            value: "/data/models/Stable-diffusion/v1-5-pruned-emaonly.safetensors"
         resources:
           limits:
             cpu: 4
@@ -26,6 +32,14 @@ spec:
           requests:
             cpu: '500m'
             nvidia.com/gpu.shared: 1
+        volumeMounts:
+          - name: models-volume
+            mountPath: /data
+            subPath: data
+      volumes:
+        - name: models-volume
+          persistentVolumeClaim:
+            claimName: nfs-pvc
 ---
 apiVersion: v1
 kind: Service

@@ -7,6 +7,6 @@ config:
           renameByDefault: true
           resources:
           - name: nvidia.com/gpu
-            replicas: 4
+            replicas: 2
   default: l4
   

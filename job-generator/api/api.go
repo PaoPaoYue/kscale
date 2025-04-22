@@ -80,7 +80,7 @@ func GetWorkerCount(apiURL string) (count int, err error) {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		slog.Error("Error sending request", "error", err)
+		// slog.Error("Error sending request", "error", err)
 		return 0, err
 	}
 	defer resp.Body.Close()

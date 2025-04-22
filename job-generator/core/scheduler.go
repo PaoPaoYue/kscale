@@ -213,7 +213,7 @@ func (js *JobScheduler) watchMetrics() {
 			}
 
 			nodeNum := len(hostnames)
-			workerNum, _ := api.GetWorkerCount(config.C.APIEndpoint)
+			workerNum, _ := api.GetWorkerCount("http://" + config.C.APIEndpoint)
 
 			metrics.Client.Gauge(metrics.QueueSize, float64(js.queueSize.Load()))
 			metrics.Client.Gauge(metrics.WorkerNum, float64(workerNum))

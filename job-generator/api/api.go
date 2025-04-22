@@ -69,3 +69,35 @@ func GenerateImage(apiURL string, params GenerateRequestParam, id string) (time.
 		return 0, fmt.Errorf("image generation failed: %s", string(body))
 	}
 }
+
+func GetWorkerCount(apiURL string) (count int, err error) {
+	reqURL := fmt.Sprintf("%s/controller/replicas", apiURL)
+	req, err := http.NewRequest("GET", reqURL, nil)
+	if err != nil {
+		slog.Error("Error creating request", "error", err)
+		return 0, err
+	}
+
+	resp, err := client.Do(req)
+	if err != nil {
+		slog.Error("Error sending request", "error", err)
+		return 0, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode == http.StatusOK {
+		var r struct {
+			Count int `json:"count"`
+		}
+		if err := json.NewDecoder(resp.Body).Decode(&r); err != nil {
+			slog.Error("Error decoding response JSON", "error", err)
+			return 0, err
+		}
+		slog.Info("Worker count retrieved successfully", "count", r.Count)
+		return r.Count, nil
+	} else {
+		body, _ := io.ReadAll(resp.Body)
+		slog.Error("Failed to retrieve worker count", "response", string(body))
+		return 0, fmt.Errorf("failed to retrieve worker count: %s", string(body))
+	}
+}

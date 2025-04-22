@@ -3,6 +3,7 @@ package core
 import (
 	"context"
 	"fmt"
+	"github.com/paopaoyue/kscale/job-genrator/api"
 	"github.com/paopaoyue/kscale/job-genrator/config"
 	"github.com/paopaoyue/kscale/job-genrator/metrics"
 	"github.com/paopaoyue/kscale/job-genrator/util"
@@ -51,7 +52,6 @@ func NewJobScheduler(client *kubernetes.Clientset) *JobScheduler {
 		OutputChan:   make(chan Job),
 		StopChan:     make(chan struct{}),
 		mu:           &sync.Mutex{},
-		workerPods:   make(map[util.Endpoint]string),
 	}
 }
 
@@ -62,7 +62,7 @@ func (js *JobScheduler) Start() {
 
 	// Get list of pods for the deployment
 	pods, err := js.client.CoreV1().Pods(config.C.Environment).List(context.Background(), metav1.ListOptions{
-		LabelSelector: fmt.Sprintf("app=%s", config.C.AppName),
+		LabelSelector: fmt.Sprintf("ray=%s", config.C.LabelSelector),
 	})
 	if err != nil {
 		slog.Error("Failed to list pods using k8s api", "err", err.Error())
@@ -157,7 +157,7 @@ func (js *JobScheduler) watchEndpoints() {
 
 			oldState := oldObj.(*v1.Pod)
 			newState := newObj.(*v1.Pod)
-			if newState.Labels["app"] != config.C.AppName {
+			if newState.Labels["ray"] != config.C.LabelSelector {
 				return
 			}
 
@@ -178,7 +178,7 @@ func (js *JobScheduler) watchEndpoints() {
 
 			state := obj.(*v1.Pod)
 
-			if state.Labels["app"] != config.C.AppName {
+			if state.Labels["ray"] != config.C.LabelSelector {
 				return
 			}
 
@@ -203,10 +203,8 @@ func (js *JobScheduler) watchMetrics() {
 			}
 		}()
 		for range js.metricsTicker.C {
-			var workerNum int
 			var hostnames []string
 			for _, hostname := range js.workerPods {
-				workerNum++
 				for _, name := range hostnames {
 					if name != hostname {
 						hostnames = append(hostnames, hostname)
@@ -214,13 +212,16 @@ func (js *JobScheduler) watchMetrics() {
 				}
 			}
 
+			nodeNum := len(hostnames)
+			workerNum, _ := api.GetWorkerCount(config.C.APIEndpoint)
+
 			metrics.Client.Gauge(metrics.QueueSize, float64(js.queueSize.Load()))
 			metrics.Client.Gauge(metrics.WorkerNum, float64(workerNum))
-			metrics.Client.Gauge(metrics.NodeNum, float64(len(hostnames)))
+			metrics.Client.Gauge(metrics.NodeNum, float64(nodeNum))
 
 			metrics.DatadogClient.Gauge(metrics.QueueSize, float64(js.queueSize.Load()))
 			metrics.DatadogClient.Gauge(metrics.WorkerNum, float64(workerNum))
-			metrics.DatadogClient.Gauge(metrics.NodeNum, float64(len(hostnames)))
+			metrics.DatadogClient.Gauge(metrics.NodeNum, float64(nodeNum))
 		}
 	}()
 }

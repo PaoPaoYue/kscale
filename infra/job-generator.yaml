@@ -18,7 +18,7 @@ spec:
       serviceAccountName: job-generator-service-account
       containers:
       - name: job-generator
-        image: py846260131/kscale-job-generator:11
+        image: py846260131/kscale-job-generator:13
         env: []
         volumeMounts:
         - name: tmp-volume

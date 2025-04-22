@@ -206,6 +206,10 @@ func (js *JobScheduler) watchMetrics() {
 		for range js.metricsTicker.C {
 			var hostnames []string
 			for _, hostname := range js.workerPods {
+				if len(hostnames) == 0 {
+					hostnames = append(hostnames, hostname)
+					continue
+				}
 				for _, name := range hostnames {
 					if name != hostname {
 						hostnames = append(hostnames, hostname)

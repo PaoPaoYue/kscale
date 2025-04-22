@@ -52,6 +52,7 @@ func NewJobScheduler(client *kubernetes.Clientset) *JobScheduler {
 		OutputChan:   make(chan Job),
 		StopChan:     make(chan struct{}),
 		mu:           &sync.Mutex{},
+		workerPods:   make(map[util.Endpoint]string),
 	}
 }
 

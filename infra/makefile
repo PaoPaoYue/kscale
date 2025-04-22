@@ -40,14 +40,4 @@ kuberay:
 	--values kuberay.yaml \
 	--timeout=$(TIMEOUT)
 
-sd-webui:
-	kubectl apply -f sd-webui-plain.yaml --timeout=$(TIMEOUT)
-
-text2img-app:
-	kubectl apply -f text2img-app.yaml --timeout=$(TIMEOUT)
-
-job-generator:
-	kubectl apply -f job-generator.yaml --timeout=$(TIMEOUT)
-
-
-.PHONY: datadog nfs nvidia-device-plugin kuberay sd-webui text2img-app job-generator
+.PHONY: datadog nfs nvidia-device-plugin kuberay

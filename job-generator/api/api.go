@@ -80,7 +80,6 @@ func GetWorkerCount(apiURL string) (count int, err error) {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		// slog.Error("Error sending request", "error", err)
 		return 0, err
 	}
 	defer resp.Body.Close()
@@ -93,11 +92,9 @@ func GetWorkerCount(apiURL string) (count int, err error) {
 			slog.Error("Error decoding response JSON", "error", err)
 			return 0, err
 		}
-		slog.Info("Worker count retrieved successfully", "count", r.Count)
 		return r.Count, nil
 	} else {
 		body, _ := io.ReadAll(resp.Body)
-		slog.Error("Failed to retrieve worker count", "response", string(body))
 		return 0, fmt.Errorf("failed to retrieve worker count: %s", string(body))
 	}
 }

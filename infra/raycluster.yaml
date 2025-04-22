@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ray-head
-        image: py846260131/kscale-text2img-app:mps-03
+        image: py846260131/kscale-text2img-app:10
         command: [ "bash", "-c", "ray start --head --dashboard-host=0.0.0.0 --disable-usage-stats --num-cpus=1 && sleep infinity"]
         ports:
           - containerPort: 6379
@@ -55,8 +55,11 @@ spec:
     spec:
       containers:
       - name: ray-worker
-        image: py846260131/kscale-text2img-app:mps-03
+        image: py846260131/kscale-text2img-app:10
         command: [ "bash", "-c", "sleep 20 && ray start --address='ray-service:6379' --num-cpus=1 --num-gpus=1 && sleep infinity"]
+        ports:
+          - containerPort: 8000
+            name: serve
         lifecycle:
           preStop:
             exec:

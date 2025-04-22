@@ -15,6 +15,7 @@ fastparquet = "^2024.11.0"
 transformers = "^4.50.0"
 matplotlib = "^3.10.1"
 scikit-learn = "^1.6.1"
+notebook = "^7.4.0"
 
 
 [build-system]

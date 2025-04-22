@@ -37,7 +37,7 @@ def run_local_test():
 
 def ray_serve_test():
     response = requests.get(
-        os.getenv("RAY_SERVE_URL", "http://127.0.0.1:8000") + "generate",
+        os.getenv("RAY_SERVE_URL", "http://127.0.0.1:8000") + "/generate",
         params={
             "id": 0,
             "prompt": "A futuristic city with neon lights at night, cyberpunk style",
@@ -73,10 +73,24 @@ def ray_serve_run():
             "port": 8000         
         }
     )
+
     serve.run(entrypoint, name="text2img")
-    controllerHandler = serve.run(controllerEntrypoint, name="controller", route_prefix="/controller")
+    serve.run(controllerEntrypoint, name="controller", route_prefix="/controller")
+    
     if "INIT_REPLICAS" in os.environ:
-        controllerHandler.set_replicas.remote(int(os.getenv("INIT_REPLICAS", 1)))
+        replicas = int(os.getenv("INIT_REPLICAS", 1))
+        print("Setting replicas to", replicas)
+        response = requests.post(
+            os.getenv("RAY_SERVE_URL", "http://127.0.0.1:8000") + "/controller/replicas",
+            params={
+                "count": replicas,
+            }
+        )
+
+        if response.status_code == 200:
+            print("✅ Replicas set successfully.")
+        else:
+            print("❌ Failed to set replicas:", response.status_code, response.text)
 
 def ray_serve_delete():
     if "RAY_CLIENT_URL" in os.environ:

@@ -13,7 +13,7 @@ type Config struct {
 	Port                       int
 	APIEndpoint                string
 	Environment                string
-	AppName                    string
+	LabelSelector              string
 	OutputFilePath             string
 	MetricsStorePath           string
 	MaxRetryCount              int
@@ -35,7 +35,7 @@ func LoadConfig() {
 		Port:                       getEnvInt("PORT", 8080),
 		APIEndpoint:                getEnv("API_ENDPOINT", "ray-service:8000"),
 		Environment:                getEnv("ENVIRONMENT", "ypp"),
-		AppName:                    getEnv("APP_NAME", "text2img"),
+		LabelSelector:              getEnv("LABEL_SELECTOR", "worker"),
 		OutputFilePath:             getEnv("OUTPUT_FILE_PATH", "/tmp/output"),
 		MetricsStorePath:           getEnv("METRICS_STORE_PATH", "/tmp/metrics"),
 		ImageStorePath:             getEnv("IMAGE_STORE_PATH", "/tmp/image"),

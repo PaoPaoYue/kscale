@@ -6,7 +6,7 @@ metadata:
   labels:
     app: text2img
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       app: text2img
@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
       - name: text2img
-        image: py846260131/kscale-text2img-app:mps-02
-        command: [ "python", "main.py", "serve" ]
+        image: py846260131/kscale-text2img-app:mps-03
+        command: [ "sleep", "infinity" ]
         ports:
           - containerPort: 8000
             name: serve

@@ -3,6 +3,12 @@ DATADOG_VERSION := 3.61.0
 NVIDIA_DEVICE_PLUGIN_VERSION := 0.17.1
 KUBERAY_VERSION := 1.3.0
 
+calico:
+# restart calico-node and calico-kube-controllers if they are already running
+# kubectl -n kube-system rollout restart daemonset calico-node
+# kubectl -n kube-system rollout restart deployment calico-kube-controllers
+	kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml --timeout=$(TIMEOUT)
+
 # remember to set the data-dog api key in datadog-secret before running this
 # > helm repo add datadog https://helm.datadoghq.com
 # > kubectl create secret generic datadog-secret --from-literal api-key=<DATADOG_API_KEY> --namespace datadog
@@ -40,4 +46,4 @@ kuberay:
 	--values kuberay.yaml \
 	--timeout=$(TIMEOUT)
 
-.PHONY: datadog nfs nvidia-device-plugin kuberay
+.PHONY: calico datadog nfs nvidia-device-plugin kuberay

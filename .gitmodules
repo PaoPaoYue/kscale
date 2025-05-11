@@ -1,0 +1,3 @@
+[submodule "external/tslib"]
+	path = external/tslib
+	url = git@github.com:thuml/Time-Series-Library.git

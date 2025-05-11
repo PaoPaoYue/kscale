@@ -24,7 +24,7 @@ type JobScheduler struct {
 	client *kubernetes.Clientset
 
 	Active            bool
-	JobBatchStartTIme time.Time
+	JobBatchStartTime time.Time
 	JobBatchName      string
 	JobBatchSize      int
 
@@ -116,7 +116,7 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 		js.Active = true
 		js.JobBatchName = jobBatchName
 		js.JobBatchSize = iter.Size()
-		js.JobBatchStartTIme = time.Now()
+		js.JobBatchStartTime = time.Now()
 
 		js.processOutput()
 
@@ -125,7 +125,7 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 		if job, ok := iter.Next(); ok {
 			for range js.jobTicker.C {
 				current := time.Now()
-				for current.Sub(js.JobBatchStartTIme) > job.RequestTime.Sub(time.UnixMilli(0)) {
+				for current.Sub(js.JobBatchStartTime) > job.RequestTime.Sub(time.UnixMilli(0)) {
 					job.RequestTime = current
 					metrics.Client.Count(metrics.JobRequest)
 					metrics.DatadogClient.Count(metrics.JobRequest)
@@ -245,11 +245,11 @@ func (js *JobScheduler) processOutput() {
 			}
 		}
 
-		slog.Info("Job batch completed", "Name", js.JobBatchName, "Size", js.JobBatchSize, "Duration", time.Since(js.JobBatchStartTIme))
+		slog.Info("Job batch completed", "Name", js.JobBatchName, "Size", js.JobBatchSize, "Duration", time.Since(js.JobBatchStartTime))
 		js.Active = false
 		js.JobBatchName = ""
 		js.JobBatchSize = 0
-		js.JobBatchStartTIme = time.Time{}
+		js.JobBatchStartTime = time.Time{}
 	}()
 }
 

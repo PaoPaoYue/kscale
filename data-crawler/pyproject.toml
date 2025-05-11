@@ -16,6 +16,7 @@ transformers = "^4.50.0"
 matplotlib = "^3.10.1"
 scikit-learn = "^1.6.1"
 notebook = "^7.4.0"
+datadog = "^0.51.0"
 
 
 [build-system]

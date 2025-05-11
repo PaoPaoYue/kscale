@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "modelling"
+version = "0.1.0"
+description = ""
+authors = ["PaoPaoYue <846260131@qq.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.14"
+pandas = "^2.2.3"
+matplotlib = "^3.10.1"
+scikit-learn = "^1.6.1"
+notebook = "^7.4.1"
+seaborn = "^0.13.2"
+lightgbm = "^4.6.0"
+xgboost = "^3.0.0"
+einops = "0.8.0"
+reformer-pytorch = "1.4.4"
+patool = "1.12"
+scipy = "^1.15.2"
+pywavelets = "^1.8.0"
+sktime = "^0.37.0"
+tqdm = "^4.67.1"
+ray = {version = "2.45.0", extras = ["rllib"]}
+gymnasium = "1.0.0"
+ipywidgets = "^8.1.6"
+ipympl = "^0.9.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

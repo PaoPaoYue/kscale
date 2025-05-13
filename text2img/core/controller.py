@@ -27,8 +27,12 @@ class ControllerService:
             deployment = application.deployments["image_service"]
             if deployment:
                 running_replicas = deployment.replica_states["RUNNING"]
-                return {"count": running_replicas if running_replicas else 0}
-        return {"count": 0}
+                all_replicas = sum(deployment.replica_states.values())
+                return {
+                    "running": running_replicas,
+                    "total": all_replicas,
+                }
+        return {"running": 0, "total": 0}
 
     @app.post("/replicas")
     async def set_replicas(self, count: int = Query(..., description="Target number of replicas")):

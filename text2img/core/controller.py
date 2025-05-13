@@ -22,9 +22,9 @@ class ControllerService:
     @app.get("/replicas")
     async def get_replicas(self):
         status = serve.status()
-        application = status.applications["text2img"]
+        application = status.applications["text_service"]
         if application:
-            deployment = application.deployments["image_service"]
+            deployment = application.deployments["text_service"]
             if deployment:
                 running_replicas = deployment.replica_states["RUNNING"]
                 all_replicas = sum(deployment.replica_states.values())
@@ -46,15 +46,15 @@ class ControllerService:
             data = response.json()
             applications = data.get("applications", {})
     
-            application = next((app for name, app in applications.items() if name == "text2img"), None)
+            application = next((app for name, app in applications.items() if name == "text_service"), None)
             if not application:
-                raise HTTPException(status_code=404, detail="Application 'text2img' not found.")
+                raise HTTPException(status_code=404, detail="Application 'text_service' not found.")
     
             deployments = application.get("deployments", {})
-            deployment = next((d for name, d in deployments.items() if name == "image_service"), None)
+            deployment = next((d for name, d in deployments.items() if name == "text_service"), None)
             deployment = deployment.get("deployment_config", {})
             if not deployment:
-                raise HTTPException(status_code=404, detail="Deployment 'image_service' not found.")
+                raise HTTPException(status_code=404, detail="Deployment 'text_service' not found.")
     
             if "autoscaling_config" in deployment:
                 raise HTTPException(status_code=400, detail="Cannot set 'num_replicas' when 'autoscaling_config' is present.")
@@ -65,8 +65,8 @@ class ControllerService:
                 put_response = await client.put(
                     f"{RAY_DASHBOARD_URL}/api/serve/applications/",
                     json={"applications": [{
-                        "name": "text2img",
-                        "import_path": "core.image_service:entrypoint",
+                        "name": "text_service",
+                        "import_path": "core.text_service:entrypoint",
                         "deployments": [
                             deployment
                         ],
@@ -81,9 +81,9 @@ class ControllerService:
     @app.get("/status")
     async def get_status(self):
         status = serve.status()
-        application = status.applications["text2img"]
+        application = status.applications["text_service"]
         if application:
-            deployment = application.deployments["image_service"]
+            deployment = application.deployments["text_service"]
             if deployment:
                 return { "status": deployment.status}
         return {"status": "UNKNOWN"}

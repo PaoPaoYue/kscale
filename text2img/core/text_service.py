@@ -2,6 +2,7 @@ import asyncio
 import base64
 import io
 import time
+import torch
 from fastapi import FastAPI, Query
 from ray import serve
 from transformers import BertTokenizer, BertForSequenceClassification
@@ -9,6 +10,8 @@ from transformers import BertTokenizer, BertForSequenceClassification
 # from core.image_generator import ImageGenerator
 
 app = FastAPI()
+
+device = "cuda"
 
 @serve.deployment(
     name="text_service",
@@ -32,6 +35,8 @@ class TextService:
         self.active_requests = 0
         self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
         self.model = BertForSequenceClassification.from_pretrained("bert-base-uncased", num_labels=2)
+        self.model.to(device)
+        self.model.eval()
 
     @app.get("/analyze")
     async def analyze(
@@ -44,9 +49,11 @@ class TextService:
         try:
             async with self.lock:
                 start_time = time.time()
-                inputs = self.tokenizer(text, return_tensors="pt", truncation=True, padding=True)
-                outputs = self.model(**inputs)
-                prediction = outputs.logits.argmax(dim=1).item()
+                with torch.no_grad():
+                    inputs = self.tokenizer(text, return_tensors="pt", truncation=True, padding=True)
+                    inputs = {k: v.to(device) for k, v in inputs.items()}
+                    outputs = self.model(**inputs)
+                    prediction = outputs.logits.argmax(dim=1).item()
                 result = "Positive" if prediction == 1 else "Negative"
                 duration = time.time() - start_time
 

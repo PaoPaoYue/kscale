@@ -94,8 +94,6 @@ def ray_serve_run():
         else:
             print("❌ Failed to set replicas:", response.status_code, response.text)
 
-    while True:
-        time.sleep(3600)
 
 def ray_serve_delete():
     if "RAY_CLIENT_URL" in os.environ:

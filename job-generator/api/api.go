@@ -74,7 +74,7 @@ func GenerateImage(apiURL string, params GenerateRequestParam, id string) (time.
 	}
 }
 
-func analyzeText(apiURL string, params TextAnalyzeRequestParam, id string) (time.Duration, error) {
+func AnalyzeText(apiURL string, params TextAnalyzeRequestParam, id string) (time.Duration, error) {
 	reqURL := fmt.Sprintf("%s/analyze?text=%s",
 		apiURL,
 		url.QueryEscape(params.Text),
@@ -95,6 +95,7 @@ func analyzeText(apiURL string, params TextAnalyzeRequestParam, id string) (time
 
 	if resp.StatusCode == http.StatusOK {
 		var r struct {
+			Result   string  `json:"result"`
 			Duration float64 `json:"duration"`
 		}
 		if err := json.NewDecoder(resp.Body).Decode(&r); err != nil {

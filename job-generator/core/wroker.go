@@ -66,7 +66,7 @@ func (jw *JobWorker) Stop() {
 
 func (jw *JobWorker) processJob(job Job) {
 	for ; job.Retry < config.C.MaxRetryCount; job.Retry++ {
-		duration, err := api.analyzeText("http://"+jw.Endpoint.String(), job.Param, job.Id)
+		duration, err := api.AnalyzeText("http://"+jw.Endpoint.String(), job.Param, job.Id)
 
 		if err != nil {
 			slog.Error("Error analyzing text, retrying...", "err", err, "jobId", job.Id, "retry", job.Retry+1)

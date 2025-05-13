@@ -42,15 +42,10 @@ func (it *CSVIterator) Next() (Job, bool) {
 	it.currentIndex++
 	return Job{
 		Id: record[0],
-		Param: api.GenerateRequestParam{
-			Prompt:       record[1],
-			Steps:        parseInt(record[2], 20),
-			Scale:        parseFloat(record[3], 7.0),
-			SamplerIndex: convertToSamplerIndex(record[4]),
-			Width:        parseInt(record[5], 512),
-			Height:       parseInt(record[6], 512),
+		Param: api.TextAnalyzeRequestParam{
+			Text: record[1],
 		},
-		RequestTime: time.Unix(int64(parseInt(record[8], 0)), 0),
+		RequestTime: time.Unix(int64(parseInt(record[2], 0)), 0),
 	}, true
 }
 

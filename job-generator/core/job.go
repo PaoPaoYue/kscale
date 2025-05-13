@@ -8,14 +8,14 @@ import (
 type Job struct {
 	Id          string
 	Success     bool
-	Param       api.GenerateRequestParam
+	Param       api.TextAnalyzeRequestParam
 	Retry       int
 	RequestTime time.Time
 	EndTime     time.Time
 	Duration    time.Duration
 }
 
-func NewJob(id string, param api.GenerateRequestParam) *Job {
+func NewJob(id string, param api.TextAnalyzeRequestParam) *Job {
 	return &Job{
 		Id:    id,
 		Param: param,

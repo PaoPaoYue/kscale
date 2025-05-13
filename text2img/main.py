@@ -7,8 +7,9 @@ import requests
 import ray
 from ray import serve
 
-from core.image_generator import ImageGenerator
-from core.image_service import entrypoint
+# from core.image_generator import ImageGenerator
+# from core.image_service import entrypoint
+from core.text_service import textEntrypoint
 from core.controller import controllerEntrypoint
 
 
@@ -74,7 +75,8 @@ def ray_serve_run():
         }
     )
 
-    serve.run(entrypoint, name="text2img")
+    # serve.run(entrypoint, name="text2img")
+    serve.run(textEntrypoint, name="text_service", route_prefix="/")
     serve.run(controllerEntrypoint, name="controller", route_prefix="/controller")
     
     if "INIT_REPLICAS" in os.environ:
@@ -92,12 +94,16 @@ def ray_serve_run():
         else:
             print("❌ Failed to set replicas:", response.status_code, response.text)
 
+    while True:
+        time.sleep(3600)
+
 def ray_serve_delete():
     if "RAY_CLIENT_URL" in os.environ:
         ray.init(address=os.getenv("RAY_CLIENT_URL", "auto"))
     else:
         ray.init()
-    serve.delete("text2img")
+    # serve.delete("text2img")
+    serve.delete("text_service")
     serve.delete("controller")
 
 if __name__ == "__main__": 

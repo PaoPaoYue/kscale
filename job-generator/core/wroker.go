@@ -66,10 +66,10 @@ func (jw *JobWorker) Stop() {
 
 func (jw *JobWorker) processJob(job Job) {
 	for ; job.Retry < config.C.MaxRetryCount; job.Retry++ {
-		duration, err := api.GenerateImage("http://"+jw.Endpoint.String(), job.Param, job.Id)
+		duration, err := api.analyzeText("http://"+jw.Endpoint.String(), job.Param, job.Id)
 
 		if err != nil {
-			slog.Error("Error generating image, retrying...", "err", err, "jobId", job.Id, "retry", job.Retry+1)
+			slog.Error("Error analyzing text, retrying...", "err", err, "jobId", job.Id, "retry", job.Retry+1)
 		} else {
 			job.Success = true
 			job.EndTime = time.Now()
@@ -78,7 +78,7 @@ func (jw *JobWorker) processJob(job Job) {
 		}
 	}
 	if job.Retry >= config.C.MaxRetryCount {
-		slog.Error("Error generating image, max retries reached", "jobId", job.Id)
+		slog.Error("Error analyzing text, max retries reached", "jobId", job.Id)
 		metrics.Client.Count(metrics.JobFailure)
 		metrics.DatadogClient.Count(metrics.JobFailure)
 

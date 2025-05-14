@@ -2,6 +2,12 @@ config:
   map: 
     l4: |-
       version: v1
+      sharing:
+        timeSlicing:
+          renameByDefault: true
+          resources:
+          - name: nvidia.com/gpu
+            replicas: 2
 
   default: l4
   

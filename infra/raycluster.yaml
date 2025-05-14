@@ -44,7 +44,7 @@ metadata:
   labels:
     ray: worker
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       ray: worker
@@ -67,10 +67,10 @@ spec:
         resources:
           limits:
             cpu: 4
-            nvidia.com/gpu: 1
+            nvidia.com/gpu.shared: 1
           requests:
             cpu: '500m'
-            nvidia.com/gpu: 1
+            nvidia.com/gpu.shared: 1
         volumeMounts:
           - name: models-volume
             mountPath: /data

@@ -15,7 +15,7 @@ device = "cuda"
 
 @serve.deployment(
     name="text_service",
-    num_replicas=1,
+    num_replicas=2,
     # autoscaling_config={
     #     "target_ongoing_requests": 2,            # 每个副本理想的并发数
     #     "min_replicas": 1,

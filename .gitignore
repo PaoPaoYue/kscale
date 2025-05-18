@@ -2,5 +2,6 @@ metadata.parquet
 output
 output.*
 .idea
+.ipynb_checkpoints
 tmp
 __pycache__

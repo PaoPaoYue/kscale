@@ -16,7 +16,7 @@ type CSVIterator struct {
 	currentIndex int
 }
 
-func ReadCSV(file multipart.File) (*CSVIterator, error) {
+func ReadJobCSV(file multipart.File) (*CSVIterator, error) {
 	reader := csv.NewReader(file)
 
 	lines, err := reader.ReadAll()
@@ -50,7 +50,7 @@ func (it *CSVIterator) Next() (Job, bool) {
 			Width:        parseInt(record[5], 512),
 			Height:       parseInt(record[6], 512),
 		},
-		RequestTime: time.Unix(int64(parseInt(record[8], 0)), 0),
+		RequestTime: time.UnixMilli(int64(parseInt(record[8], 0))),
 	}, true
 }
 
@@ -58,7 +58,7 @@ func (it *CSVIterator) Size() int {
 	return len(it.lines) - 1
 }
 
-func OpenCSVAndWriteHeader(csvFilePath string) *os.File {
+func OpenCSVAndWriteHeader(csvFilePath string, header []string) *os.File {
 	file, err := os.OpenFile(csvFilePath, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 	if err != nil {
 		slog.Error("Error opening CSV file", "err", err)
@@ -68,34 +68,18 @@ func OpenCSVAndWriteHeader(csvFilePath string) *os.File {
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
 
-	err = writer.Write([]string{
-		"Id",
-		"Success",
-		"Retry",
-		"RequestTime",
-		"EndTime",
-		"Duration",
-		"Latency",
-	})
+	err = writer.Write(header)
 	if err != nil {
 		slog.Error("Error writing CSV header", "err", err)
 	}
 	return file
 }
 
-func AppendCSV(file *os.File, job Job) {
+func AppendCSV(file *os.File, row []string) {
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
 
-	err := writer.Write([]string{
-		job.Id,
-		strconv.FormatBool(job.Success),
-		strconv.Itoa(job.Retry),
-		formatTimeWithMillis(job.RequestTime),
-		formatTimeWithMillis(job.EndTime),
-		strconv.FormatInt(job.Duration.Milliseconds(), 10),
-		strconv.FormatInt(job.EndTime.Sub(job.RequestTime).Milliseconds(), 10),
-	})
+	err := writer.Write(row)
 	if err != nil {
 		slog.Error("Error writing CSV row", "err", err)
 	}

@@ -13,13 +13,8 @@ import (
 	"time"
 )
 
-type Tag string
-
-func NewTag(key, value string) Tag {
-	return Tag(fmt.Sprintf("%s:%s", key, value))
-}
-
 type DogStatsDClient struct {
+	DummyClient
 	client *statsd.Client
 }
 
@@ -31,16 +26,16 @@ func NewDogStatsDClient(endpoint util.Endpoint) (*DogStatsDClient, error) {
 	return &DogStatsDClient{client: client}, nil
 }
 
-func (client *DogStatsDClient) Count(key string, tags ...string) {
-	_ = client.client.Count(key, 1, tags, 1)
+func (client *DogStatsDClient) Count(key string) {
+	_ = client.client.Count(key, 1, nil, 1)
 }
 
-func (client *DogStatsDClient) Gauge(key string, value float64, tags ...string) {
-	_ = client.client.Gauge(key, value, tags, 1)
+func (client *DogStatsDClient) Gauge(key string, value float64) {
+	_ = client.client.Gauge(key, value, nil, 1)
 }
 
-func (client *DogStatsDClient) Time(key string, value time.Duration, tags ...string) {
-	_ = client.client.TimeInMilliseconds(key, float64(value.Milliseconds()), tags, 1)
+func (client *DogStatsDClient) Time(key string, value time.Duration) {
+	_ = client.client.TimeInMilliseconds(key, float64(value.Milliseconds()), nil, 1)
 }
 
 func (client *DogStatsDClient) Close() {

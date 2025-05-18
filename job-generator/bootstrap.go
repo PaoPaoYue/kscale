@@ -26,6 +26,7 @@ func main() {
 
 	r.POST("/submit-job", handler.SubmitJobHandler)
 	r.GET("/download-result", handler.DownloadResultHandler)
+	r.GET("/download-metrics", handler.DownloadMetricsHandler)
 	r.GET("/metrics", handler.MetricsHandler)
 
 	port := fmt.Sprintf(":%d", config.C.Port)
@@ -62,22 +63,27 @@ func main() {
 }
 
 func initialize() {
+	metrics.Client = metrics.NewInternalClient()
+
 	k8sConfig, err := rest.InClusterConfig()
 	if err != nil {
-		panic("Failed to create Kubernetes client config: " + err.Error())
+		slog.Error("Failed to create in-cluster config", "error", err.Error())
+	} else {
+		k8sClient, err := kubernetes.NewForConfig(k8sConfig)
+		if err != nil {
+			slog.Error("Failed to create Kubernetes client", "error", err.Error())
+		} else {
+			if endpoint, _ := metrics.DiscoverDogStatsDEndpoint(k8sClient); err == nil {
+				metrics.DatadogClient, _ = metrics.NewDogStatsDClient(endpoint)
+			}
+		}
+	}
+	if metrics.DatadogClient == nil {
+		slog.Warn("Datadog client cannot be auto-discovered, using internal metrics only")
+		metrics.DatadogClient = metrics.NewDummyClient()
 	}
 
-	k8sClient, err := kubernetes.NewForConfig(k8sConfig)
-	if err != nil {
-		panic("Failed to create Kubernetes client: " + err.Error())
-	}
-
-	metrics.Client = metrics.NewInternalClient()
-	if endpoint, _ := metrics.DiscoverDogStatsDEndpoint(k8sClient); err == nil {
-		metrics.DatadogClient, _ = metrics.NewDogStatsDClient(endpoint)
-	}
-
-	core.Scheduler = core.NewJobScheduler(k8sClient)
+	core.Scheduler = core.NewJobScheduler()
 	core.Scheduler.Start()
 }
 

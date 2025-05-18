@@ -3,7 +3,6 @@ package core
 import (
 	"github.com/paopaoyue/kscale/job-genrator/api"
 	"github.com/paopaoyue/kscale/job-genrator/config"
-	"github.com/paopaoyue/kscale/job-genrator/metrics"
 	"github.com/paopaoyue/kscale/job-genrator/util"
 	"log/slog"
 	"time"
@@ -13,25 +12,24 @@ type JobWorker struct {
 	Endpoint util.Endpoint
 	Hostname string
 
-	Active bool
-
-	JobScheduler *JobScheduler
+	jobChan    chan Job
+	outputChan chan Job
 
 	stopChan chan struct{}
 }
 
-func NewJobWorker(endpoint util.Endpoint, jobScheduler *JobScheduler) *JobWorker {
+func NewJobWorker(endpoint util.Endpoint, jobChan, outputChan chan Job) *JobWorker {
 	return &JobWorker{
 		Endpoint: endpoint,
 
-		JobScheduler: jobScheduler,
-		stopChan:     make(chan struct{}),
+		jobChan:    jobChan,
+		outputChan: outputChan,
+		stopChan:   make(chan struct{}),
 	}
 }
 
 func (jw *JobWorker) Start() {
 
-	jw.Active = true
 	go func() {
 		for {
 			select {
@@ -39,7 +37,7 @@ func (jw *JobWorker) Start() {
 				return
 			default:
 				select {
-				case job, ok := <-jw.JobScheduler.JobChan:
+				case job, ok := <-jw.jobChan:
 					if !ok {
 						return
 					}
@@ -79,23 +77,12 @@ func (jw *JobWorker) processJob(job Job) {
 	}
 	if job.Retry >= config.C.MaxRetryCount {
 		slog.Error("Error generating image, max retries reached", "jobId", job.Id)
-		metrics.Client.Count(metrics.JobFailure)
-		metrics.DatadogClient.Count(metrics.JobFailure)
 
 		job.Success = false
 		job.EndTime = time.Now()
-		jw.JobScheduler.OutputChan <- job
+		jw.outputChan <- job
 		return
 	}
 
-	metrics.Client.Count(metrics.JobSuccess)
-	metrics.DatadogClient.Count(metrics.JobSuccess)
-
-	metrics.Client.Time(metrics.JobDuration, job.Duration)
-	metrics.DatadogClient.Time(metrics.JobDuration, job.Duration)
-
-	metrics.Client.Time(metrics.JobLatency, job.EndTime.Sub(job.RequestTime))
-	metrics.DatadogClient.Time(metrics.JobLatency, job.EndTime.Sub(job.RequestTime))
-
-	jw.JobScheduler.OutputChan <- job
+	jw.outputChan <- job
 }

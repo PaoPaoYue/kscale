@@ -3,6 +3,7 @@ package handler
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/paopaoyue/kscale/job-genrator/config"
 	"github.com/paopaoyue/kscale/job-genrator/core"
 	"net/http"
 	"path/filepath"
@@ -10,11 +11,6 @@ import (
 )
 
 func SubmitJobHandler(c *gin.Context) {
-	if core.Scheduler.Active {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Job scheduler is already active"})
-		return
-	}
-
 	file, err := c.FormFile("file")
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "File upload failed"})
@@ -30,7 +26,7 @@ func SubmitJobHandler(c *gin.Context) {
 
 	err = core.Scheduler.SubmitJobs(strings.TrimSuffix(file.Filename, filepath.Ext(file.Filename)), src)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error submitting jobs"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
@@ -47,7 +43,7 @@ func DownloadResultHandler(c *gin.Context) {
 		return
 	}
 
-	filePath := filepath.Join("/tmp/output", fmt.Sprintf("%s-result.csv", batchName))
+	filePath := filepath.Join(config.C.OutputFilePath, fmt.Sprintf("%s-result.csv", batchName))
 
 	if _, err := filepath.Abs(filePath); err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": fmt.Sprintf("File %s not found", filePath)})

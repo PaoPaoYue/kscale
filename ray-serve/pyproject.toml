@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "ray-serve"
+version = "0.1.0"
+description = ""
+authors = ["PaoPaoYue <846260131@qq.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.14"
+httpx = "^0.28.1"
+ray = {version = "2.45.0", extras = ["rllib", "serve"]}
+torch = "^2.6.0"
+diffusers = "^0.33.1"
+transformers = "^4.51.3"
+xformers = "^0.0.29.post3"
+accelerate = "^1.6.0"
+fastapi = {version = "0.112.0", extras = ["standard"]}
+einops = "0.8.0"
+reformer-pytorch = "1.4.4"
+patool = "1.12"
+scipy = "1.15.2"
+pywavelets = "1.8.0"
+sktime = "0.37.0"
+tqdm = "4.67.1"
+matplotlib = "^3.10.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

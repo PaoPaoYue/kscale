@@ -121,6 +121,7 @@ func GetWorkerCount(apiURL string) (running, total int, err error) {
 }
 
 type CalcWorkerCountRequestParam struct {
+	Time   int         `json:"time"` // in seconds
 	Points []DataPoint `json:"points"`
 }
 
@@ -191,16 +192,16 @@ func ScaleWorker(apiURL string, count int) error {
 		return errors.New("deployment 'image_service' not found")
 	}
 
-	config, ok := deploymentRaw["deployment_config"].(map[string]interface{})
+	deployment, ok := deploymentRaw["deployment_config"].(map[string]interface{})
 	if !ok {
-		config = map[string]interface{}{}
+		deployment = map[string]interface{}{}
 	}
 
-	if _, hasAutoscaling := config["autoscaling_config"]; hasAutoscaling {
+	if _, hasAutoscaling := deployment["autoscaling_config"]; hasAutoscaling {
 		return errors.New("cannot set 'num_replicas' when 'autoscaling_config' is present")
 	}
 
-	config["num_replicas"] = count
+	deployment["num_replicas"] = count
 
 	payload := map[string]interface{}{
 		"applications": []map[string]interface{}{
@@ -208,10 +209,7 @@ func ScaleWorker(apiURL string, count int) error {
 				"name":        "text2img",
 				"import_path": "core.image_service:entrypoint",
 				"deployments": []map[string]interface{}{
-					{
-						"name":              "image_service",
-						"deployment_config": config,
-					},
+					deployment,
 				},
 			},
 		},

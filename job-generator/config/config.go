@@ -16,7 +16,6 @@ type Config struct {
 	Environment                string
 	LabelSelector              string
 	OutputFilePath             string
-	MetricsStorePath           string
 	MaxRetryCount              int
 	MetricsAggregationInterval int // in seconds
 	MaxQueueSize               int
@@ -28,7 +27,7 @@ type Config struct {
 	EnableAutoScaling bool
 	InitWorkerCount   int
 	MetricsWindow     int // in seconds
-	ObserveWindow     int // how many data points to observe
+	ForecastWindow    int // how many data points to observe
 	WorkerCostPerHour float64
 	JobReward         float64
 	LatencyThreshold  int // in milliseconds
@@ -42,12 +41,11 @@ func LoadConfig() {
 
 	C = Config{
 		Port:                       getEnvInt("PORT", 8080),
+		RayDashboardEndpoint:       getEnv("RAY_DASHBOARD_ENDPOINT", "ray-service:8265"),
 		APIEndpoint:                getEnv("API_ENDPOINT", "ray-service:8000"),
 		Environment:                getEnv("ENVIRONMENT", "ypp"),
 		LabelSelector:              getEnv("LABEL_SELECTOR", "worker"),
 		OutputFilePath:             getEnv("OUTPUT_FILE_PATH", "./tmp/output"),
-		MetricsStorePath:           getEnv("METRICS_STORE_PATH", "./tmp/metrics"),
-		ImageStorePath:             getEnv("IMAGE_STORE_PATH", "./tmp/image"),
 		MaxRetryCount:              getEnvInt("MAX_RETRY_COUNT", 1),
 		MetricsAggregationInterval: getEnvInt("METRICS_AGGREGATION_INTERVAL", 1),
 		MaxQueueSize:               getEnvInt("MAX_QUEUE_SIZE", 60000),
@@ -58,15 +56,13 @@ func LoadConfig() {
 		EnableAutoScaling: getEnvBool("ENABLE_AUTO_SCALING", false),
 		InitWorkerCount:   getEnvInt("INIT_WORKER_COUNT", 1),
 		MetricsWindow:     getEnvInt("METRICS_WINDOW", 10),
-		ObserveWindow:     getEnvInt("OBSERVE_WINDOW", 3),
+		ForecastWindow:    getEnvInt("FORECAST_WINDOW", 36),
 		WorkerCostPerHour: getEnvFloat("WORKER_COST_PER_HOUR", 1),
 		JobReward:         getEnvFloat("JOB_REWARD", 0.002),
 		LatencyThreshold:  getEnvInt("LATENCY_THRESHOLD", 8000),
 	}
 
 	_ = os.MkdirAll(C.OutputFilePath, os.ModePerm)
-	_ = os.MkdirAll(C.MetricsStorePath, os.ModePerm)
-	_ = os.MkdirAll(C.ImageStorePath, os.ModePerm)
 }
 
 func getEnv(key, defaultValue string) string {

@@ -158,12 +158,13 @@ func (s *Scaler) step(outputFile *os.File) {
 	if config.C.EnableAutoScaling {
 		go func() {
 			param := api.CalcWorkerCountRequestParam{
+				Time:   s.time,
 				Points: []api.DataPoint{},
 			}
 			dataPointLen := len(s.dataPointList)
-			for i := config.C.ObserveWindow - 1; i >= 0; i-- {
+			for i := config.C.ForecastWindow - 1; i >= 0; i-- {
 				if dataPointLen-i-1 < 0 {
-					param.Points = append(param.Points, api.DataPoint{})
+					continue
 				} else {
 					dp := s.dataPointList[dataPointLen-i-1]
 					param.Points = append(param.Points, api.DataPoint{
@@ -183,7 +184,7 @@ func (s *Scaler) step(outputFile *os.File) {
 			}
 			if expectedWorker != s.expectedWorker {
 				s.expectedWorker = expectedWorker
-				err := api.ScaleWorker("http://"+config.C.APIEndpoint, expectedWorker)
+				err := api.ScaleWorker("http://"+config.C.RayDashboardEndpoint, expectedWorker)
 				if err != nil {
 					slog.Error("Failed to scale worker", "err", err)
 					return
@@ -211,7 +212,7 @@ func (s *Scaler) step(outputFile *os.File) {
 }
 
 func (s *Scaler) report() {
-	running, total, err := api.GetWorkerCount("http://" + config.C.APIEndpoint)
+	running, total, err := api.GetWorkerCount("http://" + config.C.RayDashboardEndpoint)
 	if err != nil {
 		slog.Error("Failed to get worker count", "err", err)
 		return

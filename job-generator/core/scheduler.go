@@ -106,7 +106,6 @@ func (js *JobScheduler) SubmitJobs(jobBatchName string, file multipart.File) err
 					jobTime := job.RequestTime.Sub(time.UnixMilli(0))
 					for timeElapsed >= jobTime {
 						job.RequestTime = current
-						slog.Info("Job scheduled", "jobId", job.Id, "timeElapsed", timeElapsed, "jobTime", jobTime, "requestTime", job.RequestTime)
 						js.scaler.PreProcessJob(job)
 						js.jobChan <- job
 						if job, hasNext = iter.Next(); hasNext {

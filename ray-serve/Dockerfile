@@ -19,4 +19,5 @@ RUN pip install --no-cache-dir \
     pywavelets==1.6.0 \
     tqdm==4.67.1 \
     sktime==0.35.0 \
+    pyarrow==20.0.0 \
     matplotlib==3.9.0

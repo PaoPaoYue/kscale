@@ -2,6 +2,7 @@ FROM rayproject/ray:2.45.0
 
 RUN pip install --no-cache-dir \
     numpy==2.0.2 \
+    pandas==2.2.3 \
     torch \
     diffusers \
     transformers \

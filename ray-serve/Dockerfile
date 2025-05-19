@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir \
     google-cloud-storage \
     boto3 \
     httpx \
+    fastapi[standard]==0.112.0 \
     einops==0.8.0 \
     reformer-pytorch==1.4.4 \
     patool==1.12 \

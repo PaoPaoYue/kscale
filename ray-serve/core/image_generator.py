@@ -67,6 +67,10 @@ class ImageGenerator:
         }
 
         SchedulerClass, kwargs = scheduler_map.get(name, (DPMSolverMultistepScheduler, {}))
+        # 如果使用的是 DPMSolverMultistepScheduler 且未设置 lower_order_final，则补上 True 以避免警告
+        if SchedulerClass == DPMSolverMultistepScheduler and "lower_order_final" not in kwargs:
+            kwargs["lower_order_final"] = True
+            
         return SchedulerClass.from_config(self.pipe.scheduler.config, **kwargs)
 
     def generate_image(self, prompt: str, steps: int, cfg_scale: float, sampler_index: str, width: int, height: int):

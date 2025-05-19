@@ -59,7 +59,7 @@ def ray_serve_run():
     if "RAY_CLIENT_URL" in os.environ:
         ray.init(address=os.getenv("RAY_CLIENT_URL", "auto"), 
                  runtime_env={
-                    "working_dir": "./",
+                    "working_dir": "./"
                 })
     else:
         ray.init()
@@ -70,7 +70,7 @@ def ray_serve_run():
             "port": 8000         
         }
     )
-
+    
     serve.run(entrypoint, name="text2img")
     serve.run(controllerEntrypoint, name="controller", route_prefix="/controller")
     serve.run(autoscalerEndpoint, name="autoscaler", route_prefix="/autoscaler")
@@ -91,7 +91,7 @@ def ray_serve_run():
             print("❌ Failed to set replicas:", response.status_code, response.text)
 
     while True:
-        time.sleep(3600)
+        time.sleep(3000)
 
 def ray_serve_delete():
     if "RAY_CLIENT_URL" in os.environ:

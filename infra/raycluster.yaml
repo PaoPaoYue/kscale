@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ray-head
-        image: py846260131/kscale-text2img-app:10
+        image: py846260131/kscale-text2img-app:25
         command: [ "bash", "-c", "ray start --head --dashboard-host=0.0.0.0 --disable-usage-stats --num-cpus=1 && sleep infinity"]
         ports:
           - containerPort: 6379
@@ -33,6 +33,16 @@ spec:
             cpu: 1
           requests:
             cpu: '250m'
+        volumeMounts:
+          - name: models-volume
+            mountPath: /models
+      volumes:
+        - name: models-volume
+          hostPath:
+            path: /opt/models
+            type: DirectoryOrCreate
+      nodeSelector:
+        kubernetes.io/hostname: worker-gpu-1
 
 ---
 
@@ -55,7 +65,7 @@ spec:
     spec:
       containers:
       - name: ray-worker
-        image: py846260131/kscale-text2img-app:10
+        image: py846260131/kscale-text2img-app:25
         command: [ "bash", "-c", "sleep 20 && ray start --address='ray-service:6379' --num-cpus=1 --num-gpus=1 && sleep infinity"]
         ports:
           - containerPort: 8000
@@ -73,12 +83,12 @@ spec:
             nvidia.com/gpu: 1
         volumeMounts:
           - name: models-volume
-            mountPath: /data
-            subPath: data
+            mountPath: /models
       volumes:
         - name: models-volume
-          persistentVolumeClaim:
-            claimName: nfs-pvc
+          hostPath:
+            path: /opt/models
+            type: DirectoryOrCreate
 
 ---
 

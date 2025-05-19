@@ -47,6 +47,11 @@ class AutoscalerService:
     def __init__(self):
         rl_model_path = os.getenv("RL_MODEL_PATH", "")
         forecast_model_path = os.getenv("FORECAST_MODEL_PATH", "")
+        if os.path.exists(forecast_model_path) is False:
+            raise ValueError(f"Forecast model path {forecast_model_path} does not exist.")
+        if os.path.exists(rl_model_path) is False:
+            raise ValueError(f"RL model path {rl_model_path} does not exist.")
+
         forecast_base_time = int(os.getenv("FORECAST_BASE_TIME", 0))
         forecast_mean = float(os.getenv("FORECAST_MEAN", 0.0))
         forecast_std = float(os.getenv("FORECAST_STD", 1.0))
@@ -100,6 +105,8 @@ class AutoscalerService:
         logits = convert_to_numpy(rl_module_out[Columns.ACTION_DIST_INPUTS])
         # get action with the largest probability
         action = int(np.argmax(logits[0]))
+
+        print(f"request observation length: {len(obs)}, get expected worker count: {action + self.min_workers}")
 
         return {"count": action + self.min_workers}
     

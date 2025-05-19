@@ -6,7 +6,7 @@ authors = ["PaoPaoYue <846260131@qq.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.14"
+python = "3.9.22"
 httpx = "^0.28.1"
 ray = {version = "2.45.0", extras = ["rllib", "serve"]}
 torch = "^2.6.0"
@@ -18,11 +18,11 @@ fastapi = {version = "0.112.0", extras = ["standard"]}
 einops = "0.8.0"
 reformer-pytorch = "1.4.4"
 patool = "1.12"
-scipy = "1.15.2"
-pywavelets = "1.8.0"
-sktime = "0.37.0"
 tqdm = "4.67.1"
-matplotlib = "^3.10.3"
+smart-open = {extras = ["gcs"], version = "^7.1.0"}
+pywavelets = "1.6.0"
+sktime = "0.35.0"
+matplotlib = "3.9.0"
 
 
 [build-system]

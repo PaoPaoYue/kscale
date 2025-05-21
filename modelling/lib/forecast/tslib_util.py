@@ -2,6 +2,8 @@ import argparse
 import os
 import torch
 import torch.nn as nn
+import sys
+sys.path.append('../external/tslib')
 from exp.exp_basic import Exp_Basic
 from exp.exp_long_term_forecasting import Exp_Long_Term_Forecast
 from utils.print_args import print_args
@@ -269,7 +271,7 @@ class TimeseriesForecaster(Exp_Basic):
                 '--d_ff', '32',
             ])
         if ckpt_path is None:
-            ckpt_path = "./checkpoints/long_term_forecast_ts_36_36_TimesNet_custom_ftS_sl36_ll18_pl36_dm16_nh8_el2_dl1_df32_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0/"
+            ckpt_path = "forecast/checkpoints/long_term_forecast_ts_36_36_TimesNet_custom_ftS_sl36_ll18_pl36_dm16_nh8_el2_dl1_df32_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0/"
         super(TimeseriesForecaster, self).__init__(args)
         self.model.load_state_dict(torch.load(os.path.join(ckpt_path, 'checkpoint.pth'), map_location=self.device))
 

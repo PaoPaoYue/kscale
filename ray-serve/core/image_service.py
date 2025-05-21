@@ -10,14 +10,15 @@ app = FastAPI()
 
 @serve.deployment(
     name="image_service",
-    num_replicas=1,
+    num_replicas=3,
     # autoscaling_config={
-    #     "target_ongoing_requests": 2,            # 每个副本理想的并发数
+    #     "target_ongoing_requests": 2,           # 每个副本理想的并发数
     #     "min_replicas": 1,
-    #     "max_replicas": 1,
+    #     "max_replicas": 3,
     #     "upscale_delay_s": 10,                  # 扩容延迟
-    #     "downscale_delay_s": 10,                 # 缩容延迟
-    #     "metrics_interval_s": 2                 # 采样间隔
+    #     "downscale_delay_s": 10,                # 缩容延迟
+    #     "metrics_interval_s": 10,                # 采样间隔
+    #     "look_back_period_s": 10
     # },
     ray_actor_options={
         "num_gpus": 1,

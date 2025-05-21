@@ -59,7 +59,7 @@ class AutoscalerService:
         self.observe_length = int(os.getenv("OBSERVE_LENGTH", 3))
         self.forecast_window = int(os.getenv("FORECAST_WINDOW", 36))
         self.data_scale = float(os.getenv("DATA_SCALE", 1))
-        self.max_workers = int(os.getenv("MAX_WORKERS", 4))
+        self.max_workers = int(os.getenv("MAX_WORKERS", 3))
         self.min_workers = int(os.getenv("MIN_WORKERS", 1))
         self.rl_module = RLModule.from_checkpoint(
             os.path.join(
@@ -106,7 +106,7 @@ class AutoscalerService:
         # get action with the largest probability
         action = int(np.argmax(logits[0]))
 
-        print(f"request observation length: {len(obs)}, get expected worker count: {action + self.min_workers}")
+        print(f"request observation length: {len(req.points)}, get expected worker count: {action + self.min_workers}")
 
         return {"count": action + self.min_workers}
     

@@ -19,7 +19,9 @@ spec:
       containers:
       - name: job-generator
         image: py846260131/kscale-job-generator:21
-        env: []
+        env: 
+          - name: ENABLE_AUTO_SCALING
+            value: "true"
         volumeMounts:
         - name: tmp-volume
           mountPath: /tmp

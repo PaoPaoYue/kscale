@@ -156,7 +156,7 @@ def parse_tslib_args(args=[]):
 
     return args
 
-def run_rslib_training(args):
+def run_tslib_training(args):
     # set random seed
     if args.seed is not None:
         os.environ['PYTHONHASHSEED'] = str(args.seed)
@@ -217,10 +217,13 @@ class TimeseriesTransformer():
             self.scaler.scale_ = np.array([scale_std])
 
 
-    def fit_transform(self, input):
+    def fit_transform(self, enc_data, enc_stamp):
         # assert data[time_alias] size should be equal to the target size
-        assert len(input['date']) == len(input['target'])
-        df = pd.DataFrame(input)
+        assert len(enc_data) == len(enc_stamp)
+        df = pd.DataFrame({
+                'target': enc_data,
+                'date': enc_stamp
+        })
         
         df_data = df[['target']]
         if self.scale:
@@ -249,29 +252,27 @@ class TimeseriesTransformer():
         return data
 
 class TimeseriesForecaster(Exp_Basic):
-    def __init__(self, ckpt_path=None, args=None):
-        if args is None:
-            args = parse_tslib_args([
-                '--model_id', 'ts_36_36',
-                '--model', 'TimesNet',
-                '--data', 'custom',
-                '--features', 'S',
-                '--target', 'requests',
-                '--freq', 'h',
-                '--seq_len', '36',
-                '--label_len', '18',
-                '--pred_len', '36',
-                '--e_layers', '2',
-                '--d_layers', '1',
-                '--factor', '3',
-                '--enc_in', '1',
-                '--dec_in', '1',
-                '--c_out', '1',
-                '--d_model', '16',
-                '--d_ff', '32',
-            ])
-        if ckpt_path is None:
-            ckpt_path = "forecast/checkpoints/long_term_forecast_ts_36_36_TimesNet_custom_ftS_sl36_ll18_pl36_dm16_nh8_el2_dl1_df32_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0/"
+    def __init__(self, ckpt_path="../modelling/forecast/checkpoints/informer", **kwargs):
+        args = parse_tslib_args([
+            '--model_id', 'ts_36_36',
+            '--model', 'Informer',
+            '--data', 'custom',
+            '--features', 'S',
+            '--target', 'requests',
+            '--freq', 'h',
+            '--seq_len', '36',
+            '--label_len', '18',
+            '--pred_len', '36',
+            '--e_layers', '2',
+            '--d_layers', '1',
+            '--factor', '3',
+            '--enc_in', '1',
+            '--dec_in', '1',
+            '--c_out', '1',
+        ])
+        if kwargs:
+            for key, value in kwargs.items():
+                setattr(args, key, value)
         super(TimeseriesForecaster, self).__init__(args)
         self.model.load_state_dict(torch.load(os.path.join(ckpt_path, 'checkpoint.pth'), map_location=self.device))
 
@@ -285,20 +286,24 @@ class TimeseriesForecaster(Exp_Basic):
     def setTransformer(self, transformer):
         self.transformer = transformer
     
-    def forecast(self, enc_data, enc_stamp, dec_data=None, dec_stamp=None):
-        data, data_stamp = self.transformer.fit_transform({
-            'target': enc_data,
-            'date': enc_stamp
-        })
+    def forecast(self, enc_data, enc_stamp, dec=True):
+        if dec:
+            step = enc_stamp[1] - enc_stamp[0]
+            dec_data = np.concatenate([np.array(enc_data[-self.args.label_len:]), np.zeros(self.args.pred_len)])
+            dec_stamp = np.concatenate([np.array(enc_stamp[-self.args.label_len:]), enc_stamp[-1] + step * np.arange(1, self.args.pred_len + 1)])
+            dec_data, dec_stamp = self.transformer.fit_transform(dec_data, dec_stamp)
+            dec_data[-self.args.pred_len:] = 0
+        enc_data, enc_stamp = self.transformer.fit_transform(enc_data, enc_stamp)
+
         self.model.eval()
         with torch.no_grad():
-            data = torch.tensor(data).float().unsqueeze(0).to(self.device)
-            data_stamp = torch.tensor(data_stamp).float().unsqueeze(0).to(self.device)
-            if dec_data is not None:
+            if dec:
                 dec_data = torch.tensor(dec_data).float().unsqueeze(0).to(self.device)
                 dec_stamp = torch.tensor(dec_stamp).float().unsqueeze(0).to(self.device)
+            enc_data = torch.tensor(enc_data).float().unsqueeze(0).to(self.device)
+            enc_stamp = torch.tensor(enc_stamp).float().unsqueeze(0).to(self.device)
 
-            pred = self.model(data, data_stamp, dec_data, dec_stamp)
+            pred = self.model(enc_data, enc_stamp, dec_data, dec_stamp)
             pred = pred.squeeze(0).cpu().numpy()
             if self.transformer.scale:
                 pred = self.transformer.scaler.inverse_transform(pred)

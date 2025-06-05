@@ -1,23 +1,24 @@
 long_term_forecast_ts_36_36_TimesNet_custom_ftS_sl36_ll18_pl36_dm16_nh8_el2_dl1_df32_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
-mse:0.7633064985275269, mae:0.5624377131462097, dtw:Not calculated
+mse:1.4349621534347534, mae:0.9114888310432434, dtw:Not calculated
 
 long_term_forecast_ts_36_36_Transformer_custom_ftS_sl36_ll18_pl36_dm16_nh8_el2_dl1_df32_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
-mse:1.0217698812484741, mae:0.7676790952682495, dtw:Not calculated
+mse:3.204148292541504, mae:1.4443269968032837, dtw:Not calculated
 
 long_term_forecast_ts_36_36_PatchTST_custom_ftS_sl36_ll18_pl36_dm512_nh2_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
-mse:0.7670071721076965, mae:0.5436404943466187, dtw:Not calculated
+mse:1.3934029340744019, mae:0.8758319616317749, dtw:Not calculated
 
 long_term_forecast_ts_36_36_DLinear_custom_ftS_sl36_ll18_pl36_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
-mse:1.2289936542510986, mae:0.8252820372581482, dtw:Not calculated
+mse:3.5310139656066895, mae:1.5049372911453247, dtw:Not calculated
 
 long_term_forecast_ts_36_36_Informer_custom_ftS_sl36_ll18_pl36_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
-mse:0.4135046899318695, mae:0.4098000228404999, dtw:Not calculated
+mse:0.7580368518829346, mae:0.6546733975410461, dtw:Not calculated
 
 long_term_forecast_ts_36_36_FEDformer_custom_ftS_sl36_ll18_pl36_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
-mse:0.4920163154602051, mae:0.46418872475624084, dtw:Not calculated
+mse:1.0111392736434937, mae:0.7808594703674316, dtw:Not calculated
 
 long_term_forecast_ts_36_36_Autoformer_custom_ftS_sl36_ll18_pl36_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
-mse:1.0940607786178589, mae:0.7848349213600159, dtw:Not calculated
+mse:2.645641565322876, mae:1.2820838689804077, dtw:Not calculated
 
 long_term_forecast_ts_36_36_Crossformer_custom_ftS_sl36_ll18_pl36_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0  
-mse:0.410085529088974, mae:0.4100993275642395, dtw:Not calculated
+mse:0.8130908608436584, mae:0.6726071834564209, dtw:Not calculated
+

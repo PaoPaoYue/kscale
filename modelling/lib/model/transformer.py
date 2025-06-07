@@ -34,15 +34,15 @@ class PositionalEmbedding(nn.Module):
         return self.pe[:, :x.size(1)]
     
 class DataEmbedding(nn.Module):
-    def __init__(self, c_in, d_model, dropout=0.1, max_len=512, bias=True, sinusoidal=True, use_cls_token=True):
+    def __init__(self, c_in, d_model, dropout=0.1, max_len=512, bias=True, position_type="", use_cls_token=True):
         super(DataEmbedding, self).__init__()
 
         self.value_embedding =  nn.Linear(c_in, d_model, bias=bias)
 
-        self.sinusoidal = sinusoidal
-        if sinusoidal:
+        self.position_type = position_type
+        if position_type == "sinusoidal":
             self.position_embedding = PositionalEmbedding(d_model=d_model, max_len=max_len)
-        else:
+        elif position_type == "learned":
             self.position_embedding = nn.Parameter(torch.randn(1, max_len, d_model))
 
         self.use_cls_token = use_cls_token
@@ -60,9 +60,9 @@ class DataEmbedding(nn.Module):
             cls = self.cls_token.expand(B, 1, -1)  # [B, 1, D]
             x = torch.cat([cls, x], dim=1)         # [B, L+1, D]
 
-        if self.sinusoidal:
+        if self.position_type == "sinusoidal":
             x = x + self.position_embedding(x)
-        else:
+        elif self.position_type == "learned":
             x = x + self.position_embedding[:, :x.size(1), :]  # [B, L+1, D]
         return self.dropout(x)
 
@@ -81,7 +81,7 @@ class TransformerEncoder(nn.Module):
 
         embedding_dropout: float = 0.1,  # embedding 层 dropout
         embedding_bias: bool = True,        # embedding 层 bias
-        embedding_sinusoidal: bool = True,  # embedding 层 sinusoidal
+        embedding_position_type: str = "",  # embedding 层位置编码类型 learned/sinusoidal
     ):
         super().__init__()
         self.use_cls_token = use_cls_token
@@ -104,7 +104,7 @@ class TransformerEncoder(nn.Module):
             max_len=max_len,
             dropout=embedding_dropout,
             bias=embedding_bias,
-            sinusoidal=embedding_sinusoidal,
+            position_type=embedding_position_type,
             use_cls_token=use_cls_token
         )
 
@@ -151,7 +151,7 @@ class TransformerEncoderConfig(ModelConfig):
     use_cls_token: bool = True
     embedding_dropout: float = 0.1
     embedding_bias: bool = True
-    embedding_sinusoidal: bool = True
+    embedding_position_type: str = ""
 
     @property
     def output_dims(self):
@@ -186,7 +186,7 @@ class TransformerEncoderConfig(ModelConfig):
                 use_cls_token=self.use_cls_token,
                 embedding_dropout=self.embedding_dropout,
                 embedding_bias=self.embedding_bias,
-                embedding_sinusoidal=self.embedding_sinusoidal
+                embedding_position_type=self.embedding_position_type
             )
         else:
             raise ValueError(f"Framework {framework} not supported.")
@@ -208,7 +208,7 @@ class TransformerEncoderCatalog(PPOCatalog):
             use_cls_token=model_config_dict.get("use_cls_token", True),
             embedding_dropout=model_config_dict.get("embedding_dropout", 0.1),
             embedding_bias=model_config_dict.get("embedding_bias", True),
-            embedding_sinusoidal=model_config_dict.get("embedding_sinusoidal", True),
+            embedding_position_type=model_config_dict.get("embedding_position_type", ""),
         )
         # Create a function that can be called when framework is known to retrieve the
         # class type for action distributions

@@ -7,6 +7,10 @@ import requests
 import ray
 from ray import serve
 
+# add local modules to path
+sys.path.append("../external/tslib")
+sys.path.append("../modelling/lib")
+
 from core.image_generator import ImageGenerator
 from core.image_service import entrypoint
 from core.controller import controllerEntrypoint
@@ -56,13 +60,24 @@ def ray_serve_test():
         print("❌ Request failed:", response.status_code, response.text)
 
 def ray_serve_run():
-    if "RAY_CLIENT_URL" in os.environ:
-        ray.init(address=os.getenv("RAY_CLIENT_URL", "auto"), 
-                 runtime_env={
-                    "working_dir": "./"
-                })
-    else:
-        ray.init()
+    import forecast
+    import exp
+    import data_provider
+    import utils
+    import models
+    import layers
+    ray.init(address=os.getenv("RAY_CLIENT_URL", None), 
+                runtime_env={
+                "working_dir": "./",
+                "py_modules": [
+                    forecast,
+                    exp,
+                    data_provider,
+                    utils,
+                    models,
+                    layers
+                ]
+            })
     serve.start(
         proxy_location ="HeadOnly",
         http_options={

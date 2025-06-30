@@ -1,6 +1,7 @@
 import asyncio
 import base64
 import io
+import os
 from fastapi import FastAPI, Query
 from ray import serve
 
@@ -10,7 +11,7 @@ app = FastAPI()
 
 @serve.deployment(
     name="image_service",
-    num_replicas=3,
+    num_replicas=1,  
     # autoscaling_config={
     #     "target_ongoing_requests": 2,           # 每个副本理想的并发数
     #     "min_replicas": 1,

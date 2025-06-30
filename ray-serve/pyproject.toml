@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "3.9.22"
 httpx = "^0.28.1"
-ray = {version = "2.45.0", extras = ["rllib", "serve"]}
+ray = {version = "2.47.0", extras = ["rllib", "serve"]}
 torch = "^2.6.0"
 diffusers = "^0.33.1"
 transformers = "^4.51.3"
@@ -23,6 +23,7 @@ smart-open = {extras = ["gcs"], version = "^7.1.0"}
 pywavelets = "1.6.0"
 sktime = "0.35.0"
 matplotlib = "3.9.0"
+protobuf = "==3.20.*"
 
 
 [build-system]

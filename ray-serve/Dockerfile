@@ -1,4 +1,4 @@
-FROM rayproject/ray:2.45.0
+FROM rayproject/ray:2.47.0
 
 RUN pip install --no-cache-dir \
     numpy==2.0.2 \

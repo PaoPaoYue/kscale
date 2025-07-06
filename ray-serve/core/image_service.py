@@ -11,7 +11,7 @@ app = FastAPI()
 
 @serve.deployment(
     name="image_service",
-    num_replicas=1,  
+    num_replicas=6,  
     # autoscaling_config={
     #     "target_ongoing_requests": 2,           # 每个副本理想的并发数
     #     "min_replicas": 1,

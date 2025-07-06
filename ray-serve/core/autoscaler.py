@@ -141,8 +141,6 @@ class AutoscalerService:
                 enc_data=recent_new_request,
                 enc_stamp=recent_timestamp,
             )[:self.future_length]
-            print(recent_new_request)
-            print(future_requests)
         else:
             future_requests = np.zeros(self.future_length, dtype=np.float32)
 

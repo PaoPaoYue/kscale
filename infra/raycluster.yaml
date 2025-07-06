@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ray-head
-        image: py846260131/kscale-text2img-app:25
+        image: py846260131/kscale-text2img-app:26
         command: [ "bash", "-c", "ray start --head --dashboard-host=0.0.0.0 --disable-usage-stats --num-cpus=1 && sleep infinity"]
         ports:
           - containerPort: 6379
@@ -42,7 +42,7 @@ spec:
             path: /opt/models
             type: DirectoryOrCreate
       nodeSelector:
-        kubernetes.io/hostname: worker-gpu-1
+        kubernetes.io/hostname: gpu-worker-1.us-central1-a.c.cloudofuom.internal 
 
 ---
 
@@ -54,7 +54,7 @@ metadata:
   labels:
     ray: worker
 spec:
-  replicas: 3
+  replicas: 6
   selector:
     matchLabels:
       ray: worker
@@ -65,7 +65,7 @@ spec:
     spec:
       containers:
       - name: ray-worker
-        image: py846260131/kscale-text2img-app:25
+        image: py846260131/kscale-text2img-app:26
         command: [ "bash", "-c", "sleep 20 && ray start --address='ray-service:6379' --num-cpus=1 --num-gpus=1 && sleep infinity"]
         ports:
           - containerPort: 8000
@@ -87,7 +87,7 @@ spec:
       volumes:
         - name: models-volume
           hostPath:
-            path: /opt/models
+            path: /models
             type: DirectoryOrCreate
 
 ---

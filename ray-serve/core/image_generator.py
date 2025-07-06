@@ -28,6 +28,10 @@ class ImageGenerator:
     def load_model(self):
         print(f"Loading model from: {self.model_path}")
         start_time = time.time()
+        
+        # pretend to be slow starting up
+        time.sleep(28)
+
         self.pipe = StableDiffusionPipeline.from_single_file(
             self.model_path,
             torch_dtype=torch.float16,

@@ -9,6 +9,12 @@ calico:
 # kubectl -n kube-system rollout restart deployment calico-kube-controllers
 	kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml --timeout=$(TIMEOUT)
 
+flannel:
+# kubectl create ns kube-flannel
+# kubectl label --overwrite ns kube-flannel pod-security.kubernetes.io/enforce=privileged
+# helm repo add flannel https://flannel-io.github.io/flannel/ 
+	helm install flannel --set podCidr="192.168.0.0/16" --namespace kube-flannel flannel/flannel --timeout=$(TIMEOUT)
+
 # remember to set the data-dog api key in datadog-secret before running this
 # > helm repo add datadog https://helm.datadoghq.com
 # > kubectl create secret generic datadog-secret --from-literal api-key=<DATADOG_API_KEY> --namespace datadog

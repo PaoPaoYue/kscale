@@ -21,7 +21,7 @@ scipy = "^1.15.2"
 pywavelets = "^1.8.0"
 sktime = "^0.37.0"
 tqdm = "^4.67.1"
-ray = {version = "2.45.0", extras = ["rllib"]}
+ray = {version = "2.47.0", extras = ["rllib"]}
 gymnasium = "1.0.0"
 ipywidgets = "^8.1.6"
 ipympl = "^0.9.7"
